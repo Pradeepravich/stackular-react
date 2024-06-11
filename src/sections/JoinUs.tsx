@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { ArrowRightCircleFill } from "react-bootstrap-icons";
+import { ArrowDownCircleFill, ArrowRightCircleFill } from "react-bootstrap-icons";
 import play from "../assets/images/general/8180-4a2b-a6e4-784e016a00b3.mp4";
 
 interface Props {
@@ -8,9 +8,12 @@ interface Props {
 }
 
 const JoinUs: FC<Props> = ({data,tribeData }) => {  
-  const scrollToTop = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const scrollToSection = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const targetDiv = document.getElementById('projects');
+    if (targetDiv) {
+      targetDiv.scrollIntoView({ behavior: 'smooth' });
+    }    
   };
   return (
     <>
@@ -34,7 +37,7 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
                       </p>
                       <div className="form-group">
                         <a
-                        id="goToTop" href={"#top"} onClick={scrollToTop}
+                         href={"#projects"} onClick={scrollToSection}
                         className="btn btn-primary !text-left !py-2 !pl-4 group"
                       >
                         {data?.elements?.btn_title?.value.replace(
@@ -42,7 +45,7 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
                       ""
                     )}
                         <span className="float-end ml-4 ">
-                          <ArrowRightCircleFill
+                          <ArrowDownCircleFill
                             color="#87FCFE"
                             size="1.7em"
                             className="arrow-right-circle-fill"
