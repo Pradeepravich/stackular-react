@@ -44,7 +44,7 @@ const Home: FC<Props> = ({
                       </p>
                       <div className="form-group ">
                         <Link
-                          to={data?.elements?.say_hello_url?.value}
+                          to={data?.elements?.say_hello_url?.value}                          
                           className="btn btn-primary !text-left py-2 group"
                         >
                           {data?.elements?.say_hello?.value}{" "}

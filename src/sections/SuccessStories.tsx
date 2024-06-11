@@ -197,9 +197,8 @@ const SuccessStories: FC<Props> = ({successStories}) => {
                   </div>
                 </div>
                 <div className="form-group">
-                  <Link
-                    id="goToTop"
-                    to={"/portfolio"}                    
+                  <Link                    
+                    to={successStories?.elements?.view_all_projects_url?.value}                                     
                     className="btn btn-primary !text-left py-2 group"
                   >
                     {successStories?.elements?.view_all_projects?.value.replace(

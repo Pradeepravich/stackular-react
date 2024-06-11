@@ -85,7 +85,7 @@ const TribeData: FC<Props> = ({tribeData}) => {
                         </span>
                       </div>
                       <Link
-                        to={"/"}
+                        to={tribeData?.elements?.join_learn_more_url?.value}
                         className="btn btn-primary !text-left py-2 group"
                       >
                         {tribeData?.elements?.join_learn_more?.value.replace(
