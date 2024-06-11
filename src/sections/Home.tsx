@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import globeFile from "../assets/images/home/videos/globe.mp4";
 import ClientSlider from "../components/ClientSlider";
 import { ArrowRightCircleFill } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 interface Props {
   data: any;
@@ -46,8 +47,8 @@ const Home: FC<Props> = ({
                         )}
                       </p>
                       <div className="form-group ">
-                        <a
-                          href={"/"}
+                        <Link
+                          to={data?.elements?.say_hello_url?.value}
                           className="btn btn-primary !text-left py-2 group"
                         >
                           {data?.elements?.say_hello?.value}{" "}
@@ -59,7 +60,7 @@ const Home: FC<Props> = ({
                             />
                           </span>
                           <span className="clear-both"></span>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -109,7 +110,9 @@ const Home: FC<Props> = ({
                   </div>
                   <div className="col-lg-12 d-flex align-items-end">
                     <div className="container">
-                      <ClientSlider images={data?.elements?.client_slider_images?.value}/>
+                      <ClientSlider
+                        images={data?.elements?.client_slider_images?.value}
+                      />
                     </div>
                   </div>
                 </div>
@@ -157,7 +160,10 @@ const Home: FC<Props> = ({
                     <div className="row">
                       <div className="col-lg-6 services-card">
                         <img
-                          src={data?.elements?.product_development_img?.value[0]?.url}
+                          src={
+                            data?.elements?.product_development_img?.value[0]
+                              ?.url
+                          }
                           className="img-fluid"
                           alt=""
                         />
@@ -182,7 +188,9 @@ const Home: FC<Props> = ({
                       </div>
                       <div className="col-lg-6 services-card">
                         <img
-                          src={data?.elements?.data_intelligence_img?.value[0]?.url}
+                          src={
+                            data?.elements?.data_intelligence_img?.value[0]?.url
+                          }
                           className="img-fluid"
                           alt=""
                         />
@@ -207,7 +215,10 @@ const Home: FC<Props> = ({
                       </div>
                       <div className="col-lg-6 services-card">
                         <img
-                          src={data?.elements?.enterprise_systems_img?.value[0]?.url}
+                          src={
+                            data?.elements?.enterprise_systems_img?.value[0]
+                              ?.url
+                          }
                           className="img-fluid"
                           alt=""
                         />
@@ -232,7 +243,10 @@ const Home: FC<Props> = ({
                       </div>
                       <div className="col-lg-6 services-card">
                         <img
-                          src={data?.elements?.digital_experience_img?.value[0]?.url}
+                          src={
+                            data?.elements?.digital_experience_img?.value[0]
+                              ?.url
+                          }
                           className="img-fluid"
                           alt=""
                         />
@@ -289,7 +303,9 @@ const Home: FC<Props> = ({
                 <div className="row mt-5 gy-4">
                   <div className="col-lg-4 make-us-card">
                     <img
-                      src={companyStandardData?.elements?.block_img1?.value[0]?.url}
+                      src={
+                        companyStandardData?.elements?.block_img1?.value[0]?.url
+                      }
                       className="img-fluid"
                       alt=""
                     />
@@ -308,7 +324,9 @@ const Home: FC<Props> = ({
                   </div>
                   <div className="col-lg-4 make-us-card">
                     <img
-                      src={companyStandardData?.elements?.block_img2?.value[0]?.url}
+                      src={
+                        companyStandardData?.elements?.block_img2?.value[0]?.url
+                      }
                       className="img-fluid"
                       alt=""
                     />
@@ -327,7 +345,9 @@ const Home: FC<Props> = ({
                   </div>
                   <div className="col-lg-4 make-us-card">
                     <img
-                      src={companyStandardData?.elements?.block_img3?.value[0]?.url}
+                      src={
+                        companyStandardData?.elements?.block_img3?.value[0]?.url
+                      }
                       className="img-fluid"
                       alt=""
                     />
@@ -346,7 +366,9 @@ const Home: FC<Props> = ({
                   </div>
                   <div className="col-lg-4 make-us-card">
                     <img
-                      src={companyStandardData?.elements?.block_img4?.value[0]?.url}
+                      src={
+                        companyStandardData?.elements?.block_img4?.value[0]?.url
+                      }
                       className="img-fluid"
                       alt=""
                     />
@@ -365,7 +387,9 @@ const Home: FC<Props> = ({
                   </div>
                   <div className="col-lg-4 make-us-card">
                     <img
-                      src={companyStandardData?.elements?.block_img5?.value[0]?.url}
+                      src={
+                        companyStandardData?.elements?.block_img5?.value[0]?.url
+                      }
                       className="img-fluid"
                       alt=""
                     />
@@ -384,7 +408,9 @@ const Home: FC<Props> = ({
                   </div>
                   <div className="col-lg-4 make-us-card">
                     <img
-                      src={companyStandardData?.elements?.block_img6?.value[0]?.url}
+                      src={
+                        companyStandardData?.elements?.block_img6?.value[0]?.url
+                      }
                       className="img-fluid"
                       alt=""
                     />
