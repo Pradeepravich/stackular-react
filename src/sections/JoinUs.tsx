@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { ArrowDownCircleFill, ArrowRightCircleFill } from "react-bootstrap-icons";
+import { ArrowDownCircleFill } from "react-bootstrap-icons";
 import play from "../assets/images/general/8180-4a2b-a6e4-784e016a00b3.mp4";
 import TribeData from "./TribeData";
 

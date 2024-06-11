@@ -5,9 +5,6 @@ import MainContextProvider from './contexts/MainContext';
 
 function App() {
   useEffect(()=>{
-
-    
-
     /**
      * Preloader
      */

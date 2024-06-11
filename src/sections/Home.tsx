@@ -20,13 +20,6 @@ const Home: FC<Props> = ({
   tribeData,
   companyStandardData,
 }) => {
-  const scrollToTop = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
-    event.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <>
       <main id="main">

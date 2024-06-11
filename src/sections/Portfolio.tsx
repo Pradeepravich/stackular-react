@@ -11,13 +11,6 @@ interface Props {
 }
 
 const Portfolio: FC<Props> = ({ data, storiesData }) => {
-  const scrollToTop = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
-    event.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <>
       <main id="main">
