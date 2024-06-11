@@ -7,8 +7,7 @@ interface Props {
   tribeData: any;
 }
 
-const JoinUs: FC<Props> = ({data,tribeData }) => {
-  console.log("data", data)
+const JoinUs: FC<Props> = ({data,tribeData }) => {  
   const scrollToTop = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -109,7 +109,7 @@ const Home: FC<Props> = ({
                   </div>
                   <div className="col-lg-12 d-flex align-items-end">
                     <div className="container">
-                      <ClientSlider />
+                      <ClientSlider images={data?.elements?.client_slider_images?.value}/>
                     </div>
                   </div>
                 </div>
