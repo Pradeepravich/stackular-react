@@ -10,6 +10,7 @@ import {
   ArrowUpShort,
 } from "react-bootstrap-icons";
 import { useMainContext } from "../hooks/useMainContext";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { footerData } = useMainContext();
@@ -32,7 +33,9 @@ const Footer = () => {
     };
   }, []);
 
-  const scrollToTop = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const scrollToTop = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
     event.preventDefault();
     window.scrollTo({
       top: 0,
@@ -102,16 +105,16 @@ const Footer = () => {
                 <nav>
                   <ul>
                     <li>
-                      <a href={"/about"}>About</a>
+                      <Link to={"/about"}>About</Link>
                     </li>
                     <li>
-                      <a href={"/services"}>Services</a>
+                      <Link to={"/services"}>Services</Link>
                     </li>
                     <li>
-                      <a href={"/portfolio"}>Portfolio</a>
+                      <Link to={"/portfolio"}>Portfolio</Link>
                     </li>
                     <li>
-                      <a href={"/join-us"}>Join Us</a>
+                      <Link to={"/join-us"}>Join Us</Link>
                     </li>
                   </ul>
                 </nav>
@@ -184,10 +187,7 @@ const Footer = () => {
         } d-flex align-items-center justify-content-center`}
         onClick={scrollToTop}
       >
-        <ArrowUpShort
-          color="#00000"
-          size="1.7em"          
-        />
+        <ArrowUpShort color="#00000" size="1.7em" />
       </a>
     </>
   );

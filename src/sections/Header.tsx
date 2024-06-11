@@ -7,9 +7,18 @@ interface Props {}
 
 const Header: FC<Props> = () => {
   useEffect(() => {
+    /**
+     * Sticky header on scroll
+     */
+    const selectHeader = document.querySelector('#header');
+    if (selectHeader) {
+      document.addEventListener('scroll', () => {
+        window.scrollY > 100 ? selectHeader.classList.add('sticked') : selectHeader.classList.remove('sticked');
+      });
+    }
+
     const currentPageUrl = window.location.href;
     const navbarLinks = document.querySelectorAll("#navbar a");
-
     navbarLinks.forEach((link) => {
       const menuItemUrl = link.getAttribute("href") || "";
       if (currentPageUrl.includes(menuItemUrl)) {
@@ -51,9 +60,9 @@ const Header: FC<Props> = () => {
               </li>
             </ul>
           </nav>
-          <a className="btn-contact-us d-none d-lg-block" href={"/contact-us"}>
+          <Link className="btn-contact-us d-none d-lg-block" to={"/contact-us"}>
             Contact Us
-          </a>
+          </Link>
           <i className="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
           <i className="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
         </div>
