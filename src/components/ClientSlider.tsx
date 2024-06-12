@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from "react";
 
-interface ImageItem {
+type ImageItem ={
   name: string;
   url: string;
 }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 interface Props {
   tribeData: any;
 }
-const TribeData: FC<Props> = ({tribeData}) => {
+const TribeSection: FC<Props> = ({tribeData}) => {
   return (
     <section id="join_us" className="join-us-sec mt-5">
               <div className="container">
@@ -116,4 +116,4 @@ const TribeData: FC<Props> = ({tribeData}) => {
   )
 }
 
-export default TribeData
+export default TribeSection

@@ -5,7 +5,7 @@ import { ArrowRightCircleFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import SuccessStories from "./SuccessStories";
 import CompanyStandards from "./CompanyStandards";
-import TribeData from "./TribeData";
+import TribeSection from "./TribeSection";
 
 interface Props {
   data: any;
@@ -275,7 +275,7 @@ const Home: FC<Props> = ({
             
             <SuccessStories successStories={storiesData} />
 
-            <TribeData  tribeData={tribeData}/>
+            <TribeSection  tribeData={tribeData}/>
           </div>
         </div>
       </main>
