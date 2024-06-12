@@ -7,7 +7,7 @@ interface Props {
   companyStandardData: any;
 }
 
-const Services: FC<Props> = ({data, services, companyStandardData }) => {  
+const Services: FC<Props> = ({ data, services, companyStandardData }) => {
   const [activeTab, setActiveTab] = useState<string>("Product");
   const openGrid = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -25,19 +25,18 @@ const Services: FC<Props> = ({data, services, companyStandardData }) => {
               <div className="container">
                 <div className="row gy-4">
                   <div className="col-lg-8 services-title d-none d-md-block">
-                    <h1>{data?.elements?.title?.value?.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}</h1>
+                    <h1>
+                      {data?.elements?.title?.value?.replace(
+                        /(<([^>]+)>)/gi,
+                        ""
+                      )}
+                    </h1>
                   </div>
                   <div className="col-lg-4 d-flex align-items-end d-none d-md-block">
                     <div className="contact-img ps-0 ps-lg-5">
                       <div className="position-relative">
                         <img
-                          src={
-                            data?.elements?.top_right_img?.value[0]
-                              ?.url
-                          }
+                          src={data?.elements?.top_right_img?.value[0]?.url}
                           className="img-fluid"
                           alt=""
                         />
@@ -45,10 +44,12 @@ const Services: FC<Props> = ({data, services, companyStandardData }) => {
                     </div>
                   </div>
                   <div className="col-lg-12 services-title d-block d-md-none">
-                    <h1>{data?.elements?.title?.value?.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}</h1>
+                    <h1>
+                      {data?.elements?.title?.value?.replace(
+                        /(<([^>]+)>)/gi,
+                        ""
+                      )}
+                    </h1>
                   </div>
                 </div>
                 <div className="col-lg-12 tabs">
@@ -119,8 +120,8 @@ const Services: FC<Props> = ({data, services, companyStandardData }) => {
                           <div className="col-lg-4 services-cards border_right">
                             <img
                               src={
-                                services?.elements?.product_strategy_img?.value[0]
-                                  ?.url
+                                services?.elements?.product_strategy_img
+                                  ?.value[0]?.url
                               }
                               className="img-fluid"
                               alt=""
@@ -147,8 +148,8 @@ const Services: FC<Props> = ({data, services, companyStandardData }) => {
                           <div className="col-lg-4 services-cards border_right">
                             <img
                               src={
-                                services?.elements?.product_management_img?.value[0]
-                                  ?.url
+                                services?.elements?.product_management_img
+                                  ?.value[0]?.url
                               }
                               className="img-fluid"
                               alt=""
@@ -175,8 +176,8 @@ const Services: FC<Props> = ({data, services, companyStandardData }) => {
                           <div className="col-lg-4 services-cards">
                             <img
                               src={
-                                services?.elements?.experience_design_img?.value[0]
-                                  ?.url
+                                services?.elements?.experience_design_img
+                                  ?.value[0]?.url
                               }
                               className="img-fluid"
                               alt=""
@@ -204,8 +205,8 @@ const Services: FC<Props> = ({data, services, companyStandardData }) => {
                           <div className="col-lg-4 services-cards border_right">
                             <img
                               src={
-                                services?.elements?.mvp_implementation_img?.value[0]
-                                  ?.url
+                                services?.elements?.mvp_implementation_img
+                                  ?.value[0]?.url
                               }
                               className="img-fluid"
                               alt=""
@@ -232,8 +233,8 @@ const Services: FC<Props> = ({data, services, companyStandardData }) => {
                           <div className="col-lg-4 services-cards border_right">
                             <img
                               src={
-                                services?.elements?.operations_support_img?.value[0]
-                                  ?.url
+                                services?.elements?.operations_support_img
+                                  ?.value[0]?.url
                               }
                               className="img-fluid"
                               alt=""
@@ -266,99 +267,110 @@ const Services: FC<Props> = ({data, services, companyStandardData }) => {
                           <div className="col-lg-4 services-cards border_right">
                             <img
                               src={
-                                services?.elements?.artificial_intelligence_img?.value[0]
-                                  ?.url
+                                services?.elements?.artificial_intelligence_img
+                                  ?.value[0]?.url
                               }
                               className="img-fluid"
                               alt=""
                             />
-                            <h4>{services?.elements?.artificial_intelligence?.value?.replace(
+                            <h4>
+                              {services?.elements?.artificial_intelligence?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</h4>
+                              )}
+                            </h4>
                             <p>
-                            {services?.elements?.ai_services_leverage?.value?.replace(
+                              {services?.elements?.ai_services_leverage?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
                               )}
                             </p>
-                            <a href={"/"}>{services?.elements?.artificial_learn_more?.value?.replace(
+                            <a href={"/"}>
+                              {services?.elements?.artificial_learn_more?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</a>
+                              )}
+                            </a>
                           </div>
                           <div className="col-lg-4 services-cards border_right">
                             <img
                               src={
-                                services?.elements?.business_img?.value[0]
-                                  ?.url
+                                services?.elements?.business_img?.value[0]?.url
                               }
                               className="img-fluid"
                               alt=""
                             />
-                            <h4>{services?.elements?.business_intelligence?.value?.replace(
+                            <h4>
+                              {services?.elements?.business_intelligence?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</h4>
+                              )}
+                            </h4>
                             <p>
-                            {services?.elements?.data_driven_insights?.value?.replace(
+                              {services?.elements?.data_driven_insights?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
                               )}
                             </p>
-                            <a href={"/"}>{services?.elements?.business_learn_more?.value?.replace(
+                            <a href={"/"}>
+                              {services?.elements?.business_learn_more?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</a>
+                              )}
+                            </a>
                           </div>
                           <div className="col-lg-4 services-cards">
                             <img
-                              src={
-                                services?.elements?.data_img?.value[0]
-                                  ?.url
-                              }
+                              src={services?.elements?.data_img?.value[0]?.url}
                               className="img-fluid"
                               alt=""
                             />
-                            <h4>{services?.elements?.data_visualization?.value?.replace(
+                            <h4>
+                              {services?.elements?.data_visualization?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</h4>
+                              )}
+                            </h4>
                             <p>
-                            {services?.elements?.transforms_complex_data?.value?.replace(
+                              {services?.elements?.transforms_complex_data?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
                               )}
                             </p>
-                            <a href={"/"}>{services?.elements?.data_learn_more?.value?.replace(
+                            <a href={"/"}>
+                              {services?.elements?.data_learn_more?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</a>
+                              )}
+                            </a>
                           </div>
                           <div className="border_bottom"></div>
                           <div className="col-lg-4 services-cards border_right">
                             <img
                               src={
-                                services?.elements?.platform_img?.value[0]
-                                  ?.url
+                                services?.elements?.platform_img?.value[0]?.url
                               }
                               className="img-fluid"
                               alt=""
                             />
-                            <h4>{services?.elements?.platform_modernization?.value?.replace(
+                            <h4>
+                              {services?.elements?.platform_modernization?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</h4>
+                              )}
+                            </h4>
                             <p>
-                            {services?.elements?.modernize_platforms?.value?.replace(
+                              {services?.elements?.modernize_platforms?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
                               )}
                             </p>
-                            <a href={"/"}>{services?.elements?.platform_learn_more?.value?.replace(
+                            <a href={"/"}>
+                              {services?.elements?.platform_learn_more?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</a>
+                              )}
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -372,26 +384,30 @@ const Services: FC<Props> = ({data, services, companyStandardData }) => {
                           <div className="col-lg-4 services-cards border_right">
                             <img
                               src={
-                                services?.elements?.modern_workplace_img?.value[0]
-                                  ?.url
+                                services?.elements?.modern_workplace_img
+                                  ?.value[0]?.url
                               }
                               className="img-fluid"
                               alt=""
                             />
-                            <h4>{services?.elements?.modern_workplace?.value?.replace(
+                            <h4>
+                              {services?.elements?.modern_workplace?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</h4>
+                              )}
+                            </h4>
                             <p>
-                            {services?.elements?.innovate_collaboration?.value?.replace(
+                              {services?.elements?.innovate_collaboration?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
                               )}
                             </p>
-                            <a href={"/"}>{services?.elements?.modern_learn_more?.value?.replace(
+                            <a href={"/"}>
+                              {services?.elements?.modern_learn_more?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</a>
+                              )}
+                            </a>
                           </div>
                           <div className="col-lg-4 services-cards border_right">
                             <img
@@ -402,93 +418,103 @@ const Services: FC<Props> = ({data, services, companyStandardData }) => {
                               className="img-fluid"
                               alt=""
                             />
-                            <h4>{services?.elements?.service_desk?.value?.replace(
+                            <h4>
+                              {services?.elements?.service_desk?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</h4>
+                              )}
+                            </h4>
                             <p>
-                            {services?.elements?.service_desk_offers?.value?.replace(
+                              {services?.elements?.service_desk_offers?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
                               )}
                             </p>
-                            <a href={"/"}>{services?.elements?.service_learn_more?.value?.replace(
+                            <a href={"/"}>
+                              {services?.elements?.service_learn_more?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</a>
+                              )}
+                            </a>
                           </div>
                           <div className="col-lg-4 services-cards">
                             <img
                               src={
-                                services?.elements?.managed_services_img?.value[0]
-                                  ?.url
+                                services?.elements?.managed_services_img
+                                  ?.value[0]?.url
                               }
                               className="img-fluid"
                               alt=""
                             />
-                            <h4>{services?.elements?.managed_services?.value?.replace(
+                            <h4>
+                              {services?.elements?.managed_services?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</h4>
+                              )}
+                            </h4>
                             <p>
-                            {services?.elements?.it_support?.value?.replace(
+                              {services?.elements?.it_support?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
                               )}
                             </p>
-                            <a href={"/"}>{services?.elements?.managed_learn_more?.value?.replace(
+                            <a href={"/"}>
+                              {services?.elements?.managed_learn_more?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</a>
+                              )}
+                            </a>
                           </div>
                           <div className="border_bottom"></div>
                           <div className="col-lg-4 services-cards border_right">
                             <img
-                              src={
-                                services?.elements?.bpm_img?.value[0]
-                                  ?.url
-                              }
+                              src={services?.elements?.bpm_img?.value[0]?.url}
                               className="img-fluid"
                               alt=""
                             />
-                            <h4>{services?.elements?.bpm?.value?.replace(
+                            <h4>
+                              {services?.elements?.bpm?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</h4>
+                              )}
+                            </h4>
                             <p>
-                            {services?.elements?.bpm_services_optimize?.value?.replace(
+                              {services?.elements?.bpm_services_optimize?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
                               )}
                             </p>
-                            <a href={"/"}>{services?.elements?.bpm_learn_more?.value?.replace(
+                            <a href={"/"}>
+                              {services?.elements?.bpm_learn_more?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</a>
+                              )}
+                            </a>
                           </div>
                           <div className="col-lg-4 services-cards border_right">
                             <img
-                              src={
-                                services?.elements?.crm_img?.value[0]
-                                  ?.url
-                              }
+                              src={services?.elements?.crm_img?.value[0]?.url}
                               className="img-fluid"
                               alt=""
                             />
-                            <h4>{services?.elements?.crm?.value?.replace(
+                            <h4>
+                              {services?.elements?.crm?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</h4>
+                              )}
+                            </h4>
                             <p>
-                            {services?.elements?.streamlines_customer_interactions?.value?.replace(
+                              {services?.elements?.streamlines_customer_interactions?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
                               )}
                             </p>
-                            <a href={"/"}>{services?.elements?.crm_learn_more?.value?.replace(
+                            <a href={"/"}>
+                              {services?.elements?.crm_learn_more?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</a>
+                              )}
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -505,93 +531,106 @@ const Services: FC<Props> = ({data, services, companyStandardData }) => {
                               className="img-fluid"
                               alt=""
                             />
-                            <h4>{services?.elements?.ux_research?.value?.replace(
+                            <h4>
+                              {services?.elements?.ux_research?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</h4>
+                              )}
+                            </h4>
                             <p>
-                            {services?.elements?.unlock_user_insights?.value?.replace(
+                              {services?.elements?.unlock_user_insights?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
                               )}
                             </p>
-                            <a href={"/"}>{services?.elements?.ux_research_learn_more?.value?.replace(
+                            <a href={"/"}>
+                              {services?.elements?.ux_research_learn_more?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</a>
+                              )}
+                            </a>
                           </div>
                           <div className="col-lg-4 services-cards border_right">
                             <img
                               src={
-                                services?.elements?.ux_design_img?.value[0]
-                                  ?.url
+                                services?.elements?.ux_design_img?.value[0]?.url
                               }
                               className="img-fluid"
                               alt=""
                             />
-                            <h4>{services?.elements?.ui_ux_design?.value?.replace(
+                            <h4>
+                              {services?.elements?.ui_ux_design?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</h4>
+                              )}
+                            </h4>
                             <p>
-                            {services?.elements?.ui_ux_design_creates?.value?.replace(
+                              {services?.elements?.ui_ux_design_creates?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
                               )}
                             </p>
-                            <a href={"/"}>{services?.elements?.ux_design_learn_more?.value?.replace(
+                            <a href={"/"}>
+                              {services?.elements?.ux_design_learn_more?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</a>
+                              )}
+                            </a>
                           </div>
                           <div className="col-lg-4 services-cards">
                             <img
                               src={
-                                services?.elements?.branding_img?.value[0]
-                                  ?.url
+                                services?.elements?.branding_img?.value[0]?.url
                               }
                               className="img-fluid"
                               alt=""
                             />
-                            <h4>{services?.elements?.branding?.value?.replace(
+                            <h4>
+                              {services?.elements?.branding?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</h4>
+                              )}
+                            </h4>
                             <p>
-                            {services?.elements?.branding_services_craft?.value?.replace(
+                              {services?.elements?.branding_services_craft?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
                               )}
                             </p>
-                            <a href={"/"}>{services?.elements?.branding_learn_more?.value?.replace(
+                            <a href={"/"}>
+                              {services?.elements?.branding_learn_more?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</a>
+                              )}
+                            </a>
                           </div>
                           <div className="border_bottom"></div>
                           <div className="col-lg-4 services-cards border_right">
                             <img
                               src={
-                                services?.elements?.usability_img?.value[0]
-                                  ?.url
+                                services?.elements?.usability_img?.value[0]?.url
                               }
                               className="img-fluid"
                               alt=""
                             />
-                            <h4>{services?.elements?.usability_testing?.value?.replace(
+                            <h4>
+                              {services?.elements?.usability_testing?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</h4>
+                              )}
+                            </h4>
                             <p>
-                            {services?.elements?.usability_testing_observes?.value?.replace(
+                              {services?.elements?.usability_testing_observes?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
                               )}
                             </p>
-                            <a href={"/"}>{services?.elements?.usability_learn_more?.value?.replace(
+                            <a href={"/"}>
+                              {services?.elements?.usability_learn_more?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</a>
+                              )}
+                            </a>
                           </div>
                           <div className="col-lg-4 services-cards border_right">
                             <img
@@ -602,20 +641,24 @@ const Services: FC<Props> = ({data, services, companyStandardData }) => {
                               className="img-fluid"
                               alt=""
                             />
-                            <h4>{services?.elements?.design_audit?.value?.replace(
+                            <h4>
+                              {services?.elements?.design_audit?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</h4>
+                              )}
+                            </h4>
                             <p>
-                            {services?.elements?.design_audit_ensures?.value?.replace(
+                              {services?.elements?.design_audit_ensures?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
                               )}
                             </p>
-                            <a href={"/"}>{services?.elements?.design_learn_more?.value?.replace(
+                            <a href={"/"}>
+                              {services?.elements?.design_learn_more?.value?.replace(
                                 /(<([^>]+)>)/gi,
                                 ""
-                              )}</a>
+                              )}
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -623,7 +666,7 @@ const Services: FC<Props> = ({data, services, companyStandardData }) => {
                   </div>
                 </div>
               </div>
-            </section>            
+            </section>
             <CompanyStandards companyStandardData={companyStandardData} />
           </div>
         </div>

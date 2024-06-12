@@ -44,7 +44,7 @@ const Home: FC<Props> = ({
                       </p>
                       <div className="form-group ">
                         <Link
-                          to={data?.elements?.say_hello_url?.value}                          
+                          to={data?.elements?.say_hello_url?.value}
                           className="btn btn-primary !text-left py-2 group"
                         >
                           {data?.elements?.say_hello?.value}{" "}
@@ -134,7 +134,6 @@ const Home: FC<Props> = ({
                       </p>
                       <Link
                         to={"/services"}
-                        
                         className="btn btn-primary !text-left py-2 group"
                       >
                         {data?.elements?.view_all_services?.value.replace(
@@ -271,11 +270,11 @@ const Home: FC<Props> = ({
               </div>
             </section>
 
-            <CompanyStandards companyStandardData={companyStandardData}/>
-            
+            <CompanyStandards companyStandardData={companyStandardData} />
+
             <SuccessStories successStories={storiesData} />
 
-            <TribeSection  tribeData={tribeData}/>
+            <TribeSection tribeData={tribeData} />
           </div>
         </div>
       </main>
