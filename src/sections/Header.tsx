@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { FC } from "react";
 import Logo from "../assets/images/logos/Logo.png";
 import { Link } from "react-router-dom";
+import { PATHS } from "../utils";
 
 interface Props {}
 
@@ -46,23 +47,23 @@ const Header: FC<Props> = () => {
           <nav id="navbar" className="navbar">
             <ul>
               <li>
-                <Link to={"/about"}>About</Link>
+                <Link to={PATHS.about}>About</Link>
               </li>
               <li>
-                <Link to={"/services"}>Services</Link>
+                <Link to={PATHS.services}>Services</Link>
               </li>
               <li>
-                <Link to={"/portfolio"}>Portfolio</Link>
+                <Link to={PATHS.portfolio}>Portfolio</Link>
               </li>
               <li>
-                <Link to={"/join-us"}>Join Us</Link>
+                <Link to={PATHS.joinUs}>Join Us</Link>
               </li>
               <li>
-                <Link to={"/contact-us"}>Contact Us</Link>
+                <Link to={PATHS.contactUs}>Contact Us</Link>
               </li>
             </ul>
           </nav>
-          <Link className="btn-contact-us d-none d-lg-block" to={"/contact-us"}>
+          <Link className="btn-contact-us d-none d-lg-block" to={PATHS.contactUs}>
             Contact Us
           </Link>
           <i className="mobile-nav-toggle mobile-nav-show bi bi-list"></i>

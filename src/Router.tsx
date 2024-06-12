@@ -8,6 +8,7 @@ import PortfolioPage from './pages/PortfolioPage';
 import JoinUsPage from './pages/JoinUsPage';
 import ContactPage from './pages/ContactPage';
 import PortfolioInfoPage from './pages/PortfolioInfoPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 const Router = () => {
   return (
@@ -40,6 +41,10 @@ const Router = () => {
         {
           path: PATHS.portfolioInfo,
           element: <PortfolioInfoPage />,
+        },
+        {
+          path: PATHS.notFoundPage,
+          element: <NotFoundPage />,
         },
         
       ])}

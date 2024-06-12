@@ -4,6 +4,7 @@ import videoTop from "../assets/images/general/6d43-4a9e-93e5-6a8769c08851.mp4";
 import { ArrowRightCircleFill } from "react-bootstrap-icons";
 import SuccessStories from "./SuccessStories";
 import { Link } from "react-router-dom";
+import { PATHS } from "../utils";
 
 interface Props {
   data: any;
@@ -37,7 +38,7 @@ const Portfolio: FC<Props> = ({ data, storiesData }) => {
                   </p>
                   <div className="form-group">
                     <Link
-                      to={"/contact-us"}
+                      to={PATHS.contactUs}
                       className="btn btn-primary !text-left py-2 group"
                     >
                       {data?.elements?.talk_to_us?.value.replace(

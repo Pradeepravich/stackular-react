@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import SuccessStories from "./SuccessStories";
 import CompanyStandards from "./CompanyStandards";
 import TribeSection from "./TribeSection";
+import { PATHS } from "../utils";
 
 interface Props {
   data: any;
@@ -20,7 +21,6 @@ const Home: FC<Props> = ({
   tribeData,
   companyStandardData,
 }) => {
-  
   return (
     <>
       <main id="main">
@@ -134,7 +134,7 @@ const Home: FC<Props> = ({
                         )}
                       </p>
                       <Link
-                        to={"/services"}
+                        to={PATHS.services}
                         className="btn btn-primary !text-left py-2 group"
                       >
                         {data?.elements?.view_all_services?.value.replace(
@@ -175,7 +175,7 @@ const Home: FC<Props> = ({
                             ""
                           )}
                         </p>
-                        <Link to={"/"}>
+                        <Link to={PATHS.home}>
                           {data?.elements?.product_learn_more?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""
@@ -202,7 +202,7 @@ const Home: FC<Props> = ({
                             ""
                           )}
                         </p>
-                        <Link to={"/"}>
+                        <Link to={PATHS.home}>
                           {data?.elements?.data_learn_more?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""
@@ -230,7 +230,7 @@ const Home: FC<Props> = ({
                             ""
                           )}
                         </p>
-                        <Link to={"/"}>
+                        <Link to={PATHS.home}>
                           {data?.elements?.enterprise_learn_more?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""
@@ -258,7 +258,7 @@ const Home: FC<Props> = ({
                             ""
                           )}
                         </p>
-                        <Link to={"/"}>
+                        <Link to={PATHS.home}>
                           {data?.elements?.digital_learn_more?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""

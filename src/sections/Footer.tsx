@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap-icons";
 import { useMainContext } from "../hooks/useMainContext";
 import { Link } from "react-router-dom";
+import { PATHS } from "../utils";
 
 const Footer = () => {
   const { footerData } = useMainContext();
@@ -105,16 +106,16 @@ const Footer = () => {
                 <nav>
                   <ul>
                     <li>
-                      <Link to={"/about"}>About</Link>
+                      <Link to={PATHS.about}>About</Link>
                     </li>
                     <li>
-                      <Link to={"/services"}>Services</Link>
+                      <Link to={PATHS.services}>Services</Link>
                     </li>
                     <li>
-                      <Link to={"/portfolio"}>Portfolio</Link>
+                      <Link to={PATHS.portfolio}>Portfolio</Link>
                     </li>
                     <li>
-                      <Link to={"/join-us"}>Join Us</Link>
+                      <Link to={PATHS.joinUs}>Join Us</Link>
                     </li>
                   </ul>
                 </nav>
