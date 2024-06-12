@@ -3,18 +3,14 @@ import Header from "../sections/Header";
 import Footer from "../sections/Footer";
 import "../style/style.css";
 import { useMainContext } from "../hooks/useMainContext";
-
 import PortfolioInfo from "../sections/PortfolioInfo";
-import { useLocation } from "react-router-dom";
 
-const useQuery = () => {
-  return new URLSearchParams(useLocation().search);
-};
+
+
 const PortfolioInfoPage = () => {
-  const { portfolioInfo1, portfolioInfo2, portfolioInfo3, portfolioInfo4 } =
-    useMainContext();
-  const query = useQuery();
-  const id = query.get("id");
+  const { portfolioInfo1, portfolioInfo2, portfolioInfo3, portfolioInfo4, projectUrl } = useMainContext();
+  
+  const id = projectUrl;
   return (
     <>
       <Header />

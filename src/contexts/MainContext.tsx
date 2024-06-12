@@ -38,6 +38,8 @@ interface MainContextType {
   setPortfolioInfo3: React.Dispatch<React.SetStateAction<{}>>;
   portfolioInfo4: any;
   setPortfolioInfo4: React.Dispatch<React.SetStateAction<{}>>;
+  projectUrl: string;
+  setProjectUrl: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const MainContext = createContext<MainContextType>(
@@ -65,6 +67,7 @@ const MainContextProvider: FC<MainContextProps> = ({ children }) => {
   const [portfolioInfo2, setPortfolioInfo2] = useState({});
   const [portfolioInfo3, setPortfolioInfo3] = useState({});
   const [portfolioInfo4, setPortfolioInfo4] = useState({});
+  const [projectUrl, setProjectUrl] = useState("");
   const [error, setError] = useState<string | null>(null);
 
   
@@ -148,7 +151,9 @@ const MainContextProvider: FC<MainContextProps> = ({ children }) => {
         portfolioInfo3,
         setPortfolioInfo3,
         portfolioInfo4,
-        setPortfolioInfo4
+        setPortfolioInfo4,
+        projectUrl,
+        setProjectUrl
       }}
     >
       {children}

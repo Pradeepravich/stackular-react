@@ -1,13 +1,19 @@
 import React, { FC } from "react";
 import { ArrowRightCircleFill } from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useMainContext } from "../hooks/useMainContext";
 
 interface Props {
   successStories: any;  
 }
 const SuccessStories: FC<Props> = ({ successStories }) => {
-  const { portfolioInfo1,portfolioInfo2, portfolioInfo3, portfolioInfo4 } = useMainContext();
+  const { portfolioInfo1,portfolioInfo2, portfolioInfo3, portfolioInfo4, setProjectUrl } = useMainContext();
+  const navigate = useNavigate()
+  const redirectToProjectInfo = (projectId: any)=>{
+    setProjectUrl(projectId);
+    navigate('/project-info');
+  }
+
   return (
     <section id="projects" className="projects smt-8">
       <div className="container">
@@ -27,14 +33,14 @@ const SuccessStories: FC<Props> = ({ successStories }) => {
         </div>
         <div className="row mt-5 g-0">
           <div className="col-lg-6">
-          <Link to={`/project-info/?id=${portfolioInfo1?.system?.id}`}><img
+          <button  onClick={()=>redirectToProjectInfo(portfolioInfo1?.system?.id)}><img
               src={
                 successStories?.elements?.sustainable_delivery_img?.value[0]
                   ?.url
               }
               className="img-fluid"
               alt=""
-            /></Link>
+            /></button>
           </div>
           <div className="col-lg-6 align-items-center project-card">
             <h4>
@@ -104,19 +110,19 @@ const SuccessStories: FC<Props> = ({ successStories }) => {
             </span>
           </div>
           <div className="col-lg-6">
-          <Link to={`/project-info/?id=${portfolioInfo2?.system?.id}`}>
+          <button  onClick={()=>redirectToProjectInfo(portfolioInfo2?.system?.id)}>
             <img
               src={
                 successStories?.elements?.financial_systems_img?.value[0]?.url
               }
               className="img-fluid"
               alt=""
-            /></Link>
+            /></button>
           </div>
         </div>
         <div className="row mt-5 g-0">
           <div className="col-lg-6">
-          <Link to={`/project-info/?id=${portfolioInfo3?.system?.id}`}>
+          <button  onClick={()=>redirectToProjectInfo(portfolioInfo3?.system?.id)}>
             <img
               src={
                 successStories?.elements?.compliance_mobile_img?.value[0]?.url
@@ -124,7 +130,7 @@ const SuccessStories: FC<Props> = ({ successStories }) => {
               className="img-fluid"
               alt=""
             />
-           </Link> 
+           </button>
           </div>
           <div className="col-lg-6 align-items-center project-card">
             <h4>
@@ -193,11 +199,11 @@ const SuccessStories: FC<Props> = ({ successStories }) => {
             </span>
           </div>
           <div className="col-lg-6">
-          <Link to={`/project-info/?id=${portfolioInfo4?.system?.id}`}><img
+          <button  onClick={()=>redirectToProjectInfo(portfolioInfo4?.system?.id)}><img
               src={successStories?.elements?.legacy_app_img?.value[0]?.url}
               className="img-fluid"
               alt=""
-            /></Link>
+            /></button>
           </div>
         </div>
         <div className="form-group">
