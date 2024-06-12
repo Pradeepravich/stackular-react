@@ -1,4 +1,10 @@
-import React, { FC, ReactNode, createContext, useEffect, useState } from "react";
+import React, {
+  FC,
+  ReactNode,
+  createContext,
+  useEffect,
+  useState,
+} from "react";
 import { createDeliveryClient } from "@kontent-ai/delivery-sdk";
 import { TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
@@ -51,7 +57,7 @@ interface MainContextProps {
 }
 
 const MainContextProvider: FC<MainContextProps> = ({ children }) => {
-  const { t } = useTranslation();  
+  const { t } = useTranslation();
   const [data, setData] = useState({});
   const [storiesData, setStoriesData] = useState({});
   const [tribeData, setTribeData] = useState({});
@@ -70,44 +76,70 @@ const MainContextProvider: FC<MainContextProps> = ({ children }) => {
   const [projectUrl, setProjectUrl] = useState("");
   const [error, setError] = useState<string | null>(null);
 
-  
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const deliveryClient = createDeliveryClient({
           environmentId: ENVIRONMENT_ID,
         });
-        const home_page_response = await deliveryClient.item("home_page").toPromise();        
-        const success_stories_response = await deliveryClient.item("success_stories").toPromise();        
-        const join_our_tribe_response = await deliveryClient.item("join_our_tribe").toPromise();        
-        const company_standard_response = await deliveryClient.item("what_makes_us").toPromise();        
-        const about_page_response = await deliveryClient.item("about_page").toPromise();        
-        const portfolio_page_response = await deliveryClient.item("portfolio_page").toPromise();        
-        const services_page_response = await deliveryClient.item("services_page").toPromise();        
-        const services_response = await deliveryClient.item("services").toPromise();        
-        const contact_us_page_response = await deliveryClient.item("contact_us_page").toPromise();        
-        const join_us_page_response = await deliveryClient.item("join_us_page").toPromise();        
-        const footer_response = await deliveryClient.item("footer").toPromise();        
-        const portfolioInfo1_response = await deliveryClient.item("sustainable_delivery_service_platform").toPromise();        
-        const portfolioInfo2_response = await deliveryClient.item("financial_systems_automation").toPromise();        
-        const portfolioInfo3_response = await deliveryClient.item("compliance_mobile_platform").toPromise();        
-        const portfolioInfo4_response = await deliveryClient.item("legacy_app_modernization").toPromise();        
+        const home_page_response = await deliveryClient
+          .item("home_page")
+          .toPromise();
+        const success_stories_response = await deliveryClient
+          .item("success_stories")
+          .toPromise();
+        const join_our_tribe_response = await deliveryClient
+          .item("join_our_tribe")
+          .toPromise();
+        const company_standard_response = await deliveryClient
+          .item("what_makes_us")
+          .toPromise();
+        const about_page_response = await deliveryClient
+          .item("about_page")
+          .toPromise();
+        const portfolio_page_response = await deliveryClient
+          .item("portfolio_page")
+          .toPromise();
+        const services_page_response = await deliveryClient
+          .item("services_page")
+          .toPromise();
+        const services_response = await deliveryClient
+          .item("services")
+          .toPromise();
+        const contact_us_page_response = await deliveryClient
+          .item("contact_us_page")
+          .toPromise();
+        const join_us_page_response = await deliveryClient
+          .item("join_us_page")
+          .toPromise();
+        const footer_response = await deliveryClient.item("footer").toPromise();
+        const portfolioInfo1_response = await deliveryClient
+          .item("sustainable_delivery_service_platform")
+          .toPromise();
+        const portfolioInfo2_response = await deliveryClient
+          .item("financial_systems_automation")
+          .toPromise();
+        const portfolioInfo3_response = await deliveryClient
+          .item("compliance_mobile_platform")
+          .toPromise();
+        const portfolioInfo4_response = await deliveryClient
+          .item("legacy_app_modernization")
+          .toPromise();
         setData(home_page_response.data.item);
         setStoriesData(success_stories_response.data.item);
-        setTribeData(join_our_tribe_response.data.item);        
-        setCompanyStandardData(company_standard_response.data.item);        
-        setAboutData(about_page_response.data.item); 
+        setTribeData(join_our_tribe_response.data.item);
+        setCompanyStandardData(company_standard_response.data.item);
+        setAboutData(about_page_response.data.item);
         setPortfolioData(portfolio_page_response.data.item);
         setServicesPagedata(services_page_response.data.item);
-        setServices(services_response.data.item);       
-        setContactUs(contact_us_page_response.data.item);       
-        setJoinUsData(join_us_page_response.data.item);       
-        setFooterData(footer_response.data.item);       
-        setPortfolioInfo1(portfolioInfo1_response.data.item);       
-        setPortfolioInfo2(portfolioInfo2_response.data.item);       
-        setPortfolioInfo3(portfolioInfo3_response.data.item);       
-        setPortfolioInfo4(portfolioInfo4_response.data.item);       
+        setServices(services_response.data.item);
+        setContactUs(contact_us_page_response.data.item);
+        setJoinUsData(join_us_page_response.data.item);
+        setFooterData(footer_response.data.item);
+        setPortfolioInfo1(portfolioInfo1_response.data.item);
+        setPortfolioInfo2(portfolioInfo2_response.data.item);
+        setPortfolioInfo3(portfolioInfo3_response.data.item);
+        setPortfolioInfo4(portfolioInfo4_response.data.item);
       } catch (err) {
         console.error("Error fetching data:", err);
         setError("Failed to fetch data");
@@ -153,7 +185,7 @@ const MainContextProvider: FC<MainContextProps> = ({ children }) => {
         portfolioInfo4,
         setPortfolioInfo4,
         projectUrl,
-        setProjectUrl
+        setProjectUrl,
       }}
     >
       {children}
