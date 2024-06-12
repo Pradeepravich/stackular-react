@@ -7,6 +7,7 @@ import ServicesPage from './pages/ServicesPage';
 import PortfolioPage from './pages/PortfolioPage';
 import JoinUsPage from './pages/JoinUsPage';
 import ContactPage from './pages/ContactPage';
+import PortfolioInfoPage from './pages/PortfolioInfoPage';
 
 const Router = () => {
   return (
@@ -35,6 +36,10 @@ const Router = () => {
         {
           path: PATHS.contactUs,
           element: <ContactPage />,
+        },
+        {
+          path: PATHS.portfolioInfo,
+          element: <PortfolioInfoPage />,
         },
         
       ])}

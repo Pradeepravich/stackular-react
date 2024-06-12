@@ -20,6 +20,7 @@ const Home: FC<Props> = ({
   tribeData,
   companyStandardData,
 }) => {
+  
   return (
     <>
       <main id="main">
