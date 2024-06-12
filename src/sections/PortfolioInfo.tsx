@@ -17,7 +17,7 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
               <div className="row gy-4">
                 <div className="col-lg-6 project-info-header">
                   <div className="section-header">
-                    <h5>
+                    <h5 className="text-white">
                       {data?.elements?.tag?.value?.replace(/(<([^>]+)>)/gi, "")}{" "}
                       /
                     </h5>
@@ -34,19 +34,19 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
                       )}
                     </p>
                     <div className="">
-                    <span>
+                    <span className="badge">
                       {data?.elements?.technologies_3752ab0__label1?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
                     </span>
-                    <span>
+                    <span className="badge">
                       {data?.elements?.technologies_3752ab0__label2?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
                     </span>
-                    <span>
+                    <span className="badge">
                       {data?.elements?.technologies_3752ab0__label3?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""

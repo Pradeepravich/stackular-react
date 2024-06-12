@@ -1104,13 +1104,15 @@ section#our_list .container {
 
 .project-info-header .section-header span {
   background: #1F2937;
-  padding: 10px 16px 10px 16px;
+  padding: 10px 16px 10px 16px !important;
   border-radius: 25px;
-  margin-right: 20px;
+  margin-right: 22px;
   color: #87FCFE;
   font-size: 14px;
   text-transform: uppercase;
-  line-height: 50px;
+  line-height: 18px;
+  margin-bottom: 12px;
+  font-weight: 400;
 }
 
 tag {
