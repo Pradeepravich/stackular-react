@@ -242,7 +242,10 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
             <div className="container">
               <div className="row mt-lg-5 g-0">
                 <div className="section-header">
-                  <h3>OTHER WORKS</h3>
+                  <h3>{data?.elements?.other_works__other_works_title?.value?.replace(
+                        /(<([^>]+)>)/gi,
+                        ""
+                      )}</h3>
                 </div>
                 <div className="col-lg-4 other-work-cards">
                   <div className="other-work-card">

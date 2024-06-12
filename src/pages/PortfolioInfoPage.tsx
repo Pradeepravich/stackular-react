@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../sections/Header";
 import Footer from "../sections/Footer";
 import "../style/style.css";
 import { useMainContext } from "../hooks/useMainContext";
 import PortfolioInfo from "../sections/PortfolioInfo";
+import { isEmpty } from "lodash";
+import { useNavigate } from "react-router-dom";
+import { PATHS } from "../utils";
 
 
 
 const PortfolioInfoPage = () => {
-  const { portfolioInfo1, portfolioInfo2, portfolioInfo3, portfolioInfo4, projectUrl } = useMainContext();
   
+  const { portfolioInfo1, portfolioInfo2, portfolioInfo3, portfolioInfo4, projectUrl } = useMainContext();
+
   const id = projectUrl;
+  
+  const navigate = useNavigate();
+  useEffect(()=>{
+    if(isEmpty(projectUrl))
+      navigate(PATHS.home)
+  },[navigate, projectUrl])
   return (
     <>
       <Header />
