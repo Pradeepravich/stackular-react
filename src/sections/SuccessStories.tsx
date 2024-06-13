@@ -9,8 +9,8 @@ interface Props {
 const SuccessStories: FC<Props> = ({ successStories }) => {
   const { portfolioInfo1,portfolioInfo2, portfolioInfo3, portfolioInfo4, setProjectUrl } = useMainContext();
   const navigate = useNavigate()
-  const redirectToProjectInfo = (projectId: any)=>{
-    setProjectUrl(projectId);
+  const redirectToProjectInfo = (slug: any)=>{
+    setProjectUrl(slug);
     navigate('/project-info');
   }
 
@@ -33,7 +33,10 @@ const SuccessStories: FC<Props> = ({ successStories }) => {
         </div>
         <div className="row mt-5 g-0">
           <div className="col-lg-6">
-          <button  onClick={()=>redirectToProjectInfo(portfolioInfo1?.system?.id)}><img
+          <button  onClick={()=>redirectToProjectInfo(portfolioInfo1?.elements?.slug?.value.replace(
+              /(<([^>]+)>)/gi,
+              ""
+            ))}><img
               src={
                 successStories?.elements?.sustainable_delivery_img?.value[0]
                   ?.url
@@ -110,7 +113,10 @@ const SuccessStories: FC<Props> = ({ successStories }) => {
             </span>
           </div>
           <div className="col-lg-6">
-          <button  onClick={()=>redirectToProjectInfo(portfolioInfo2?.system?.id)}>
+          <button  onClick={()=>redirectToProjectInfo(portfolioInfo2?.elements?.slug?.value.replace(
+              /(<([^>]+)>)/gi,
+              ""
+            ))}>
             <img
               src={
                 successStories?.elements?.financial_systems_img?.value[0]?.url
@@ -122,7 +128,10 @@ const SuccessStories: FC<Props> = ({ successStories }) => {
         </div>
         <div className="row mt-5 g-0">
           <div className="col-lg-6">
-          <button  onClick={()=>redirectToProjectInfo(portfolioInfo3?.system?.id)}>
+          <button  onClick={()=>redirectToProjectInfo(portfolioInfo3?.elements?.slug?.value.replace(
+              /(<([^>]+)>)/gi,
+              ""
+            ))}>
             <img
               src={
                 successStories?.elements?.compliance_mobile_img?.value[0]?.url
@@ -199,7 +208,10 @@ const SuccessStories: FC<Props> = ({ successStories }) => {
             </span>
           </div>
           <div className="col-lg-6">
-          <button  onClick={()=>redirectToProjectInfo(portfolioInfo4?.system?.id)}><img
+          <button  onClick={()=>redirectToProjectInfo(portfolioInfo4?.elements?.slug?.value.replace(
+              /(<([^>]+)>)/gi,
+              ""
+            ))}><img
               src={successStories?.elements?.legacy_app_img?.value[0]?.url}
               className="img-fluid"
               alt=""

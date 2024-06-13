@@ -1,12 +1,19 @@
 import React, { FC } from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import CountUp from "react-countup";
+import { useMainContext } from "../hooks/useMainContext";
 
 interface Props {
   data: any;
 }
 
-const PortfolioInfo: FC<Props> = ({ data }) => {
+const PortfolioInfo: FC<Props> = ({ data }) => {  
+  const { setProjectUrl } = useMainContext();
+  const navigate = useNavigate()
+  const redirectToProjectInfo = (slug: any)=>{    
+    setProjectUrl(slug);
+    navigate('/project-info');
+  }
   
   return (
     <>
@@ -249,11 +256,15 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
                 </div>
                 <div className="col-lg-4 other-work-cards">
                   <div className="other-work-card">
-                    <img
+                  <button  onClick={()=>redirectToProjectInfo(data?.elements?.other_works__work_slug1?.value.replace(
+              /(<([^>]+)>)/gi,
+              ""
+            ))}>  
+                  <img
                       src={data?.elements?.other_works__work_image1?.value[0]?.url}
                       className="figure-img img-fluid rounded"
                       alt="..."
-                    />
+                    /></button>
                     <h4>{data?.elements?.other_works__work_title1?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
@@ -272,11 +283,15 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
                 </div>
                 <div className="col-lg-4 other-work-cards">
                   <div className="other-work-card">
+                  <button  onClick={()=>redirectToProjectInfo(data?.elements?.other_works__work_slug2?.value.replace(
+              /(<([^>]+)>)/gi,
+              ""
+            ))}>
                     <img
                       src={data?.elements?.other_works__work_image2?.value[0]?.url}
                       className="figure-img img-fluid rounded"
                       alt="..."
-                    />
+                    /></button>
                     <h4>{data?.elements?.other_works__work_title2?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
@@ -295,11 +310,15 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
                 </div>
                 <div className="col-lg-4 other-work-cards">
                   <div className="other-work-card">
-                    <img
+                  <button  onClick={()=>redirectToProjectInfo(data?.elements?.other_works__work_slug3?.value.replace(
+              /(<([^>]+)>)/gi,
+              ""
+            ))}>
+                  <img
                       src={data?.elements?.other_works__work_image3?.value[0]?.url}
                       className="figure-img img-fluid rounded"
                       alt="..."
-                    />
+                    /></button>
                     <h4>{data?.elements?.other_works__work_title3?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""

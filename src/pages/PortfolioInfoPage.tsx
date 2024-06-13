@@ -24,16 +24,28 @@ const PortfolioInfoPage = () => {
   return (
     <>
       <Header />
-      {id === portfolioInfo1?.system?.id && (
+      {id === portfolioInfo1?.elements?.slug?.value.replace(
+              /(<([^>]+)>)/gi,
+              ""
+            ) && (
         <PortfolioInfo data={portfolioInfo1} />
       )}
-      {id === portfolioInfo2?.system?.id && (
+      {id === portfolioInfo2?.elements?.slug?.value.replace(
+              /(<([^>]+)>)/gi,
+              ""
+            ) && (
         <PortfolioInfo data={portfolioInfo2} />
       )}
-      {id === portfolioInfo3?.system?.id && (
+      {id === portfolioInfo3?.elements?.slug?.value.replace(
+              /(<([^>]+)>)/gi,
+              ""
+            ) && (
         <PortfolioInfo data={portfolioInfo3} />
       )}
-      {id === portfolioInfo4?.system?.id && (
+      {id === portfolioInfo4?.elements?.slug?.value.replace(
+              /(<([^>]+)>)/gi,
+              ""
+            ) && (
         <PortfolioInfo data={portfolioInfo4} />
       )}
       <Footer />
