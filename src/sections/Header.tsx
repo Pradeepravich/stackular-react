@@ -59,7 +59,7 @@ const Header: FC<Props> = () => {
                 <Link to={PATHS.joinUs}>Join Us</Link>
               </li>
               <li>
-                <Link to={PATHS.contactUs}>Contact Us</Link>
+                <Link className="d-lg-none" to={PATHS.contactUs}>Contact Us</Link>
               </li>
             </ul>
           </nav>
