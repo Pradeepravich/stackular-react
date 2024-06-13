@@ -1,7 +1,6 @@
 import React, { FC } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import CountUp from "react-countup";
-import { useMainContext } from "../hooks/useMainContext";
+
 
 interface Props {
   data: any;
@@ -151,7 +150,7 @@ const ServiceInfo: FC<Props> = ({data}) => {
                 <img src={data?.elements?.design_services__service_image1?.value[0]?.url} className="figure-img img-fluid rounded" alt="..." />
                 <h4>{data?.elements?.design_services__service_title1?.value?.replace(/(<([^>]+)>)/gi, "")}</h4>
                 <p>{data?.elements?.design_services__service_description1?.value?.replace(/(<([^>]+)>)/gi, "")}</p>
-                <a href="#">{data?.elements?.design_services__service_btn_title1?.value?.replace(/(<([^>]+)>)/gi, "")}</a> 
+                <a href={"/"}>{data?.elements?.design_services__service_btn_title1?.value?.replace(/(<([^>]+)>)/gi, "")}</a> 
               </div>
             </div>
             <div className="col-lg-6 mt-5 our-design-list">
@@ -159,7 +158,7 @@ const ServiceInfo: FC<Props> = ({data}) => {
                 <img src={data?.elements?.design_services__service_image2?.value[0]?.url} className="figure-img img-fluid rounded" alt="..." />
                 <h4>{data?.elements?.design_services__service_title2?.value?.replace(/(<([^>]+)>)/gi, "")}</h4>
                 <p>{data?.elements?.design_services__service_description2?.value?.replace(/(<([^>]+)>)/gi, "")}</p>
-                <a href="#">{data?.elements?.design_services__service_btn_title2?.value?.replace(/(<([^>]+)>)/gi, "")}</a>
+                <a href={"/"}>{data?.elements?.design_services__service_btn_title2?.value?.replace(/(<([^>]+)>)/gi, "")}</a>
               </div>  
             </div>
             <div className="col-lg-6 mt-5 our-design-list">
@@ -167,7 +166,7 @@ const ServiceInfo: FC<Props> = ({data}) => {
                <img src={data?.elements?.design_services__service_image3?.value[0]?.url} className="figure-img img-fluid rounded" alt="..." />
                <h4>{data?.elements?.design_services__service_title3?.value?.replace(/(<([^>]+)>)/gi, "")}</h4>
                <p>{data?.elements?.design_services__service_description3?.value?.replace(/(<([^>]+)>)/gi, "")}</p>
-               <a href="#">{data?.elements?.design_services__service_btn_title3?.value?.replace(/(<([^>]+)>)/gi, "")}</a> 
+               <a href={"/"}>{data?.elements?.design_services__service_btn_title3?.value?.replace(/(<([^>]+)>)/gi, "")}</a> 
               </div> 
             </div>
             <div className="col-lg-6 mt-5 our-design-list">
@@ -175,7 +174,7 @@ const ServiceInfo: FC<Props> = ({data}) => {
                <img src={data?.elements?.design_services__service_image4?.value[0]?.url} className="figure-img img-fluid rounded" alt="..." />
                <h4>{data?.elements?.design_services__service_title4?.value?.replace(/(<([^>]+)>)/gi, "")}</h4>
                <p>{data?.elements?.design_services__service_description4?.value?.replace(/(<([^>]+)>)/gi, "")}</p>
-               <a href="#">{data?.elements?.design_services__service_btn_title4?.value?.replace(/(<([^>]+)>)/gi, "")}</a>
+               <a href={"/"}>{data?.elements?.design_services__service_btn_title4?.value?.replace(/(<([^>]+)>)/gi, "")}</a>
               </div> 
             </div>
           </div>
