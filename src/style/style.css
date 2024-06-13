@@ -2125,8 +2125,7 @@ i.bi.bi-twitter-x:hover {
   float: left;
   position: relative;
   /* width: 180px; */
-  /* height: 100px; */
-  width: 10%;
+  height: 100px;
   line-height: 100px;
   text-align: center;
   overflow: hidden;
@@ -2135,12 +2134,11 @@ i.bi.bi-twitter-x:hover {
 #ourclients .clients-wrap ul li img {
   vertical-align: middle;
   max-width: 100%;
-  /* width: 80px; */
+  width: 80px;
   max-height: 100%;
   -webkit-transition: 0 linear left;
   -moz-transition: 0 linear left;
   transition: 0 linear left;
-  margin: 0px;
 }
 
 #ourclients h3 {
