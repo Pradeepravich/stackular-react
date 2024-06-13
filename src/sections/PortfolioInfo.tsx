@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CountUp from "react-countup";
 import { useMainContext } from "../hooks/useMainContext";
 
@@ -7,14 +7,15 @@ interface Props {
   data: any;
 }
 
-const PortfolioInfo: FC<Props> = ({ data }) => {  
+const PortfolioInfo: FC<Props> = ({ data }) => {
   const { setProjectUrl } = useMainContext();
-  const navigate = useNavigate()
-  const redirectToProjectInfo = (slug: any)=>{    
+  const navigate = useNavigate();
+  const redirectToProjectInfo = (slug: any) => {
     setProjectUrl(slug);
-    navigate('/project-info');
-  }
-  
+    navigate("/project-info");
+  };
+
+  console.log("data", data);
   return (
     <>
       <main id="main">
@@ -41,25 +42,25 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
                       )}
                     </p>
                     <div className="">
-                    <span className="badge">
-                      {data?.elements?.technologies_3752ab0__label1?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
-                    </span>
-                    <span className="badge">
-                      {data?.elements?.technologies_3752ab0__label2?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
-                    </span>
-                    <span className="badge">
-                      {data?.elements?.technologies_3752ab0__label3?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
-                    </span>
-                    </div> 
+                      <span className="badge">
+                        {data?.elements?.technologies_3752ab0__label1?.value?.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
+                      <span className="badge">
+                        {data?.elements?.technologies_3752ab0__label2?.value?.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
+                      <span className="badge">
+                        {data?.elements?.technologies_3752ab0__label3?.value?.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div className="col-lg-6 mt-5">
@@ -77,15 +78,17 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
             <div className="container">
               <div className="row mt-lg-5 g-0">
                 <div className="col-lg-3 project-issues-info">
-                  <h4>{data?.elements?.portfolio_second_block_info__title1?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}</h4>
+                  <h4>
+                    {data?.elements?.portfolio_second_block_info__title1?.value?.replace(
+                      /(<([^>]+)>)/gi,
+                      ""
+                    )}
+                  </h4>
                 </div>
                 <div className="col-lg-9 job-cards mb-3">
                   <div className="project-info">
                     <p>
-                    {data?.elements?.portfolio_second_block_info__description1?.value?.replace(
+                      {data?.elements?.portfolio_second_block_info__description1?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
@@ -95,21 +98,26 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
               </div>
               <div className="row mt-lg-5 g-0">
                 <div className="col-lg-3 project-issues-info">
-                  <h4>{data?.elements?.portfolio_second_block_info__title2?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}</h4>
+                  <h4>
+                    {data?.elements?.portfolio_second_block_info__title2?.value?.replace(
+                      /(<([^>]+)>)/gi,
+                      ""
+                    )}
+                  </h4>
                 </div>
                 <div className="col-lg-9 job-cards mb-3">
                   <div className="project-info">
                     <p>
-                    {data?.elements?.portfolio_second_block_info__description2?.value?.replace(
+                      {data?.elements?.portfolio_second_block_info__description2?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
                     </p>
                     <img
-                      src={data?.elements?.portfolio_second_block_info__large_img?.value[0]?.url}
+                      src={
+                        data?.elements?.portfolio_second_block_info__large_img
+                          ?.value[0]?.url
+                      }
                       className="figure-img img-fluid rounded mt-3"
                       alt="..."
                     />
@@ -119,42 +127,50 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
               <div className="row mt-lg-5 g-0">
                 <div className="col-lg-3 project-issues-info">
                   <h4 className="d-none d-md-block project-issues-info-width">
-                  {data?.elements?.portfolio_second_block_info__technology_tools_title?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
+                    {data?.elements?.portfolio_second_block_info__technology_tools_title?.value?.replace(
+                      /(<([^>]+)>)/gi,
+                      ""
+                    )}
                   </h4>
-                  <h4 className="d-block d-md-none project-issues-info-width">{data?.elements?.portfolio_second_block_info__technology_tools_title?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}</h4>
+                  <h4 className="d-block d-md-none project-issues-info-width">
+                    {data?.elements?.portfolio_second_block_info__technology_tools_title?.value?.replace(
+                      /(<([^>]+)>)/gi,
+                      ""
+                    )}
+                  </h4>
                 </div>
                 <div className="col-lg-9 job-cards mb-3">
                   <div className="project-info tec-tools flex items-center">
-                  {data?.elements?.portfolio_second_block_info__technology_tools_images?.value && data?.elements?.portfolio_second_block_info__technology_tools_images?.value.map((item:any)=>(
-                      <span key={item?.name}><img
-                      src={item?.url}
-                      className="figure-img img-fluid rounded"
-                      alt="..."
-                    />
-                    </span>
-                  ))}
-                    
-                    
+                    {data?.elements
+                      ?.portfolio_second_block_info__technology_tools_images
+                      ?.value &&
+                      data?.elements?.portfolio_second_block_info__technology_tools_images?.value.map(
+                        (item: any) => (
+                          <span key={item?.name}>
+                            <img
+                              src={item?.url}
+                              className="figure-img img-fluid rounded"
+                              alt="..."
+                            />
+                          </span>
+                        )
+                      )}
                   </div>
                 </div>
               </div>
               <div className="row mt-lg-5 g-0">
                 <div className="col-lg-3 project-issues-info">
-                  <h4>{data?.elements?.portfolio_second_block_info__result?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}</h4>
+                  <h4>
+                    {data?.elements?.portfolio_second_block_info__result?.value?.replace(
+                      /(<([^>]+)>)/gi,
+                      ""
+                    )}
+                  </h4>
                 </div>
                 <div className="col-lg-9 job-cards mb-3">
                   <div className="project-info">
                     <p>
-                    {data?.elements?.portfolio_second_block_info__result_description?.value?.replace(
+                      {data?.elements?.portfolio_second_block_info__result_description?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
@@ -165,78 +181,108 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
               <div className="row mt-lg-5 g-0">
                 <div className="col-lg-3 project-issues-info">
                   <h4 className="d-none d-md-block project-issues-info-width">
-                  {data?.elements?.portfolio_second_block_info__success_metrics?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
+                    {data?.elements?.portfolio_second_block_info__success_metrics?.value?.replace(
+                      /(<([^>]+)>)/gi,
+                      ""
+                    )}
                   </h4>
-                  <h4 className="d-block d-md-none">{data?.elements?.portfolio_second_block_info__success_metrics?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}</h4>
+                  <h4 className="d-block d-md-none">
+                    {data?.elements?.portfolio_second_block_info__success_metrics?.value?.replace(
+                      /(<([^>]+)>)/gi,
+                      ""
+                    )}
+                  </h4>
                 </div>
                 <div className="col-lg-9 job-cards mb-3">
                   <div className="project-info job-card">
                     <div className="row">
                       <div className="col-lg-3 metrics">
-                        <h4><CountUp
-                        start={0}
-                        end={data?.elements?.portfolio_second_block_info__count_orders?.value}
-                        duration={2}                        
-                        prefix="+"
-                        suffix="%"
-                        className="portfolio-info-count"
-                      /></h4>
-                        <p>{data?.elements?.portfolio_second_block_info__count_orders_title?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}</p>
-                      </div>
-                      <div className="col-lg-3 metrics">
-                        <h4><CountUp
-                        start={0}
-                        end={data?.elements?.portfolio_second_block_info__count_revenue?.value}
-                        duration={2}                        
-                        prefix="+$"
-                        suffix="M"
-                        className="portfolio-info-count"
-                      /></h4>
-                        <p>{data?.elements?.portfolio_second_block_info__count_revenue_title?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}</p>
+                        <h4>
+                          <CountUp
+                            start={0}
+                            end={
+                              data?.elements
+                                ?.portfolio_second_block_info__count_orders
+                                ?.value
+                            }
+                            duration={2}
+                            prefix="+"
+                            suffix="%"
+                            className="portfolio-info-count"
+                          />
+                        </h4>
+                        <p>
+                          {data?.elements?.portfolio_second_block_info__count_orders_title?.value?.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </p>
                       </div>
                       <div className="col-lg-3 metrics">
                         <h4>
-                        <CountUp
-                        start={0}
-                        end={data?.elements?.portfolio_second_block_info__count_performance?.value}
-                        duration={2}                        
-                        prefix="0"
-                        suffix="x"
-                        className="portfolio-info-count"
-                      />
+                          <CountUp
+                            start={0}
+                            end={
+                              data?.elements
+                                ?.portfolio_second_block_info__count_revenue
+                                ?.value
+                            }
+                            duration={2}
+                            prefix="+$"
+                            suffix="M"
+                            className="portfolio-info-count"
+                          />
                         </h4>
-                        <p>{data?.elements?.portfolio_second_block_info__count_performance_title?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}</p>
+                        <p>
+                          {data?.elements?.portfolio_second_block_info__count_revenue_title?.value?.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </p>
                       </div>
                       <div className="col-lg-3 metrics">
                         <h4>
-                        <CountUp
-                        start={0}
-                        end={data?.elements?.portfolio_second_block_info__count_completion?.value}
-                        duration={2}                        
-                        prefix="+"
-                        suffix="%"
-                        className="portfolio-info-count"
-                      />
+                          <CountUp
+                            start={0}
+                            end={
+                              data?.elements
+                                ?.portfolio_second_block_info__count_performance
+                                ?.value
+                            }
+                            duration={2}
+                            prefix="0"
+                            suffix="x"
+                            className="portfolio-info-count"
+                          />
                         </h4>
-                        <p>{data?.elements?.portfolio_second_block_info__count_completion_title?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}</p>
+                        <p>
+                          {data?.elements?.portfolio_second_block_info__count_performance_title?.value?.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </p>
+                      </div>
+                      <div className="col-lg-3 metrics">
+                        <h4>
+                          <CountUp
+                            start={0}
+                            end={
+                              data?.elements
+                                ?.portfolio_second_block_info__count_completion
+                                ?.value
+                            }
+                            duration={2}
+                            prefix="+"
+                            suffix="%"
+                            className="portfolio-info-count"
+                          />
+                        </h4>
+                        <p>
+                          {data?.elements?.portfolio_second_block_info__count_completion_title?.value?.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -249,92 +295,133 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
             <div className="container">
               <div className="row mt-lg-5 g-0">
                 <div className="section-header">
-                  <h3>{data?.elements?.other_works__other_works_title?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}</h3>
+                  <h3>
+                    {data?.elements?.other_works__other_works_title?.value?.replace(
+                      /(<([^>]+)>)/gi,
+                      ""
+                    )}
+                  </h3>
                 </div>
+                
                 <div className="col-lg-4 other-work-cards">
                   <div className="other-work-card">
-                  <button  onClick={()=>redirectToProjectInfo(data?.elements?.other_works__work_slug1?.value.replace(
-              /(<([^>]+)>)/gi,
-              ""
-            ))}>  
-                  <img
-                      src={data?.elements?.other_works__work_image1?.value[0]?.url}
-                      className="figure-img img-fluid rounded"
-                      alt="..."
-                    /></button>
-                    <h4>{data?.elements?.other_works__work_title1?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}</h4>
-                    <p>
-                    {data?.elements?.other_works__work_description1?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
-                    </p>
-                    <Link to={'/'}>{data?.elements?.other_works__work_btn_title1?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}</Link>
-                  </div>
-                </div>
-                <div className="col-lg-4 other-work-cards">
-                  <div className="other-work-card">
-                  <button  onClick={()=>redirectToProjectInfo(data?.elements?.other_works__work_slug2?.value.replace(
-              /(<([^>]+)>)/gi,
-              ""
-            ))}>
                     <img
-                      src={data?.elements?.other_works__work_image2?.value[0]?.url}
+                      src={
+                        data?.elements?.other_works__work_image2?.value[0]?.url
+                      }
                       className="figure-img img-fluid rounded"
                       alt="..."
-                    /></button>
-                    <h4>{data?.elements?.other_works__work_title2?.value?.replace(
+                    />
+                    <h4>
+                      {data?.elements?.other_works__work_title2?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
-                      )}</h4>
+                      )}
+                    </h4>
                     <p>
-                    {data?.elements?.other_works__work_description2?.value?.replace(
+                      {data?.elements?.other_works__work_description2?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
                     </p>
-                    <Link to={'/'}>{data?.elements?.other_works__work_btn_title2?.value?.replace(
+                    <button
+                      className="btn-learn-more"
+                      onClick={() =>
+                        redirectToProjectInfo(
+                          data?.elements?.other_works__work_slug2?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )
+                        )
+                      }
+                    >
+                      {data?.elements?.other_works__work_btn_title2?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
-                      )}</Link>
+                      )}
+                    </button>
                   </div>
                 </div>
                 <div className="col-lg-4 other-work-cards">
                   <div className="other-work-card">
-                  <button  onClick={()=>redirectToProjectInfo(data?.elements?.other_works__work_slug3?.value.replace(
-              /(<([^>]+)>)/gi,
-              ""
-            ))}>
-                  <img
-                      src={data?.elements?.other_works__work_image3?.value[0]?.url}
+                    <img
+                      src={
+                        data?.elements?.other_works__work_image3?.value[0]?.url
+                      }
                       className="figure-img img-fluid rounded"
                       alt="..."
-                    /></button>
-                    <h4>{data?.elements?.other_works__work_title3?.value?.replace(
+                    />
+                    <h4>
+                      {data?.elements?.other_works__work_title3?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
-                      )}</h4>
+                      )}
+                    </h4>
                     <p>
-                    {data?.elements?.other_works__work_description3?.value?.replace(
+                      {data?.elements?.other_works__work_description3?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
                     </p>
-                    <Link to={'/'}>{data?.elements?.other_works__work_btn_title3?.value?.replace(
+                    <button
+                      className="btn-learn-more"
+                      onClick={() =>
+                        redirectToProjectInfo(
+                          data?.elements?.other_works__work_slug3?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )
+                        )
+                      }
+                    >
+                      {data?.elements?.other_works__work_btn_title3?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
-                      )}</Link>
+                      )}
+                    </button>
                   </div>
                 </div>
+
+                <div className="col-lg-4 other-work-cards">
+                  <div className="other-work-card">
+                    <img
+                      src={
+                        data?.elements?.other_works__work_image1?.value[0]?.url
+                      }
+                      className="figure-img img-fluid rounded"
+                      alt="..."
+                    />
+                    <h4>
+                      {data?.elements?.other_works__work_title1?.value?.replace(
+                        /(<([^>]+)>)/gi,
+                        ""
+                      )}
+                    </h4>
+                    <p>
+                      {data?.elements?.other_works__work_description1?.value?.replace(
+                        /(<([^>]+)>)/gi,
+                        ""
+                      )}
+                    </p>
+                    <button
+                      className="btn-learn-more"
+                      onClick={() =>
+                        redirectToProjectInfo(
+                          data?.elements?.other_works__work_slug_first?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )
+                        )
+                      }
+                    >
+                      {data?.elements?.other_works__work_btn_title1?.value?.replace(
+                        /(<([^>]+)>)/gi,
+                        ""
+                      )}
+                    </button>
+                  </div>
+                </div>
+
               </div>
             </div>
           </section>

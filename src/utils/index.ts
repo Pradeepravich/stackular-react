@@ -6,6 +6,7 @@ export const PATHS = {
   joinUs:'/join-us',  
   contactUs:'/contact-us',  
   portfolioInfo:'/project-info',  
+  serviceInfo:'/service-info',  
   notFoundPage:'*',  
 };
 

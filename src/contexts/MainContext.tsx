@@ -46,6 +46,10 @@ interface MainContextType {
   setPortfolioInfo4: React.Dispatch<React.SetStateAction<{}>>;
   projectUrl: string;
   setProjectUrl: React.Dispatch<React.SetStateAction<string>>;
+  serviceInfo1: any;
+  setserviceInfo1: React.Dispatch<React.SetStateAction<{}>>;
+  serviceInfo2: any;
+  setserviceInfo2: React.Dispatch<React.SetStateAction<{}>>;
 }
 
 export const MainContext = createContext<MainContextType>(
@@ -73,6 +77,8 @@ const MainContextProvider: FC<MainContextProps> = ({ children }) => {
   const [portfolioInfo2, setPortfolioInfo2] = useState({});
   const [portfolioInfo3, setPortfolioInfo3] = useState({});
   const [portfolioInfo4, setPortfolioInfo4] = useState({});
+  const [serviceInfo1, setserviceInfo1] = useState({});
+  const [serviceInfo2, setserviceInfo2] = useState({});
   const [projectUrl, setProjectUrl] = useState("");
   const [error, setError] = useState<string | null>(null);
 
@@ -125,6 +131,12 @@ const MainContextProvider: FC<MainContextProps> = ({ children }) => {
         const portfolioInfo4_response = await deliveryClient
           .item("legacy_app_modernization")
           .toPromise();
+        const service_info1_page_response = await deliveryClient
+          .item("digital_experience")
+          .toPromise();
+        const service_info2_page_response = await deliveryClient
+          .item("product_development")
+          .toPromise();
         setData(home_page_response.data.item);
         setStoriesData(success_stories_response.data.item);
         setTribeData(join_our_tribe_response.data.item);
@@ -140,6 +152,8 @@ const MainContextProvider: FC<MainContextProps> = ({ children }) => {
         setPortfolioInfo2(portfolioInfo2_response.data.item);
         setPortfolioInfo3(portfolioInfo3_response.data.item);
         setPortfolioInfo4(portfolioInfo4_response.data.item);
+        setserviceInfo1(service_info1_page_response.data.item);
+        setserviceInfo2(service_info2_page_response.data.item);
       } catch (err) {
         console.error("Error fetching data:", err);
         setError("Failed to fetch data");
@@ -186,6 +200,10 @@ const MainContextProvider: FC<MainContextProps> = ({ children }) => {
         setPortfolioInfo4,
         projectUrl,
         setProjectUrl,
+        serviceInfo1,
+        setserviceInfo1,
+        serviceInfo2,
+        setserviceInfo2
       }}
     >
       {children}

@@ -21,6 +21,12 @@ const PortfolioInfoPage = () => {
     if(isEmpty(projectUrl))
       navigate(PATHS.home)
   },[navigate, projectUrl])
+  // console.log("id", id);
+  // console.log("portfolioInfo1", portfolioInfo1?.elements?.slug?.value);
+  // console.log("portfolioInfo2", portfolioInfo2?.elements?.slug?.value);
+  // console.log("portfolioInfo3", portfolioInfo3?.elements?.slug?.value);
+  // console.log("portfolioInfo4", portfolioInfo4?.elements?.slug?.value);
+  // console.log("type",typeof id);
   return (
     <>
       <Header />

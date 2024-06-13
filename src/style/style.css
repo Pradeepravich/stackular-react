@@ -1197,6 +1197,15 @@ tag {
   text-decoration: none;
   font-weight: 100;
 }
+.other-work-card .btn-learn-more {
+  font-size: 14px;
+  text-align: left;
+  padding: 0 20px 0 20px;  
+  clear: both;
+  color: #87FCFE;
+  text-decoration: none;
+  font-weight: 100;
+}
 .other-work-card:hover {
   background-color: #374151;
 }
@@ -2092,7 +2101,7 @@ i.bi.bi-twitter-x:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding: 30px;
+  padding: 30px 5px;
   height: 150px;
 }
 
@@ -2115,8 +2124,9 @@ i.bi.bi-twitter-x:hover {
   display: block;
   float: left;
   position: relative;
-  width: 180px;
-  height: 100px;
+  /* width: 180px; */
+  /* height: 100px; */
+  width: 10%;
   line-height: 100px;
   text-align: center;
   overflow: hidden;
@@ -2125,11 +2135,12 @@ i.bi.bi-twitter-x:hover {
 #ourclients .clients-wrap ul li img {
   vertical-align: middle;
   max-width: 100%;
-  width: 80px;
+  /* width: 80px; */
   max-height: 100%;
   -webkit-transition: 0 linear left;
   -moz-transition: 0 linear left;
   transition: 0 linear left;
+  margin: 0px;
 }
 
 #ourclients h3 {
@@ -2198,3 +2209,8 @@ i.bi.bi-twitter-x:hover {
 .scroll-top-icon .arrow-right-circle-fill{
   fill: #f01212;
 }
+.our-list-info .service-info-count {
+  font-size: 36px;
+  font-weight: 500;
+}
+ 

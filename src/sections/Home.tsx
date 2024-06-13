@@ -2,11 +2,12 @@ import React, { FC } from "react";
 import globeFile from "../assets/images/home/videos/globe.mp4";
 import ClientSlider from "../components/ClientSlider";
 import { ArrowRightCircleFill } from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SuccessStories from "./SuccessStories";
 import CompanyStandards from "./CompanyStandards";
 import TribeSection from "./TribeSection";
 import { PATHS } from "../utils";
+import { useMainContext } from "../hooks/useMainContext";
 
 interface Props {
   data: any;
@@ -21,6 +22,13 @@ const Home: FC<Props> = ({
   tribeData,
   companyStandardData,
 }) => {
+  console.log("data", data)
+  const { setProjectUrl } = useMainContext();
+  const navigate = useNavigate()
+  const redirectToServiceInfo = (slug: any)=>{
+    setProjectUrl(slug);
+    navigate('/service-info');
+  }
   return (
     <>
       <main id="main">
@@ -155,7 +163,8 @@ const Home: FC<Props> = ({
                   <div className="col-lg-8 all-services">
                     <div className="row">
                       <div className="col-lg-6 services-card">
-                        <img
+                          
+                     <img
                           src={
                             data?.elements?.product_development_img?.value[0]
                               ?.url
@@ -175,12 +184,46 @@ const Home: FC<Props> = ({
                             ""
                           )}
                         </p>
-                        <Link to={PATHS.home}>
+                        <button  onClick={()=>redirectToServiceInfo(data?.elements?.product_development_slug?.value.replace(
+              /(<([^>]+)>)/gi,
+              ""
+            ))}>
                           {data?.elements?.product_learn_more?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""
                           )}
-                        </Link>
+                        </button>
+                      </div>
+                      <div className="col-lg-6 services-card">
+                        <img
+                          src={
+                            data?.elements?.digital_experience_img?.value[0]
+                              ?.url
+                          }
+                          className="img-fluid"
+                          alt=""
+                        />
+                        <h4>
+                          {data?.elements?.digital_experience?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </h4>
+                        <p>
+                          {data?.elements?.elevating_digital?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </p>
+                        <button  onClick={()=>redirectToServiceInfo(data?.elements?.digital_experience_slug?.value.replace(
+              /(<([^>]+)>)/gi,
+              ""
+            ))}>
+                          {data?.elements?.digital_learn_more?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </button>
                       </div>
                       <div className="col-lg-6 services-card">
                         <img
@@ -237,34 +280,7 @@ const Home: FC<Props> = ({
                           )}
                         </Link>
                       </div>
-                      <div className="col-lg-6 services-card">
-                        <img
-                          src={
-                            data?.elements?.digital_experience_img?.value[0]
-                              ?.url
-                          }
-                          className="img-fluid"
-                          alt=""
-                        />
-                        <h4>
-                          {data?.elements?.digital_experience?.value.replace(
-                            /(<([^>]+)>)/gi,
-                            ""
-                          )}
-                        </h4>
-                        <p>
-                          {data?.elements?.elevating_digital?.value.replace(
-                            /(<([^>]+)>)/gi,
-                            ""
-                          )}
-                        </p>
-                        <Link to={PATHS.home}>
-                          {data?.elements?.digital_learn_more?.value.replace(
-                            /(<([^>]+)>)/gi,
-                            ""
-                          )}
-                        </Link>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>
