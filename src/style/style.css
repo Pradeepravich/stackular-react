@@ -1184,6 +1184,7 @@ tag {
 .other-work-card p {
   font-size: 18px;
   padding: 0px 20px;
+  min-height: 130px;
 }
 
 .other-work-card a {
