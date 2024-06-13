@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CountUp from "react-countup";
 import { useMainContext } from "../hooks/useMainContext";
 
