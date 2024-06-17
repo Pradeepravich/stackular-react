@@ -1,12 +1,53 @@
 import React, { FC } from "react";
 import { ArrowRightCircleFill } from "react-bootstrap-icons";
 import CityLocations from "./CityLocations";
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { enqueueSnackbar } from "notistack";
 
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
 interface Props {
   data: any;
 }
 
 const Contact: FC<Props> = ({ data }) => {
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>();
+
+  const onSubmit: SubmitHandler<FormData> = async (data: any) => {
+    console.log("formData", data);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        // alert('Email successfully sent!');
+        enqueueSnackbar('Email successfully sent!', { anchorOrigin: {
+          vertical: 'bottom',
+          horizontal: 'right'
+        }, variant: 'success' })
+        
+      } else {
+        // alert('Failed to send the email.');
+        enqueueSnackbar('Failed to send the email.', { anchorOrigin: {
+          vertical: 'bottom',
+          horizontal: 'right'
+        }, variant: 'error' })
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error occurred while sending the email.');
+    }
+    reset();
+ };
+
   return (
     <>
       <main id="main">
@@ -28,33 +69,36 @@ const Contact: FC<Props> = ({ data }) => {
                 <div className="row gy-4">
                   <div className="col-lg-6 contact-main">
                     <div className="contact-container">
-                      <form action="" className="contact-form mt-5">
+                      <form action="" className="contact-form mt-5" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
                           <label>NAME</label>
                           <input
                             type="text"
                             className="form-control"
-                            id="name"
-                            name="name"
+                            id="name"                            
+                            {...register('name', { required: 'Name is required' })}                            
                           />
+                          {errors.name && <span className="mt-2 text-red-600">{errors.name.message}</span>}
                         </div>
                         <div className="form-group">
                           <label>EMAIL</label>
                           <input
                             type="email"
                             className="form-control"
-                            id="email"
-                            name="email"
+                            id="email"                                                       
+                            {...register('email', { required: 'Email is required', pattern: { value: /\S+@\S+\.\S+/, message: 'Invalid email address' } })}
                           />
+                          {errors.email && <span className="mt-2 text-red-600">{errors.email.message}</span>}
                         </div>
                         <div className="form-group">
                           <label>Got something to share?</label>
                           <input
                             type="text"
                             className="form-control"
-                            id="msg"
-                            name="msg"
+                            id="message"                            
+                            {...register('message', { required: 'Message is required' })}
                           />
+                          {errors.message && <span className="mt-2 text-red-600">{errors.message.message}</span>}
                         </div>
                         <div className="form-group">
                           <button
