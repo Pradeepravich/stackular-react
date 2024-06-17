@@ -8,17 +8,14 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors({
-    origin: 'http://localhost:3000',
-    optionsSuccessStatus: 200
-  }));
+app.use(cors());
 app.use(bodyParser.json());
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.EMAIL_USER,        
-        pass: process.env.EMAIL_PASS
+        user: process.env.SMTP_USER,        
+        pass: process.env.SMTP_PASS
   }
 });
 
@@ -26,8 +23,8 @@ app.post('/api/contact', (req, res) => {
   const { name, message } = req.body;
 
   const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: `${process.env.EMAIL_CTO}, ${process.env.EMAIL_CEO}`,
+    from: process.env.SMTP_USER,
+    to: `${process.env.EMAIL_TO}`,
     subject: `Contact form submission from ${name}`,
     text: message
   };
