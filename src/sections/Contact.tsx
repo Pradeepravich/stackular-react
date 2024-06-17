@@ -3,6 +3,7 @@ import { ArrowRightCircleFill } from "react-bootstrap-icons";
 import CityLocations from "./CityLocations";
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { enqueueSnackbar } from "notistack";
+import { API_URL } from "../config";
 
 interface FormData {
   name: string;
@@ -19,7 +20,7 @@ const Contact: FC<Props> = ({ data }) => {
   const onSubmit: SubmitHandler<FormData> = async (data: any) => {
     console.log("formData", data);
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
