@@ -28,23 +28,24 @@ const Contact: FC<Props> = ({ data }) => {
         body: JSON.stringify(data)
       });
 
-      if (response.ok) {
-        // alert('Email successfully sent!');
+      if (response.ok) {        
         enqueueSnackbar('Email successfully sent!', { anchorOrigin: {
           vertical: 'bottom',
           horizontal: 'right'
         }, variant: 'success' })
         
-      } else {
-        // alert('Failed to send the email.');
+      } else {        
         enqueueSnackbar('Failed to send the email.', { anchorOrigin: {
           vertical: 'bottom',
           horizontal: 'right'
         }, variant: 'error' })
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('Error occurred while sending the email.');
+      console.error('Error:', error);      
+      enqueueSnackbar('Error occurred while sending the email.', { anchorOrigin: {
+        vertical: 'bottom',
+        horizontal: 'right'
+      }, variant: 'error' })
     }
     reset();
  };
