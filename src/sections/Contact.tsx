@@ -20,7 +20,7 @@ const Contact: FC<Props> = ({ data }) => {
   const onSubmit: SubmitHandler<FormData> = async (data: any) => {
     console.log("formData", data);
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch('/.netlify/functions/sendEmail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
