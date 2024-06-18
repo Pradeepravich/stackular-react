@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+backendServer/node_modules
 /.pnp
 .pnp.js
 
@@ -24,3 +25,5 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+
