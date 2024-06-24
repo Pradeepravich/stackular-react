@@ -17,7 +17,8 @@ interface Props {
 const Contact: FC<Props> = ({ data }) => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>();
 
-  const onSubmit: SubmitHandler<FormData> = async (data: any) => {
+  const onSubmit: SubmitHandler<FormData> = async (data: any,event) => {
+    event?.preventDefault()
     console.log("FormData", data);
     try {
       // const response = await fetch(API_LIVE_URL, {
