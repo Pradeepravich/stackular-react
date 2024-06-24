@@ -3,7 +3,7 @@ import { ArrowRightCircleFill } from "react-bootstrap-icons";
 import CityLocations from "./CityLocations";
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { enqueueSnackbar } from "notistack";
-import { API_LIVE_URL } from "../config";
+import emailjs from 'emailjs-com';
 
 interface FormData {
   name: string;
@@ -20,26 +20,27 @@ const Contact: FC<Props> = ({ data }) => {
   const onSubmit: SubmitHandler<FormData> = async (data: any) => {
     console.log("formData", data);
     try {
-      const response = await fetch(API_LIVE_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
+      // const response = await fetch(API_LIVE_URL, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(data)
+      // });
+      const result = await emailjs.send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID || '',
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID || '',
+        data,
+        process.env.REACT_APP_EMAILJS_USER_ID || ''
+      );
 
-      if (response.ok) {        
+      console.log(result.text);    
         enqueueSnackbar('Email successfully sent!', { anchorOrigin: {
           vertical: 'bottom',
           horizontal: 'right'
         }, variant: 'success' })
         
-      } else {        
-        enqueueSnackbar('Failed to send the email.', { anchorOrigin: {
-          vertical: 'bottom',
-          horizontal: 'right'
-        }, variant: 'error' })
-      }
+      
     } catch (error) {
       console.error('Error:', error);      
       enqueueSnackbar('Error occurred while sending the email.', { anchorOrigin: {
