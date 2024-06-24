@@ -18,7 +18,7 @@ const Contact: FC<Props> = ({ data }) => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>();
 
   const onSubmit: SubmitHandler<FormData> = async (data: any) => {
-    console.log("formData", data);
+    console.log("FormData", data);
     try {
       // const response = await fetch(API_LIVE_URL, {
       //   method: 'POST',
@@ -72,7 +72,7 @@ const Contact: FC<Props> = ({ data }) => {
                 <div className="row gy-4">
                   <div className="col-lg-6 contact-main">
                     <div className="contact-container">
-                      <form action="" className="contact-form mt-5" onSubmit={handleSubmit(onSubmit)}>
+                      <form className="contact-form mt-5" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
                           <label>NAME</label>
                           <input
