@@ -3,7 +3,7 @@ import { ArrowRightCircleFill } from "react-bootstrap-icons";
 import CityLocations from "./CityLocations";
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { enqueueSnackbar } from "notistack";
-import { API_LIVE_URL } from "../config";
+// import { API_LIVE_URL } from "../config";
 // import emailjs from 'emailjs-com';
 
 interface FormData {
