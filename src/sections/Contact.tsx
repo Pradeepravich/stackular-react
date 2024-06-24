@@ -3,7 +3,8 @@ import { ArrowRightCircleFill } from "react-bootstrap-icons";
 import CityLocations from "./CityLocations";
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { enqueueSnackbar } from "notistack";
-import emailjs from 'emailjs-com';
+import { API_LIVE_URL } from "../config";
+// import emailjs from 'emailjs-com';
 
 interface FormData {
   name: string;
@@ -17,33 +18,29 @@ interface Props {
 const Contact: FC<Props> = ({ data }) => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>();
 
-  const onSubmit: SubmitHandler<FormData> = async (data: any,event) => {
-    if (event) {
-      event.preventDefault();
-    }
-    console.log("FormData", data);
+  const onSubmit: SubmitHandler<FormData> = async (data: any) => {
+    console.log("formData", data);
     try {
-      // const response = await fetch(API_LIVE_URL, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify(data)
-      // });
-      const result = await emailjs.send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID || '',
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID || '',
-        data,
-        process.env.REACT_APP_EMAILJS_USER_ID || ''
-      );
+      const response = await fetch('/api/sendMail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
 
-      console.log(result.text);    
+      if (response.ok) {        
         enqueueSnackbar('Email successfully sent!', { anchorOrigin: {
           vertical: 'bottom',
           horizontal: 'right'
         }, variant: 'success' })
         
-      
+      } else {        
+        enqueueSnackbar('Failed to send the email.', { anchorOrigin: {
+          vertical: 'bottom',
+          horizontal: 'right'
+        }, variant: 'error' })
+      }
     } catch (error) {
       console.error('Error:', error);      
       enqueueSnackbar('Error occurred while sending the email.', { anchorOrigin: {
@@ -75,7 +72,7 @@ const Contact: FC<Props> = ({ data }) => {
                 <div className="row gy-4">
                   <div className="col-lg-6 contact-main">
                     <div className="contact-container">
-                      <form className="contact-form mt-5" onSubmit={handleSubmit(onSubmit)}>
+                      <form action="" className="contact-form mt-5" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
                           <label>NAME</label>
                           <input
