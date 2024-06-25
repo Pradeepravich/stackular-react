@@ -21,7 +21,7 @@ const Contact: FC<Props> = ({ data }) => {
   const onSubmit: SubmitHandler<FormData> = async (data: any) => {
     console.log("formData", data);
     try {
-      const response = await fetch('/.netlify/functions/sendMail', {
+      const response = await fetch('https://stackular-node.netlify.app/.netlify/functions/sendMail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
