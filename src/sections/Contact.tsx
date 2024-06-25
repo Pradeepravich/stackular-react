@@ -29,6 +29,8 @@ const Contact: FC<Props> = ({ data }) => {
         body: JSON.stringify(data)
       });
 
+      console.log("response", response)
+
       if (response.ok) {        
         enqueueSnackbar('Email successfully sent!', { anchorOrigin: {
           vertical: 'bottom',
