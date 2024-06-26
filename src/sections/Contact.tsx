@@ -3,7 +3,8 @@ import { ArrowRightCircleFill } from "react-bootstrap-icons";
 import CityLocations from "./CityLocations";
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { enqueueSnackbar } from "notistack";
-// import { API_LIVE_URL } from "../config";
+import axios from 'axios';
+import { API_LIVE_URL } from "../config";
 // import emailjs from 'emailjs-com';
 
 interface FormData {
@@ -21,31 +22,19 @@ const Contact: FC<Props> = ({ data }) => {
   const onSubmit: SubmitHandler<FormData> = async (data: any) => {
     console.log("formData", data);
     try {
-      const response = await fetch('https://stackular-node.netlify.app/.netlify/functions/sendMail', {
-        method: 'POST',
+      const response = await axios.post(API_LIVE_URL, data, {
         headers: {
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+        }
       });
-
-      console.log("response", response)
-
-      if (response.ok) {        
-        enqueueSnackbar('Email successfully sent!', { anchorOrigin: {
-          vertical: 'bottom',
-          horizontal: 'right'
-        }, variant: 'success' })
-        
-      } else {        
-        enqueueSnackbar('Failed to send the email.', { anchorOrigin: {
-          vertical: 'bottom',
-          horizontal: 'right'
-        }, variant: 'error' })
-      }
+      console.log("response", response.data)
+      enqueueSnackbar('Thank you for contacting us. We will be in touch shortly.', { anchorOrigin: {
+        vertical: 'bottom',
+        horizontal: 'right'
+      }, variant: 'success' })
     } catch (error) {
       console.error('Error:', error);      
-      enqueueSnackbar('Error occurred while sending the email.', { anchorOrigin: {
+      enqueueSnackbar('An error occurred while submitting the form. Please try again later.', { anchorOrigin: {
         vertical: 'bottom',
         horizontal: 'right'
       }, variant: 'error' })
