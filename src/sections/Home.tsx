@@ -2,33 +2,20 @@ import React, { FC } from "react";
 import globeFile from "../assets/images/home/videos/globe.mp4";
 import ClientSlider from "../components/ClientSlider";
 import { ArrowRightCircleFill } from "react-bootstrap-icons";
-import { Link, useNavigate } from "react-router-dom";
-import SuccessStories from "./SuccessStories";
+import { Link } from "react-router-dom";
 import CompanyStandards from "./CompanyStandards";
 import TribeSection from "./TribeSection";
 import { PATHS } from "../utils";
-import { useMainContext } from "../hooks/useMainContext";
+import SuccessStoriesSection from "./SuccessStoriesSection";
 
 interface Props {
   data: any;
-  storiesData: any;
-  tribeData: any;
-  companyStandardData: any;
 }
 
 const Home: FC<Props> = ({
-  data,
-  storiesData,
-  tribeData,
-  companyStandardData,
+  data  
 }) => {
-  console.log("data", data)
-  const { setProjectUrl } = useMainContext();
-  const navigate = useNavigate()
-  const redirectToServiceInfo = (slug: any)=>{
-    setProjectUrl(slug);
-    navigate('/service-info');
-  }
+  
   return (
     <>
       <main id="main">
@@ -184,15 +171,19 @@ const Home: FC<Props> = ({
                             ""
                           )}
                         </p>
-                        <button  onClick={()=>redirectToServiceInfo(data?.elements?.product_development_slug?.value.replace(
-              /(<([^>]+)>)/gi,
-              ""
-            ))}>
+                        <Link
+                      to={`${PATHS.serviceInfo}?id=${btoa(
+                        data?.elements?.product_development?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )
+                      )}`}
+                    >
                           {data?.elements?.product_learn_more?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""
                           )}
-                        </button>
+                        </Link>
                       </div>
                       <div className="col-lg-6 services-card">
                         <img
@@ -215,15 +206,19 @@ const Home: FC<Props> = ({
                             ""
                           )}
                         </p>
-                        <button  onClick={()=>redirectToServiceInfo(data?.elements?.digital_experience_slug?.value.replace(
-              /(<([^>]+)>)/gi,
-              ""
-            ))}>
+                        <Link
+                      to={`${PATHS.serviceInfo}?id=${btoa(
+                        data?.elements?.digital_experience?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )
+                      )}`}
+                    >
                           {data?.elements?.digital_learn_more?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""
                           )}
-                        </button>
+                        </Link>
                       </div>
                       <div className="col-lg-6 services-card">
                         <img
@@ -245,7 +240,12 @@ const Home: FC<Props> = ({
                             ""
                           )}
                         </p>
-                        <Link to={PATHS.home}>
+                        <Link to={`${PATHS.serviceInfo}?id=${btoa(
+                        data?.elements?.data_intelligence?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )
+                      )}`}>
                           {data?.elements?.data_learn_more?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""
@@ -273,7 +273,12 @@ const Home: FC<Props> = ({
                             ""
                           )}
                         </p>
-                        <Link to={PATHS.home}>
+                        <Link to={`${PATHS.serviceInfo}?id=${btoa(
+                        data?.elements?.enterprise_systems?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )
+                      )}`}>
                           {data?.elements?.enterprise_learn_more?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""
@@ -286,12 +291,10 @@ const Home: FC<Props> = ({
                 </div>
               </div>
             </section>
-
-            <CompanyStandards companyStandardData={companyStandardData} />
-
-            <SuccessStories successStories={storiesData} />
-
-            <TribeSection tribeData={tribeData} />
+            <CompanyStandards />
+            {/* <SuccessStories successStories={storiesData} /> */}
+            <SuccessStoriesSection />
+            <TribeSection  />
           </div>
         </div>
       </main>

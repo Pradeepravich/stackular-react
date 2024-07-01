@@ -1,21 +1,14 @@
 import React, { FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CountUp from "react-countup";
-import { useMainContext } from "../hooks/useMainContext";
+import { PATHS } from "../utils";
 
 interface Props {
   data: any;
 }
 
 const PortfolioInfo: FC<Props> = ({ data }) => {
-  const { setProjectUrl } = useMainContext();
-  const navigate = useNavigate();
-  const redirectToProjectInfo = (slug: any) => {
-    setProjectUrl(slug);
-    navigate("/project-info");
-  };
-
-  console.log("data", data);
+  
   return (
     <>
       <main id="main">
@@ -302,7 +295,7 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
                     )}
                   </h3>
                 </div>
-                
+
                 <div className="col-lg-4 other-work-cards">
                   <div className="other-work-card">
                     <img
@@ -324,22 +317,19 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
                         ""
                       )}
                     </p>
-                    <button
-                      className="btn-learn-more"
-                      onClick={() =>
-                        redirectToProjectInfo(
-                          data?.elements?.other_works__work_slug2?.value.replace(
-                            /(<([^>]+)>)/gi,
-                            ""
-                          )
+                    <Link
+                      to={`${PATHS.portfolioInfo}?id=${btoa(
+                        data?.elements?.other_works__work_title2?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
                         )
-                      }
+                      )}`}
                     >
                       {data?.elements?.other_works__work_btn_title2?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
-                    </button>
+                    </Link>
                   </div>
                 </div>
                 <div className="col-lg-4 other-work-cards">
@@ -363,22 +353,19 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
                         ""
                       )}
                     </p>
-                    <button
-                      className="btn-learn-more"
-                      onClick={() =>
-                        redirectToProjectInfo(
-                          data?.elements?.other_works__work_slug3?.value.replace(
-                            /(<([^>]+)>)/gi,
-                            ""
-                          )
+                    <Link
+                      to={`${PATHS.portfolioInfo}?id=${btoa(
+                        data?.elements?.other_works__work_title3?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
                         )
-                      }
+                      )}`}
                     >
                       {data?.elements?.other_works__work_btn_title3?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
-                    </button>
+                    </Link>
                   </div>
                 </div>
 
@@ -403,25 +390,21 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
                         ""
                       )}
                     </p>
-                    <button
-                      className="btn-learn-more"
-                      onClick={() =>
-                        redirectToProjectInfo(
-                          data?.elements?.other_works__work_slug_first?.value.replace(
-                            /(<([^>]+)>)/gi,
-                            ""
-                          )
+                    <Link
+                      to={`${PATHS.portfolioInfo}?id=${btoa(
+                        data?.elements?.other_works__work_title1?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
                         )
-                      }
+                      )}`}
                     >
                       {data?.elements?.other_works__work_btn_title1?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
-                    </button>
+                    </Link>
                   </div>
                 </div>
-
               </div>
             </div>
           </section>

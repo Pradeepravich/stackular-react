@@ -5,10 +5,9 @@ import TribeSection from "./TribeSection";
 
 interface Props {
   data: any;
-  tribeData: any;
 }
 
-const JoinUs: FC<Props> = ({ data, tribeData }) => {
+const JoinUs: FC<Props> = ({ data }) => {
   const scrollToSection = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
@@ -423,7 +422,7 @@ const JoinUs: FC<Props> = ({ data, tribeData }) => {
                 </div>
               </div>
             </section>
-            <TribeSection tribeData={tribeData} />
+            <TribeSection />
           </div>
         </div>
       </main>

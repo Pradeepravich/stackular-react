@@ -2,12 +2,11 @@ import React, { FC, useState } from "react";
 import CompanyStandards from "./CompanyStandards";
 
 interface Props {
-  data: any;
+  pageData: any;
   services: any;
-  companyStandardData: any;
 }
 
-const Services: FC<Props> = ({ data, services, companyStandardData }) => {
+const Services: FC<Props> = ({ pageData, services }) => {
   const [activeTab, setActiveTab] = useState<string>("Product");
   const openGrid = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -26,7 +25,7 @@ const Services: FC<Props> = ({ data, services, companyStandardData }) => {
                 <div className="row gy-4">
                   <div className="col-lg-8 services-title d-none d-md-block">
                     <h1>
-                      {data?.elements?.title?.value?.replace(
+                      {pageData?.elements?.title?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
@@ -36,7 +35,7 @@ const Services: FC<Props> = ({ data, services, companyStandardData }) => {
                     <div className="contact-img ps-0 ps-lg-5">
                       <div className="position-relative">
                         <img
-                          src={data?.elements?.top_right_img?.value[0]?.url}
+                          src={pageData?.elements?.top_right_img?.value[0]?.url}
                           className="img-fluid"
                           alt=""
                         />
@@ -45,7 +44,7 @@ const Services: FC<Props> = ({ data, services, companyStandardData }) => {
                   </div>
                   <div className="col-lg-12 services-title d-block d-md-none">
                     <h1>
-                      {data?.elements?.title?.value?.replace(
+                      {pageData?.elements?.title?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
@@ -667,7 +666,7 @@ const Services: FC<Props> = ({ data, services, companyStandardData }) => {
                 </div>
               </div>
             </section>
-            <CompanyStandards companyStandardData={companyStandardData} />
+            <CompanyStandards />
           </div>
         </div>
       </main>

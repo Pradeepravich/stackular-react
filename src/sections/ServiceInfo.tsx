@@ -7,7 +7,7 @@ interface Props {
 }
 
 const ServiceInfo: FC<Props> = ({data}) => {
-  console.log("data", data);
+  
   return (
     <>
       <main id="main">
@@ -17,8 +17,8 @@ const ServiceInfo: FC<Props> = ({data}) => {
           <div className="row gy-4">
             <div className="col-lg-6 services-info-header">
               <div className="section-header">
-                <h5 className="text-white">{data?.elements?.tag?.value?.replace(/(<([^>]+)>)/gi, "")} /</h5>
-                <h1>{data?.elements?.title?.value?.replace(/(<([^>]+)>)/gi, "")}</h1>
+                <h5 className="text-white">{data?.elements?.category?.value?.replace(/(<([^>]+)>)/gi, "")}/{data?.elements?.title?.value?.replace(/(<([^>]+)>)/gi, "")} /</h5>
+                <h1>{data?.elements?.top_title?.value?.replace(/(<([^>]+)>)/gi, "")}</h1>
               </div>
             </div>
             <div className="col-lg-6 service-content">

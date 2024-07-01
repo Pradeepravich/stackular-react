@@ -2,16 +2,17 @@ import React from "react";
 import Header from "../sections/Header";
 import Footer from "../sections/Footer";
 import "../style/style.css";
-import { useMainContext } from "../hooks/useMainContext";
 import Contact from "../sections/Contact";
+import useKontentServiceApi from "../services/useKontentServiceApi";
 
 const ContactPage = () => {
-  const { contactUs } = useMainContext();
+
+  const { data } = useKontentServiceApi("contact_us_page");
 
   return (
     <>
       <Header />
-      <Contact data={contactUs} />
+      <Contact data={data} />
       <Footer />
     </>
   );

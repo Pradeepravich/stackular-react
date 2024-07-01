@@ -9,12 +9,12 @@ import {
   Twitter,
   ArrowUpShort,
 } from "react-bootstrap-icons";
-import { useMainContext } from "../hooks/useMainContext";
 import { Link } from "react-router-dom";
 import { PATHS } from "../utils";
+import useKontentServiceApi from "../services/useKontentServiceApi";
 
-const Footer = () => {
-  const { footerData } = useMainContext();
+const Footer = () => {  
+  const { data } = useKontentServiceApi("footer");
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -52,13 +52,13 @@ const Footer = () => {
             <div className="col-lg-8 col-md-6 d-flex">
               <div>
                 <h2>
-                  {footerData?.elements?.reach_out?.value.replace(
+                  {data?.elements?.reach_out?.value.replace(
                     /(<([^>]+)>)/gi,
                     ""
                   )}
                 </h2>
                 <p>
-                  {footerData?.elements?.step_into?.value.replace(
+                  {data?.elements?.step_into?.value.replace(
                     /(<([^>]+)>)/gi,
                     ""
                   )}
@@ -66,7 +66,7 @@ const Footer = () => {
                 <div className="footer-contact-info">
                   <span>
                     <a href="mailto:info@stackular.com">
-                      {footerData?.elements?.email?.value.replace(
+                      {data?.elements?.email?.value.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
@@ -74,7 +74,7 @@ const Footer = () => {
                   </span>
                   <span>
                     <a href="tel:+14436097406">
-                      {footerData?.elements?.telephone?.value.replace(
+                      {data?.elements?.telephone?.value.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
@@ -86,7 +86,7 @@ const Footer = () => {
             <div className="col-lg-4 col-md-6 footer-links d-flex">
               <figure className="figure">
                 <img
-                  src={footerData?.elements?.footer_img?.value[0]?.url}
+                  src={data?.elements?.footer_img?.value[0]?.url}
                   className="figure-img img-fluid rounded"
                   alt="..."
                 />

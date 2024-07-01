@@ -2,16 +2,15 @@ import React, { FC } from "react";
 import CountUp from "react-countup";
 import videoTop from "../assets/images/general/6d43-4a9e-93e5-6a8769c08851.mp4";
 import { ArrowRightCircleFill } from "react-bootstrap-icons";
-import SuccessStories from "./SuccessStories";
 import { Link } from "react-router-dom";
 import { PATHS } from "../utils";
+import SuccessStoriesSection from "./SuccessStoriesSection";
 
 interface Props {
   data: any;
-  storiesData: any;
 }
 
-const Portfolio: FC<Props> = ({ data, storiesData }) => {
+const Portfolio: FC<Props> = ({ data }) => {
   return (
     <>
       <main id="main">
@@ -113,7 +112,8 @@ const Portfolio: FC<Props> = ({ data, storiesData }) => {
               </div>
             </section>
             <div className="mb-32">
-              <SuccessStories successStories={storiesData} />
+              {/* <SuccessStories successStories={storiesData} /> */}
+              <SuccessStoriesSection />
             </div>
           </div>
         </div>

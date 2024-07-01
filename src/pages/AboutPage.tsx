@@ -3,15 +3,16 @@ import Header from "../sections/Header";
 import About from "../sections/About";
 import Footer from "../sections/Footer";
 import "../style/style.css";
-import { useMainContext } from "../hooks/useMainContext";
+import useKontentServiceApi from "../services/useKontentServiceApi";
 
 const AboutPage = () => {
-  const { aboutData } = useMainContext();
+ 
+  const { data } = useKontentServiceApi("about_page");
 
   return (
     <>
       <Header />
-      <About data={aboutData} />
+      <About data={data} />
       <Footer />
     </>
   );
