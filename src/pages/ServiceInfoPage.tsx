@@ -16,12 +16,19 @@ const useQuery = () => {
 
 const ServiceInfoPage = () => {
   const navigate = useNavigate();
+  const decodeEncodeValue = (str: string) => {
+    try {
+      return  atob(str);
+    } catch (err) {
+      navigate(PATHS.notFoundPage)
+    }
+  };
 
   const query = useQuery();
-  const id: any = query.get('id');
+  const id: any = query.get('id') as string;
 
-  const decodedStr = atob(id);
-  const slug = decodedStr.toString().toLowerCase().trim().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '_').replace(/-/g, '') || '';
+  const decodedStr = decodeEncodeValue(id) as string;   
+  const slug = decodedStr?.toString()?.toLowerCase()?.trim().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '_').replace(/-/g, '') || '';
 
   const codename = slug;
 
