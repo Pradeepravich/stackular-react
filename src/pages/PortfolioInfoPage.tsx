@@ -28,7 +28,9 @@ const PortfolioInfoPage = () => {
   const slug =   decodedStr?.toString()?.toLowerCase()?.trim().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '_').replace(/-/g, '') ;
   const codename = slug;
   const { data} = useKontentServiceApi(codename);
-
+  if(!data){
+    navigate(PATHS.noDataFoundPage)
+  }
   return (
     <>
       <Header />

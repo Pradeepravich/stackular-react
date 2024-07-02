@@ -8,5 +8,6 @@ export const PATHS = {
   portfolioInfo:'/project-info',  
   serviceInfo:'/service-info',  
   notFoundPage:'*',  
+  noDataFoundPage:'/no-data-found',  
 };
 

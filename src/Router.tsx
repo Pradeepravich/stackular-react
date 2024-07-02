@@ -10,6 +10,7 @@ import ContactPage from './pages/ContactPage';
 import PortfolioInfoPage from './pages/PortfolioInfoPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ServiceInfoPage from './pages/ServiceInfoPage';
+import NoDataPage from './pages/NoDataPage';
 
 const Router = () => {
   return (
@@ -46,6 +47,10 @@ const Router = () => {
         {
           path: PATHS.notFoundPage,
           element: <NotFoundPage />,
+        },
+        {
+          path: PATHS.noDataFoundPage,
+          element: <NoDataPage />,
         },
         {
           path: PATHS.serviceInfo,
