@@ -39,7 +39,13 @@ const ServiceInfoPage = () => {
     const codename = slug;
     setCode(codename);
   }, [query, validateURLParams]);
-  const { data } = useKontentServiceApi(code);
+  const { data, errorCode } = useKontentServiceApi(code);
+
+  useEffect(() => {
+    if(code && errorCode === 100){
+      navigate(PATHS.notFoundPage);
+    }
+  },[code, errorCode, navigate])
 
   return (
     <>
