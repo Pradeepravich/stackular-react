@@ -10,13 +10,12 @@ const useKontentServiceApi = (contentTypeName: string) => {
   const [data, setData] = useState<IContentItem<IContentItemElements> | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
-  const [errorCode, setErrorCode] = useState<number>();
+  const [errorCode, setErrorCode] = useState<number>(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {        
-        const response = await client.item(contentTypeName).toPromise();
-        console.log("response", response)
+        const response = await client.item(contentTypeName).toPromise();        
         setData(response.data.item);        
       } catch (err: any) {
         console.error('Error fetching content items:', err);        
