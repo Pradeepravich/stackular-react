@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import globeFile from "../assets/images/home/videos/globe.mp4";
+import globeFile from "../assets/images/home/videos/globe-comp.mp4";
 import ClientSlider from "../components/ClientSlider";
 import { ArrowRightCircleFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
