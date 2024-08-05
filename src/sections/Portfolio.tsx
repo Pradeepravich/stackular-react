@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import CountUp from "react-countup";
-import videoTop from "../assets/images/general/6d43-4a9e-93e5-6a8769c08851.mp4";
+import videoTop from "../assets/images/general/6d43-4a9e-93e5-6a8769c08851-comp.mp4";
 import { ArrowRightCircleFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import { PATHS } from "../utils";

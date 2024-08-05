@@ -222,20 +222,20 @@ const About: FC<Props> = ({ data }) => {
                           />
                           <img
                             src={
-                              data?.elements?.team_founder_img1?.value[0]?.url
+                              data?.elements?.team_founder_img2?.value[0]?.url
                             }
                             className="img-fluid founder_img mx-auto"
                             alt=""
                           />
                         </div>
                         <h4 className="mt-2">
-                          {data?.elements?.team_founder1?.value.replace(
+                          {data?.elements?.team_founder2?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""
                           )}
                         </h4>
                         <p>
-                          {data?.elements?.team_founder1_role?.value.replace(
+                          {data?.elements?.team_founder2_role?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""
                           )}
@@ -258,20 +258,20 @@ const About: FC<Props> = ({ data }) => {
                           />
                           <img
                             src={
-                              data?.elements?.team_founder_img2?.value[0]?.url
+                              data?.elements?.team_founder_img1?.value[0]?.url
                             }
                             className="img-fluid founder_img mx-auto"
                             alt=""
                           />
                         </div>
                         <h4 className="mt-2">
-                          {data?.elements?.team_founder2?.value.replace(
+                          {data?.elements?.team_founder1?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""
                           )}
                         </h4>
                         <p>
-                          {data?.elements?.team_founder2_role?.value.replace(
+                          {data?.elements?.team_founder1_role?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""
                           )}
