@@ -9,7 +9,7 @@ interface Props {}
 const SuccessStoriesSection: FC<Props> = () => {
 
   const { data } = useKontentServiceApi("success_stories_section");
-  const { contentTypes, loading } = useContentTypes(kontentVariables.projects);
+  const { contentTypes } = useContentTypes(kontentVariables.projects);
 
   return (
     <section id="projects" className="projects smt-8">
