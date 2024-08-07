@@ -1,13 +1,15 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import CountUp from "react-countup";
-import { PATHS } from "../utils";
+import { kontentVariables, PATHS } from "../utils";
+import useContentTypes from "../services/useContentTypes";
 
 interface Props {
   data: any;
 }
 
 const PortfolioInfo: FC<Props> = ({ data }) => {
+  const { contentTypes } = useContentTypes(kontentVariables.projects);
   
   return (
     <>
@@ -283,7 +285,7 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
               </div>
             </div>
           </section>
-
+        
           <section id="works" className="other-works section-padding1">
             <div className="container">
               <div className="row mt-lg-5 g-0">
@@ -295,116 +297,41 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
                     )}
                   </h3>
                 </div>
-
+                {contentTypes && contentTypes.map((item: any,i: any)=>(
+                  item?.system?.codename !== data?.system?.codename ? (
                 <div className="col-lg-4 other-work-cards">
                   <div className="other-work-card">
                     <img
                       src={
-                        data?.elements?.other_works__work_image2?.value[0]?.url
+                        item?.elements?.image?.value[0]?.url
                       }
                       className="figure-img img-fluid rounded"
                       alt="..."
                     />
                     <h4>
-                      {data?.elements?.other_works__work_title2?.value?.replace(
+                      {item?.elements?.title?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
                     </h4>
                     <p>
-                      {data?.elements?.other_works__work_description2?.value?.replace(
+                      {item?.elements?.description?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
                     </p>
                     <Link
-                      to={`${PATHS.portfolioInfo}?id=${btoa(
-                        data?.elements?.other_works__work_title2?.value.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )
-                      )}`}
+                      to={`${PATHS.portfolioInfo}?id=${btoa(item?.system?.codename)}`}
                     >
-                      {data?.elements?.other_works__work_btn_title2?.value?.replace(
+                      {item?.elements?.other_works__work_btn_title1?.value?.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
                     </Link>
                   </div>
                 </div>
-                <div className="col-lg-4 other-work-cards">
-                  <div className="other-work-card">
-                    <img
-                      src={
-                        data?.elements?.other_works__work_image3?.value[0]?.url
-                      }
-                      className="figure-img img-fluid rounded"
-                      alt="..."
-                    />
-                    <h4>
-                      {data?.elements?.other_works__work_title3?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
-                    </h4>
-                    <p>
-                      {data?.elements?.other_works__work_description3?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
-                    </p>
-                    <Link
-                      to={`${PATHS.portfolioInfo}?id=${btoa(
-                        data?.elements?.other_works__work_title3?.value.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )
-                      )}`}
-                    >
-                      {data?.elements?.other_works__work_btn_title3?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
-                    </Link>
-                  </div>
-                </div>
-
-                <div className="col-lg-4 other-work-cards">
-                  <div className="other-work-card">
-                    <img
-                      src={
-                        data?.elements?.other_works__work_image1?.value[0]?.url
-                      }
-                      className="figure-img img-fluid rounded"
-                      alt="..."
-                    />
-                    <h4>
-                      {data?.elements?.other_works__work_title1?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
-                    </h4>
-                    <p>
-                      {data?.elements?.other_works__work_description1?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
-                    </p>
-                    <Link
-                      to={`${PATHS.portfolioInfo}?id=${btoa(
-                        data?.elements?.other_works__work_title1?.value.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )
-                      )}`}
-                    >
-                      {data?.elements?.other_works__work_btn_title1?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
-                    </Link>
-                  </div>
-                </div>
+                  ) : ""
+                ))}
               </div>
             </div>
           </section>

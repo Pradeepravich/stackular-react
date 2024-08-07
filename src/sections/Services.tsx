@@ -15,6 +15,9 @@ const Services: FC<Props> = ({ pageData, services }) => {
     setActiveTab(serviceName);
   };
 
+  console.log("services", services)
+  console.log("pageData", pageData)
+
   return (
     <>
       <main id="main">

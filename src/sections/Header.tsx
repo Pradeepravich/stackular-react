@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { FC } from "react";
-import Logo from "../assets/images/logos/Logo.png";
+import Logo from "../assets/images/general/Logo.png";
 import { Link } from "react-router-dom";
 import { PATHS } from "../utils";
 
@@ -46,6 +46,9 @@ const Header: FC<Props> = () => {
           </Link>
           <nav id="navbar" className="navbar">
             <ul>
+              <li>
+                <Link to={PATHS.home}>Home</Link>
+              </li>
               <li>
                 <Link to={PATHS.about}>About</Link>
               </li>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Logo_b from "../assets/images/logos/Logo_b.png";
+import Logo_b from "../assets/images/general/Logo_b.png";
 import {
   Linkedin,
   Instagram,

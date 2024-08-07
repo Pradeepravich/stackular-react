@@ -11,3 +11,8 @@ export const PATHS = {
   noDataFoundPage:'/no-data',  
 };
 
+export const kontentVariables = {
+  projects:'projects',
+  services:'service_info',
+  designServices:'design_services_template',
+}

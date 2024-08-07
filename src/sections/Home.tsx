@@ -5,8 +5,9 @@ import { ArrowRightCircleFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import CompanyStandards from "./CompanyStandards";
 import TribeSection from "./TribeSection";
-import { PATHS } from "../utils";
+import { kontentVariables, PATHS } from "../utils";
 import SuccessStoriesSection from "./SuccessStoriesSection";
+import useContentTypes from "../services/useContentTypes";
 
 interface Props {
   data: any;
@@ -15,7 +16,7 @@ interface Props {
 const Home: FC<Props> = ({
   data  
 }) => {
-  
+  const { contentTypes } = useContentTypes(kontentVariables.services);
   return (
     <>
       <main id="main">
@@ -147,45 +148,44 @@ const Home: FC<Props> = ({
                       </Link>
                     </div>
                   </div>
+
                   <div className="col-lg-8 all-services">
                     <div className="row">
-                      <div className="col-lg-6 services-card">
-                          
-                     <img
-                          src={
-                            data?.elements?.product_development_img?.value[0]
-                              ?.url
-                          }
-                          className="img-fluid"
-                          alt=""
-                        />
+                    {contentTypes && contentTypes.map((item: any,i: any)=>(
+                     (i < 4) ? (
+                      <div className="col-lg-6 services-card" key={i}>                          
+                        <img
+                              src={
+                                item?.elements?.image?.value[0]
+                                  ?.url
+                              }
+                              className="img-fluid"
+                              alt=""
+                            />
                         <h4>
-                          {data?.elements?.product_development?.value.replace(
+                          {item?.elements?.title?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""
                           )}
                         </h4>
                         <p>
-                          {data?.elements?.comprehensive_development?.value.replace(
+                          {item?.elements?.description?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""
                           )}
                         </p>
                         <Link
-                      to={`${PATHS.serviceInfo}?id=${btoa(
-                        data?.elements?.product_development?.value.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )
-                      )}`}
+                      to={`${PATHS.serviceInfo}?id=${btoa(item.system.codename)}`}
                     >
-                          {data?.elements?.product_learn_more?.value.replace(
+                          {item?.elements?.button?.value.replace(
                             /(<([^>]+)>)/gi,
                             ""
                           )}
                         </Link>
                       </div>
-                      <div className="col-lg-6 services-card">
+                    ) : ""))}
+
+                      {/* <div className="col-lg-6 services-card">
                         <img
                           src={
                             data?.elements?.digital_experience_img?.value[0]
@@ -284,10 +284,11 @@ const Home: FC<Props> = ({
                             ""
                           )}
                         </Link>
-                      </div>
-                      
+                      </div>                       */}
                     </div>
                   </div>
+
+
                 </div>
               </div>
             </section>

@@ -26,26 +26,21 @@ const PortfolioInfoPage = () => {
     [navigate]
   );
 
-  useEffect(() => {
-    const id = query.get("id") as string;
-    const decodedStr = validateURLParams(id) as string;
-    const slug = decodedStr
+  const id = query.get("id") as string;
+  const decodedStr = validateURLParams(id) as string;
+  const slug = decodedStr
       ?.toString()
       ?.toLowerCase()
-      ?.trim()
-      .replace(/[^a-z0-9 -]/g, "")
-      .replace(/\s+/g, "_")
-      .replace(/-/g, "");
-    const codename = slug;
-    setCode(codename);
-  }, [query, validateURLParams]);
-  const { data, errorCode } = useKontentServiceApi(code);
+      ?.trim()      
+      .replace(/\s+/g, "_") 
+
+  const { data, errorCode } = useKontentServiceApi(slug);
 
   useEffect(() => {
-    if(code && errorCode === 100){
+    if(decodedStr && errorCode === 100){
       navigate(PATHS.notFoundPage);
     }
-  },[code, errorCode, navigate])
+  },[decodedStr, errorCode, navigate])
 
   return (
     <>

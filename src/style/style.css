@@ -1352,24 +1352,7 @@ i.bi.bi-arrow-right-circle-fill {
   border-color: rgba(0, 0, 0, 1);
 }
 
-.city_details.hyd.active {
-  background-image: url("../assets/images/contact/char_full.png");
-}
-
-.city_details.chicago.active {
-  background-image: url("../assets/images/contact/Rectangle-33.png");
-}
-
-.city_details.columbia.active {
-  background-image: url("../assets/images/contact/Rectangle-11.png");
-}
-
-.city_details.san-jose.active {
-  background-image: url("../assets/images/contact/Rectangle-22.png");
-}
-
 .section-with-background {
-  background-image: url('../assets/images/contact/background_contact.jpg');
   background-size: cover;
   background-position: center;
   padding: 100px 0;
@@ -1883,37 +1866,18 @@ i.bi.bi-twitter-x:hover {
 .city_details.hyd:not(.active) {
   flex-grow: 1;
   border-radius: 30px;
-  --optionBackground: url(../assets/images/contact/char_mobil.png) !important;
   }
   .city_details.chicago:not(.active) {
     flex-grow: 1;
     border-radius: 30px;
-    --optionBackground: url(../assets/images/contact/chicago_mobile.png) !important;
   }
   .city_details.columbia:not(.active) {
     flex-grow: 1;
     border-radius: 30px;
-    --optionBackground: url(../assets/images/contact/columbia_mobile.png) !important;
   }
   .city_details.san-jose:not(.active) {
     flex-grow: 1;
     border-radius: 30px;
-    --optionBackground: url(../assets/images/contact/san-joe_mobile.png) !important;
-  }
-  .city_details.hyd.active {
-    background-image: url("../assets/images/contact/char_mobile_h.png");
-  }
-
-  .city_details.chicago.active {
-    background-image: url("../assets/images/contact/chicago_mob_h.png");
-  }
-
-  .city_details.columbia.active {
-    background-image: url("../assets/images/contact/columbia_mob_h.png");
-  }
-
-  .city_details.san-jose.active {
-    background-image: url("../assets/images/contact/san-jose_mob_h.png");
   }
 
  /*--------------------------------------------------------------
