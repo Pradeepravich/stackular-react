@@ -19,6 +19,10 @@ const Router = () => {
       element: <HomePage />,
     },
     {
+      path: PATHS.frontpage,
+      element: <HomePage />,
+    },
+    {
       path: PATHS.about,
       element: <AboutPage />,
     },

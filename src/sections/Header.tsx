@@ -23,11 +23,16 @@ const Header: FC<Props> = () => {
     const currentPageUrl = window.location.href;
     const navbarLinks = document.querySelectorAll("#navbar a");
     navbarLinks.forEach((link) => {
-      const menuItemUrl = link.getAttribute("href") || "";
+      const menuItemUrl = link.getAttribute("href") || "" || "/";
       if (currentPageUrl.includes(menuItemUrl)) {
         link.classList.add("active");
       }
+      console.log("currentPageUrl", currentPageUrl)
+      console.log("menuItemUrl", menuItemUrl)
     });
+
+    
+
   }, []);
 
   return (
@@ -47,7 +52,7 @@ const Header: FC<Props> = () => {
           <nav id="navbar" className="navbar">
             <ul>
               <li>
-                <Link to={PATHS.home}>Home</Link>
+                <Link to={PATHS.frontpage}>Home</Link>
               </li>
               <li>
                 <Link to={PATHS.about}>About</Link>
