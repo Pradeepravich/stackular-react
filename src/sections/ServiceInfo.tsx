@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 import CountUp from "react-countup";
 import useContentTypes from "../services/useContentTypes";
-import { kontentVariables } from "../utils";
+import { kontentVariables, PATHS } from "../utils";
+import { Link } from "react-router-dom";
 
 
 interface Props {
@@ -155,7 +156,9 @@ const ServiceInfo: FC<Props> = ({data}) => {
                 <img src={item?.elements?.image?.value[0]?.url} className="figure-img img-fluid rounded" alt="..." />
                 <h4>{item?.elements?.title?.value?.replace(/(<([^>]+)>)/gi, "")}</h4>
                 <p>{item?.elements?.description?.value?.replace(/(<([^>]+)>)/gi, "")}</p>
-                <a href={"/"}>{item?.elements?.button_text?.value?.replace(/(<([^>]+)>)/gi, "")}</a> 
+                <Link to={`${PATHS.serviceInfo}?id=${btoa(item.system.codename)}`}>
+                {item?.elements?.button_text?.value?.replace(/(<([^>]+)>)/gi, "")}
+                </Link>
               </div>
             </div>
             ))}
