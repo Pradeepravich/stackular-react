@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import Header from "../sections/Header";
 import Footer from "../sections/Footer";
 import "../style/style.css";
@@ -14,7 +14,7 @@ const useQuery = () => {
 const PortfolioInfoPage = () => {
   const navigate = useNavigate();
   const query = useQuery();
-  const [code, setCode] = useState<string>("");
+  // const [code, setCode] = useState<string>("");
   const validateURLParams = useCallback(
     (str: string) => {
       try {
