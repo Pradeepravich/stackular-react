@@ -74,7 +74,9 @@ const CityLocations: FC<Props> = ({ data }) => {
               } as React.CSSProperties
             }
           >
-            <div className="office_places"><h2>{city.name}</h2></div>
+            <div className="office_places">
+              <h2>{city.name}</h2>
+            </div>
             <div
               className={`city_address ${
                 cityName === city.name ? "show" : "hide"

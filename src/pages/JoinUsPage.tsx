@@ -1,20 +1,19 @@
-import React from 'react'
-import Header from '../sections/Header'
-import Footer from '../sections/Footer'
-import '../style/style.css'
-import { useMainContext } from '../hooks/useMainContext'
-import JoinUs from '../sections/JoinUs'
+import React from "react";
+import Header from "../sections/Header";
+import Footer from "../sections/Footer";
+import "../style/style.css";
+import JoinUs from "../sections/JoinUs";
+import useKontentServiceApi from "../services/useKontentServiceApi";
 
 const JoinUsPage = () => {
-  const { tribeData, joinUsData } = useMainContext(); 
-  
+  const { data } = useKontentServiceApi("join_us_page");
   return (
     <>
-        <Header  />
-        <JoinUs tribeData={tribeData} data={joinUsData}/>
-        <Footer />
+      <Header />
+      <JoinUs data={data} />
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default JoinUsPage
+export default JoinUsPage;

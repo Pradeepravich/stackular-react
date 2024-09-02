@@ -1,20 +1,20 @@
-import React from 'react'
-import Header from '../sections/Header'
-import Home from '../sections/Home'
-import Footer from '../sections/Footer'
-import '../style/style.css'
-import { useMainContext } from '../hooks/useMainContext'
+import React from "react";
+import Header from "../sections/Header";
+import Home from "../sections/Home";
+import Footer from "../sections/Footer";
+import "../style/style.css";
+import useKontentServiceApi from "../services/useKontentServiceApi";
 
 const HomePage = () => {
-  const { data, storiesData, tribeData, companyStandardData } = useMainContext(); 
-  
+  const { data } = useKontentServiceApi("home_page");
+
   return (
     <>
-        <Header  />
-        <Home  data={data} storiesData={storiesData} tribeData={tribeData} companyStandardData={companyStandardData}/>
-        <Footer />
+      <Header />
+      <Home data={data} />
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

@@ -1,17 +1,21 @@
 import React, { FC } from "react";
-import { ArrowRightCircleFill } from "react-bootstrap-icons";
+import { ArrowDownCircleFill } from "react-bootstrap-icons";
 import play from "../assets/images/general/8180-4a2b-a6e4-784e016a00b3.mp4";
+import TribeSection from "./TribeSection";
 
 interface Props {
   data: any;
-  tribeData: any;
 }
 
-const JoinUs: FC<Props> = ({data,tribeData }) => {
-  console.log("data", data)
-  const scrollToTop = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+const JoinUs: FC<Props> = ({ data }) => {
+  const scrollToSection = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
     event.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const targetDiv = document.getElementById("projects");
+    if (targetDiv) {
+      targetDiv.scrollIntoView({ behavior: "smooth" });
+    }
   };
   return (
     <>
@@ -23,34 +27,37 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
                 <div className="row gy-4">
                   <div className="col-lg-7 join-us-header">
                     <div className="section-header mt-5">
-                      <h1>{data?.elements?.title?.value.replace(
+                      <h1>
+                        {data?.elements?.title?.value.replace(
                           /(<([^>]+)>)/gi,
                           ""
-                        )}</h1>
+                        )}
+                      </h1>
                       <p>
-                      {data?.elements?.description?.value.replace(
+                        {data?.elements?.description?.value.replace(
                           /(<([^>]+)>)/gi,
                           ""
                         )}
                       </p>
                       <div className="form-group">
                         <a
-                        id="goToTop" href={"#top"} onClick={scrollToTop}
-                        className="btn btn-primary !text-left !py-2 !pl-4 group"
-                      >
-                        {data?.elements?.btn_title?.value.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    )}
-                        <span className="float-end ml-4 ">
-                          <ArrowRightCircleFill
-                            color="#87FCFE"
-                            size="1.7em"
-                            className="arrow-right-circle-fill"
-                          />
-                        </span>
-                        <span className="clear-both"></span>
-                      </a>
+                          href={"#projects"}
+                          onClick={scrollToSection}
+                          className="btn btn-primary !text-left !py-2 !pl-4 group"
+                        >
+                          {data?.elements?.btn_title?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                          <span className="float-end ml-4 ">
+                            <ArrowDownCircleFill
+                              color="#87FCFE"
+                              size="1.7em"
+                              className="arrow-right-circle-fill"
+                            />
+                          </span>
+                          <span className="clear-both"></span>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -69,10 +76,12 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
               <div className="container">
                 <div className="row gy-lg-4">
                   <div className="section-header">
-                    <h3>{data?.elements?.treasure_section?.value.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    )}</h3>
+                    <h3>
+                      {data?.elements?.treasure_section?.value.replace(
+                        /(<([^>]+)>)/gi,
+                        ""
+                      )}
+                    </h3>
                   </div>
                   <div className="col-lg-4 mt-lg-5 mt-sm-3 inner-page">
                     <div className="join-card flex items-center">
@@ -81,10 +90,12 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
                         className="img-fluid"
                         alt=""
                       />
-                      <span className="ml-1">{data?.elements?.work_life?.value.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    )}</span>
+                      <span className="ml-1">
+                        {data?.elements?.work_life?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
                     </div>
                     <div className="join-card flex items-center">
                       <img
@@ -92,21 +103,28 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
                         className="img-fluid"
                         alt=""
                       />
-                      <span className="ml-1">{data?.elements?.recognition?.value.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    )}</span>
+                      <span className="ml-1">
+                        {data?.elements?.recognition?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
                     </div>
                     <div className="join-card flex items-center">
                       <img
-                        src={data?.elements?.growth_opportunities_img?.value[0]?.url}
+                        src={
+                          data?.elements?.growth_opportunities_img?.value[0]
+                            ?.url
+                        }
                         className="img-fluid"
                         alt=""
                       />
-                      <span className="ml-1">{data?.elements?.growth_opportunities?.value.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    )}</span>
+                      <span className="ml-1">
+                        {data?.elements?.growth_opportunities?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
                     </div>
                     <div className="join-card flex items-center">
                       <img
@@ -114,10 +132,12 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
                         className="img-fluid"
                         alt=""
                       />
-                      <span className="ml-1">{data?.elements?.indoor_games?.value.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    )}</span>
+                      <span className="ml-1">
+                        {data?.elements?.indoor_games?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
                     </div>
                   </div>
                   <div className="col-lg-4 mt-lg-5 inner-page">
@@ -127,10 +147,12 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
                         className="img-fluid"
                         alt=""
                       />
-                      <span className="ml-1">{data?.elements?.competitive_pay?.value.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    )}</span>
+                      <span className="ml-1">
+                        {data?.elements?.competitive_pay?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
                     </div>
                     <div className="join-card flex items-center">
                       <img
@@ -138,10 +160,12 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
                         className="img-fluid"
                         alt=""
                       />
-                      <span className="ml-1">{data?.elements?.innovation_labs?.value.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    )}</span>
+                      <span className="ml-1">
+                        {data?.elements?.innovation_labs?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
                     </div>
                     <div className="join-card flex items-center">
                       <img
@@ -149,10 +173,12 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
                         className="img-fluid"
                         alt=""
                       />
-                      <span className="ml-1">{data?.elements?.flexible_leave?.value.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    )}</span>
+                      <span className="ml-1">
+                        {data?.elements?.flexible_leave?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
                     </div>
                     <div className="join-card flex items-center">
                       <img
@@ -160,23 +186,29 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
                         className="img-fluid"
                         alt=""
                       />
-                      <span className="ml-1">{data?.elements?.daily_snacks?.value.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    )}</span>
+                      <span className="ml-1">
+                        {data?.elements?.daily_snacks?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
                     </div>
                   </div>
                   <div className="col-lg-4 mt-lg-5 inner-page">
                     <div className="join-card flex items-center">
                       <img
-                        src={data?.elements?.continuous_learning_img?.value[0]?.url}
+                        src={
+                          data?.elements?.continuous_learning_img?.value[0]?.url
+                        }
                         className="img-fluid"
                         alt=""
                       />
-                      <span className="ml-1">{data?.elements?.continuous_learning?.value.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    )}</span>
+                      <span className="ml-1">
+                        {data?.elements?.continuous_learning?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
                     </div>
                     <div className="join-card flex items-center">
                       <img
@@ -184,10 +216,12 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
                         className="img-fluid"
                         alt=""
                       />
-                      <span className="ml-1">{data?.elements?.help?.value.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    )}</span>
+                      <span className="ml-1">
+                        {data?.elements?.help?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
                     </div>
                     <div className="join-card flex items-center">
                       <img
@@ -195,21 +229,27 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
                         className="img-fluid"
                         alt=""
                       />
-                      <span className="ml-1">{data?.elements?.spot_bonuses?.value.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    )}</span>
+                      <span className="ml-1">
+                        {data?.elements?.spot_bonuses?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
                     </div>
                     <div className="join-card flex items-center">
                       <img
-                        src={data?.elements?.unlimited_coffee_img?.value[0]?.url}
+                        src={
+                          data?.elements?.unlimited_coffee_img?.value[0]?.url
+                        }
                         className="img-fluid"
                         alt=""
                       />
-                      <span className="ml-1">{data?.elements?.unlimited_coffee?.value.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    )}</span>
+                      <span className="ml-1">
+                        {data?.elements?.unlimited_coffee?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -224,10 +264,7 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
                   <div className="col-lg-6 mt-lg-3">
                     <div className="col-lg-12">
                       <video autoPlay muted loop id="join_us_video">
-                        <source
-                          src={play}
-                          type="video/mp4"
-                        />
+                        <source src={play} type="video/mp4" />
                       </video>
                     </div>
                     <div className="row mt-lg-3">
@@ -251,10 +288,7 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
               </div>
             </section>
 
-            <section
-              id="projects"
-              className="projects our-jobs smt-8"
-            >
+            <section id="projects" className="projects our-jobs smt-8">
               <div className="container">
                 <div className="section-header">
                   <p>Unlock Your Potential</p>
@@ -388,109 +422,7 @@ const JoinUs: FC<Props> = ({data,tribeData }) => {
                 </div>
               </div>
             </section>
-
-            <section id="join_us" className="join-us-sec mt-5">
-              <div className="container">
-                <div className="row gy-4">
-                  <div className="col-lg-6 join-us-haed">
-                  <div className="section-header">
-                      <h2>
-                        {tribeData?.elements?.join_our_tribe?.value.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}
-                      </h2>
-                      <div className="mt-5"></div>
-                      <div className="join-card flex items-center">
-                        <img src={tribeData?.elements?.img1?.value[0]?.url} className="img-fluid" alt="" />
-                        <span className="ml-1">
-                          {tribeData?.elements?.work_life?.value.replace(
-                            /(<([^>]+)>)/gi,
-                            ""
-                          )}
-                        </span>
-                      </div>
-                      <div className="join-card flex items-center">
-                        <img src={tribeData?.elements?.img2?.value[0]?.url} className="img-fluid" alt="" />
-                        <span className="ml-1">
-                          {tribeData?.elements?.continuous_learning?.value.replace(
-                            /(<([^>]+)>)/gi,
-                            ""
-                          )}
-                        </span>
-                      </div>
-                      <div className="join-card flex items-center">
-                        <img src={tribeData?.elements?.img3?.value[0]?.url} className="img-fluid" alt="" />
-                        <span className="ml-1">
-                          {tribeData?.elements?.competitive_compensation?.value.replace(
-                            /(<([^>]+)>)/gi,
-                            ""
-                          )}
-                        </span>
-                      </div>
-                      <div className="join-card flex items-center">
-                        <img src={tribeData?.elements?.img4?.value[0]?.url} className="img-fluid" alt="" />
-                        <span className="ml-1">
-                          {tribeData?.elements?.recognition?.value.replace(
-                            /(<([^>]+)>)/gi,
-                            ""
-                          )}
-                        </span>
-                      </div>
-                      <div className="join-card flex items-center">
-                        <img src={tribeData?.elements?.img5?.value[0]?.url} className="img-fluid" alt="" />
-                        <span className="ml-1">
-                          {tribeData?.elements?.innovation_labs?.value.replace(
-                            /(<([^>]+)>)/gi,
-                            ""
-                          )}
-                        </span>
-                      </div>
-                      <a
-                        href={"/"}
-                        className="btn btn-primary !text-left py-2 group"
-                      >
-                        {tribeData?.elements?.join_learn_more?.value.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}
-                        <span className="float-end ml-4 ">
-                          <ArrowRightCircleFill
-                            color="#87FCFE"
-                            size="1.7em"
-                            className="arrow-right-circle-fill"
-                          />
-                        </span>
-                        <span className="clear-both"></span>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="col-lg-6 mt-5 join-us-image">
-                    <img
-                      src={tribeData?.elements?.tribe_img?.value[0]?.url}
-                      className="img-fluid"
-                      alt="Animation"
-                    />
-                  </div>
-                  <div className="form-group d-block d-md-none">
-                    <a
-                      href={"/"}
-                      className="btn btn-primary !text-left py-2 group"
-                    >
-                      Learn More
-                      <span className="float-end ml-4 ">
-                        <ArrowRightCircleFill
-                          color="#87FCFE"
-                          size="1.7em"
-                          className="arrow-right-circle-fill"
-                        />
-                      </span>
-                      <span className="clear-both"></span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </section>
+            <TribeSection />
           </div>
         </div>
       </main>

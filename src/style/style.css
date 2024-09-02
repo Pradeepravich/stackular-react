@@ -1104,13 +1104,15 @@ section#our_list .container {
 
 .project-info-header .section-header span {
   background: #1F2937;
-  padding: 10px 16px 10px 16px;
+  padding: 10px 16px 10px 16px !important;
   border-radius: 25px;
-  margin-right: 20px;
+  margin-right: 22px;
   color: #87FCFE;
   font-size: 14px;
   text-transform: uppercase;
-  line-height: 50px;
+  line-height: 18px;
+  margin-bottom: 12px;
+  font-weight: 400;
 }
 
 tag {
@@ -1124,6 +1126,9 @@ tag {
 
 .project-issues-info {
   text-align: left;
+}
+.project-issues-info-width {
+  width: 190px;
 }
 
 .project-issues-info h3 {
@@ -1151,6 +1156,14 @@ tag {
   font-size: 14px;
   margin-bottom: 0px;
 }
+.portfolio-info-count{
+  background: none !important;
+  padding: unset !important;
+  border-radius: 0px !important;
+  margin-right: 5px !important;
+  font-size: 30px !important;
+  font-weight: 500 !important;
+}
 .other-works .section-header {
   text-align: center;
   margin-bottom: 20px;
@@ -1171,6 +1184,7 @@ tag {
 .other-work-card p {
   font-size: 18px;
   padding: 0px 20px;
+  min-height: 130px;
 }
 
 .other-work-card a {
@@ -1178,6 +1192,15 @@ tag {
   text-align: left;
   padding: 20px;
   margin-bottom: 20px;
+  clear: both;
+  color: #87FCFE;
+  text-decoration: none;
+  font-weight: 100;
+}
+.other-work-card .btn-learn-more {
+  font-size: 14px;
+  text-align: left;
+  padding: 0 20px 0 20px;  
   clear: both;
   color: #87FCFE;
   text-decoration: none;
@@ -1329,24 +1352,7 @@ i.bi.bi-arrow-right-circle-fill {
   border-color: rgba(0, 0, 0, 1);
 }
 
-.city_details.hyd.active {
-  background-image: url("../assets/images/contact/char_full.png");
-}
-
-.city_details.chicago.active {
-  background-image: url("../assets/images/contact/Rectangle-33.png");
-}
-
-.city_details.columbia.active {
-  background-image: url("../assets/images/contact/Rectangle-11.png");
-}
-
-.city_details.san-jose.active {
-  background-image: url("../assets/images/contact/Rectangle-22.png");
-}
-
 .section-with-background {
-  background-image: url('../assets/images/contact/background_contact.jpg');
   background-size: cover;
   background-position: center;
   padding: 100px 0;
@@ -1860,37 +1866,18 @@ i.bi.bi-twitter-x:hover {
 .city_details.hyd:not(.active) {
   flex-grow: 1;
   border-radius: 30px;
-  --optionBackground: url(../assets/images/contact/char_mobil.png) !important;
   }
   .city_details.chicago:not(.active) {
     flex-grow: 1;
     border-radius: 30px;
-    --optionBackground: url(../assets/images/contact/chicago_mobile.png) !important;
   }
   .city_details.columbia:not(.active) {
     flex-grow: 1;
     border-radius: 30px;
-    --optionBackground: url(../assets/images/contact/columbia_mobile.png) !important;
   }
   .city_details.san-jose:not(.active) {
     flex-grow: 1;
     border-radius: 30px;
-    --optionBackground: url(../assets/images/contact/san-joe_mobile.png) !important;
-  }
-  .city_details.hyd.active {
-    background-image: url("../assets/images/contact/char_mobile_h.png");
-  }
-
-  .city_details.chicago.active {
-    background-image: url("../assets/images/contact/chicago_mob_h.png");
-  }
-
-  .city_details.columbia.active {
-    background-image: url("../assets/images/contact/columbia_mob_h.png");
-  }
-
-  .city_details.san-jose.active {
-    background-image: url("../assets/images/contact/san-jose_mob_h.png");
   }
 
  /*--------------------------------------------------------------
@@ -2078,7 +2065,7 @@ i.bi.bi-twitter-x:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding: 30px;
+  padding: 30px 5px;
   height: 150px;
 }
 
@@ -2101,7 +2088,7 @@ i.bi.bi-twitter-x:hover {
   display: block;
   float: left;
   position: relative;
-  width: 180px;
+  /* width: 180px; */
   height: 100px;
   line-height: 100px;
   text-align: center;
@@ -2184,3 +2171,8 @@ i.bi.bi-twitter-x:hover {
 .scroll-top-icon .arrow-right-circle-fill{
   fill: #f01212;
 }
+.our-list-info .service-info-count {
+  font-size: 36px;
+  font-weight: 500;
+}
+ 

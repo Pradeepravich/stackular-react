@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Logo_b from "../assets/images/logos/Logo_b.png";
+import Logo_b from "../assets/images/general/Logo_b.png";
 import {
   Linkedin,
   Instagram,
@@ -9,10 +9,12 @@ import {
   Twitter,
   ArrowUpShort,
 } from "react-bootstrap-icons";
-import { useMainContext } from "../hooks/useMainContext";
+import { Link } from "react-router-dom";
+import { PATHS } from "../utils";
+import useKontentServiceApi from "../services/useKontentServiceApi";
 
 const Footer = () => {
-  const { footerData } = useMainContext();
+  const { data } = useKontentServiceApi("footer");
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -32,7 +34,9 @@ const Footer = () => {
     };
   }, []);
 
-  const scrollToTop = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const scrollToTop = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
     event.preventDefault();
     window.scrollTo({
       top: 0,
@@ -48,13 +52,13 @@ const Footer = () => {
             <div className="col-lg-8 col-md-6 d-flex">
               <div>
                 <h2>
-                  {footerData?.elements?.reach_out?.value.replace(
+                  {data?.elements?.reach_out?.value.replace(
                     /(<([^>]+)>)/gi,
                     ""
                   )}
                 </h2>
                 <p>
-                  {footerData?.elements?.step_into?.value.replace(
+                  {data?.elements?.step_into?.value.replace(
                     /(<([^>]+)>)/gi,
                     ""
                   )}
@@ -62,7 +66,7 @@ const Footer = () => {
                 <div className="footer-contact-info">
                   <span>
                     <a href="mailto:info@stackular.com">
-                      {footerData?.elements?.email?.value.replace(
+                      {data?.elements?.email?.value.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
@@ -70,7 +74,7 @@ const Footer = () => {
                   </span>
                   <span>
                     <a href="tel:+14436097406">
-                      {footerData?.elements?.telephone?.value.replace(
+                      {data?.elements?.telephone?.value.replace(
                         /(<([^>]+)>)/gi,
                         ""
                       )}
@@ -82,7 +86,7 @@ const Footer = () => {
             <div className="col-lg-4 col-md-6 footer-links d-flex">
               <figure className="figure">
                 <img
-                  src={footerData?.elements?.footer_img?.value[0]?.url}
+                  src={data?.elements?.footer_img?.value[0]?.url}
                   className="figure-img img-fluid rounded"
                   alt="..."
                 />
@@ -102,16 +106,16 @@ const Footer = () => {
                 <nav>
                   <ul>
                     <li>
-                      <a href={"/about"}>About</a>
+                      <Link to={PATHS.about}>About</Link>
                     </li>
                     <li>
-                      <a href={"/services"}>Services</a>
+                      <Link to={PATHS.services}>Services</Link>
                     </li>
                     <li>
-                      <a href={"/portfolio"}>Portfolio</a>
+                      <Link to={PATHS.portfolio}>Portfolio</Link>
                     </li>
                     <li>
-                      <a href={"/join-us"}>Join Us</a>
+                      <Link to={PATHS.joinUs}>Join Us</Link>
                     </li>
                   </ul>
                 </nav>
@@ -184,10 +188,7 @@ const Footer = () => {
         } d-flex align-items-center justify-content-center`}
         onClick={scrollToTop}
       >
-        <ArrowUpShort
-          color="#00000"
-          size="1.7em"          
-        />
+        <ArrowUpShort color="#00000" size="1.7em" />
       </a>
     </>
   );

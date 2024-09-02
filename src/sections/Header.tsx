@@ -1,47 +1,84 @@
-import React, { useEffect } from 'react';
-import { FC } from 'react';
-import Logo from '../assets/images/logos/Logo.png'
+import React, { useEffect } from "react";
+import { FC } from "react";
+import Logo from "../assets/images/general/Logo.png";
+import { Link } from "react-router-dom";
+import { PATHS } from "../utils";
 
 interface Props {}
 
 const Header: FC<Props> = () => {
-
   useEffect(() => {
-    const currentPageUrl = window.location.href;
-    const navbarLinks = document.querySelectorAll('#navbar a');
+    /**
+     * Sticky header on scroll
+     */
+    const selectHeader = document.querySelector("#header");
+    if (selectHeader) {
+      document.addEventListener("scroll", () => {
+        window.scrollY > 100
+          ? selectHeader.classList.add("sticked")
+          : selectHeader.classList.remove("sticked");
+      });
+    }
 
-    navbarLinks.forEach(link => {
-      const menuItemUrl = link.getAttribute('href') || '';
+    const currentPageUrl = window.location.href;
+    const navbarLinks = document.querySelectorAll("#navbar a");
+    navbarLinks.forEach((link) => {
+      const menuItemUrl = link.getAttribute("href") || "" || "/";
       if (currentPageUrl.includes(menuItemUrl)) {
-        link.classList.add('active');
+        link.classList.add("active");
       }
     });
   }, []);
 
-
   return (
     <>
-    <div className="top-boreder fixed-top"></div>
-    <header id="header" className="header fixed-top d-flex align-items-center">
-    <div className="container d-flex align-items-center justify-content-between">
-      <a href={"/"} className="logo d-flex align-items-center me-auto me-lg-0">
-        <img src={Logo} alt="" />
-      </a>
-      <nav  id="navbar" className="navbar">
-        <ul >
-          <li><a href={"/about"} >About</a></li>
-          <li><a href={"/services"} >Services</a></li>
-          <li><a href={"/portfolio"} >Portfolio</a></li>
-          <li><a href={"/join-us"} >Join Us</a></li>
-          <li><a className="d-lg-none" href={"/contact-us"}>Contact Us</a></li>
-        </ul>
-      </nav>
-      <a className="btn-contact-us d-none d-lg-block" href={"/contact-us"}>Contact Us</a>
-      <i className="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i className="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-    </div>
-  </header>
-  </>
+      <div className="top-boreder fixed-top"></div>
+      <header
+        id="header"
+        className="header fixed-top d-flex align-items-center"
+      >
+        <div className="container d-flex align-items-center justify-content-between">
+          <Link
+            to={"/"}
+            className="logo d-flex align-items-center me-auto me-lg-0"
+          >
+            <img src={Logo} alt="" />
+          </Link>
+          <nav id="navbar" className="navbar">
+            <ul>
+              <li>
+                <Link to={PATHS.frontpage}>Home</Link>
+              </li>
+              <li>
+                <Link to={PATHS.about}>About</Link>
+              </li>
+              <li>
+                <Link to={PATHS.services}>Services</Link>
+              </li>
+              <li>
+                <Link to={PATHS.portfolio}>Portfolio</Link>
+              </li>
+              <li>
+                <Link to={PATHS.joinUs}>Join Us</Link>
+              </li>
+              <li>
+                <Link className="d-lg-none" to={PATHS.contactUs}>
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <Link
+            className="btn-contact-us d-none d-lg-block"
+            to={PATHS.contactUs}
+          >
+            Contact Us
+          </Link>
+          <i className="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+          <i className="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+        </div>
+      </header>
+    </>
   );
 };
 

@@ -1,20 +1,19 @@
-import React from 'react'
-import Header from '../sections/Header'
-import Footer from '../sections/Footer'
-import '../style/style.css'
-import { useMainContext } from '../hooks/useMainContext'
-import Portfolio from '../sections/Portfolio'
+import React from "react";
+import Header from "../sections/Header";
+import Footer from "../sections/Footer";
+import "../style/style.css";
+import Portfolio from "../sections/Portfolio";
+import useKontentServiceApi from "../services/useKontentServiceApi";
 
 const PortfolioPage = () => {
-  const {storiesData, portfolioData} = useMainContext(); 
-  
+  const { data } = useKontentServiceApi("portfolio_page");
   return (
     <>
-        <Header  />
-        <Portfolio  storiesData={storiesData} data={portfolioData}/>
-        <Footer />
+      <Header />
+      <Portfolio data={data} />
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default PortfolioPage
+export default PortfolioPage;

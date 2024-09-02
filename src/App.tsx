@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Router from './Router';
 import MainContextProvider from './contexts/MainContext';
+import { SnackbarProvider } from 'notistack';
 
 function App() {
   useEffect(()=>{
@@ -14,21 +15,13 @@ function App() {
         preloader.remove();
       });
     }
-
-    /**
-     * Sticky header on scroll
-     */
-    const selectHeader = document.querySelector('#header');
-    if (selectHeader) {
-      document.addEventListener('scroll', () => {
-        window.scrollY > 100 ? selectHeader.classList.add('sticked') : selectHeader.classList.remove('sticked');
-      });
-    }
   },[])
   return (
+    <SnackbarProvider>
     <MainContextProvider>      
         <Router />      
     </MainContextProvider>
+    </SnackbarProvider>
   );
 }
 
