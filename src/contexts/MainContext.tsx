@@ -16,8 +16,8 @@ interface MainContextType {
   error: string | null;
   setError: React.Dispatch<React.SetStateAction<string | null>>;
   t: TFunction<"translation", undefined>;
-  storiesData: {};
-  setStoriesData: React.Dispatch<React.SetStateAction<{}>>;
+  // storiesData: {};
+  // setStoriesData: React.Dispatch<React.SetStateAction<{}>>;
   tribeData: {};
   setTribeData: React.Dispatch<React.SetStateAction<{}>>;
   companyStandardData: {};
@@ -63,7 +63,7 @@ interface MainContextProps {
 const MainContextProvider: FC<MainContextProps> = ({ children }) => {
   const { t } = useTranslation();
   const [data, setData] = useState({});
-  const [storiesData, setStoriesData] = useState({});
+  // const [storiesData, setStoriesData] = useState({});
   const [tribeData, setTribeData] = useState({});
   const [companyStandardData, setCompanyStandardData] = useState({});
   const [aboutData, setAboutData] = useState({});
@@ -91,9 +91,9 @@ const MainContextProvider: FC<MainContextProps> = ({ children }) => {
         const home_page_response = await deliveryClient
           .item("home_page")
           .toPromise();
-        const success_stories_response = await deliveryClient
-          .item("success_stories")
-          .toPromise();
+        // const success_stories_response = await deliveryClient
+        //   .item("success_stories")
+        //   .toPromise();
         const join_our_tribe_response = await deliveryClient
           .item("join_our_tribe")
           .toPromise();
@@ -138,7 +138,7 @@ const MainContextProvider: FC<MainContextProps> = ({ children }) => {
           .item("product_development")
           .toPromise();
         setData(home_page_response.data.item);
-        setStoriesData(success_stories_response.data.item);
+        // setStoriesData(success_stories_response.data.item);
         setTribeData(join_our_tribe_response.data.item);
         setCompanyStandardData(company_standard_response.data.item);
         setAboutData(about_page_response.data.item);
@@ -170,8 +170,8 @@ const MainContextProvider: FC<MainContextProps> = ({ children }) => {
         setData,
         error,
         setError,
-        storiesData,
-        setStoriesData,
+        // storiesData,
+        // setStoriesData,
         tribeData,
         setTribeData,
         companyStandardData,

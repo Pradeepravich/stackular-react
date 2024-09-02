@@ -4,14 +4,15 @@ import About from "../sections/About";
 import Footer from "../sections/Footer";
 import "../style/style.css";
 import useKontentServiceApi from "../services/useKontentServiceApi";
+import { kontentVariables } from "../utils";
 
 const AboutPage = () => {
  
-  const { data } = useKontentServiceApi("about_page");
+  const { data,loading } = useKontentServiceApi(kontentVariables.aboutusPage);
 
   return (
     <>
-      <Header />
+      <Header loading={loading}/>
       <About data={data} />
       <Footer />
     </>

@@ -2,19 +2,22 @@ import React, { useEffect, useState } from "react";
 import Logo_b from "../assets/images/general/Logo_b.png";
 import {
   Linkedin,
-  Instagram,
+  Facebook,
+  ArrowUpShort,
   Whatsapp,
   Github,
-  Facebook,
-  Twitter,
-  ArrowUpShort,
+  Instagram,
+  TwitterX,
 } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import { PATHS } from "../utils";
+import { kontentVariables, PATHS } from "../utils";
 import useKontentServiceApi from "../services/useKontentServiceApi";
+import { ReactComponent as InstagramColoredIcon } from "../assets/images/general/Instagram.svg";
+// import TwitterIcon from "@mui/icons-material/Twitter";
+// import styled from "styled-components";
 
-const Footer = () => {  
-  const { data } = useKontentServiceApi("footer");
+const Footer = () => {
+  const { data } = useKontentServiceApi(kontentVariables.footerPage);
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -49,8 +52,8 @@ const Footer = () => {
       <footer id="footer" className="footer">
         <div className="container">
           <div className="row footer_first">
-            <div className="col-lg-8 col-md-6 d-flex">
-              <div>
+            <div className="col-lg-8 col-md-10 d-flex">
+              <div className="footer-info-sec">
                 <h2>
                   {data?.elements?.reach_out?.value.replace(
                     /(<([^>]+)>)/gi,
@@ -73,7 +76,7 @@ const Footer = () => {
                     </a>
                   </span>
                   <span>
-                    <a href="tel:+14436097406">
+                    <a href="tel:+14436097406" className="telephone">
                       {data?.elements?.telephone?.value.replace(
                         /(<([^>]+)>)/gi,
                         ""
@@ -83,28 +86,33 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 footer-links d-flex">
-              <figure className="figure">
-                <img
-                  src={data?.elements?.footer_img?.value[0]?.url}
-                  className="figure-img img-fluid rounded"
-                  alt="..."
-                />
-              </figure>
+            <div className="col-lg-4 col-md-2 ">
+              <div className="footer-links">
+                <figure className="figure footer-right-img-area">
+                  <img
+                    src={data?.elements?.footer_img?.value[0]?.url}
+                    className="figure-img img-fluid rounded"
+                    alt="..."
+                  />
+                </figure>
+              </div>
             </div>
           </div>
         </div>
         <div className="container">
           <div className="row footer_second">
-            <div className="col-lg-3 col-md-6 d-flex">
-              <div>
+            <div className="col-lg-3  d-flex logo">
+              <div className="mt-2 footer-logo">
                 <img src={Logo_b} alt="" />
               </div>
             </div>
-            <div className="col-lg-6 col-md-8 footer-links d-flex">
+            <div className="col-lg-6  footer-links d-flex">
               <div className="footer-menu">
                 <nav>
-                  <ul>
+                  <ul className="footer-nav-list">
+                    <li>
+                      <Link to={PATHS.home}>Home</Link>
+                    </li>
                     <li>
                       <Link to={PATHS.about}>About</Link>
                     </li>
@@ -121,7 +129,7 @@ const Footer = () => {
                 </nav>
               </div>
             </div>
-            <div className="col-lg-3 col-md-6 footer-links">
+            <div className="col-lg-3  footer-links">
               <div className="social-links d-flex">
                 <a
                   href="https://twitter.com/stackular"
@@ -129,7 +137,15 @@ const Footer = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Twitter />
+                  <TwitterX />
+                </a>
+                <a
+                  href="https://api.whatsapp.com/message/4F6NRKL5EAFFC1"
+                  className="whatsapp"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Whatsapp />
                 </a>
                 <a
                   href="https://www.facebook.com/profile.php?id=100088815441246"
@@ -139,14 +155,7 @@ const Footer = () => {
                 >
                   <Facebook />
                 </a>
-                <a
-                  href="https://www.instagram.com/stackular/"
-                  className="instagram"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Instagram />
-                </a>
+
                 <a
                   href="https://www.linkedin.com/company/stackular/"
                   className="linkedin"
@@ -155,21 +164,23 @@ const Footer = () => {
                 >
                   <Linkedin />
                 </a>
-                <a
-                  href="https://api.whatsapp.com/message/4F6NRKL5EAFFC1"
-                  className="instagram"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Whatsapp />
-                </a>
+
                 <a
                   href="https://github.com/Stackular"
-                  className="instagram"
+                  className="github"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <Github />
+                </a>
+                <a
+                  href="https://www.instagram.com/stackular/"
+                  className="instagram"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Instagram className="instagram-icon" />
+                  <InstagramColoredIcon className="instagram-colored-icon" />
                 </a>
               </div>
             </div>
@@ -177,7 +188,13 @@ const Footer = () => {
         </div>
         <div className="container">
           <div className="row footer_third">
-            <div className="copyright">&copy; 2024, All Rights Reserved</div>
+            <div className="copyright">
+              &copy;&nbsp;
+              <span>{`${data?.elements?.copyrights_year?.value.replace(
+                /(<([^>]+)>)/gi,
+                ""
+              )}, All Rights Reserved`}</span>
+            </div>
           </div>
         </div>
       </footer>
@@ -188,7 +205,7 @@ const Footer = () => {
         } d-flex align-items-center justify-content-center`}
         onClick={scrollToTop}
       >
-        <ArrowUpShort color="#00000" size="1.7em" />
+        <ArrowUpShort size="1.7em" className="scroll-top-btn" />
       </a>
     </>
   );

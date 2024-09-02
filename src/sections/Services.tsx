@@ -1,32 +1,56 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import CompanyStandards from "./CompanyStandards";
+import { Link } from "react-router-dom";
+import { PATHS } from "../utils";
+import { useLocation } from "react-router-dom";
 
 interface Props {
   pageData: any;
   services: any;
+  categories?: any;
 }
 
-const Services: FC<Props> = ({ pageData, services }) => {
-  const [activeTab, setActiveTab] = useState<string>("Product");
-  const openGrid = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    serviceName: string
-  ) => {
-    setActiveTab(serviceName);
-  };
+const Services: FC<Props> = ({ pageData, services, categories }) => {
+  const [activeTab, setActiveTab] = useState<string>("");
+  const params = useLocation();
 
-  console.log("services", services)
-  console.log("pageData", pageData)
+  // const selectedCategoryCodename = categories.map((item: any)=> item.name === params.state ? item.codename : item);
+
+  // const categoryNames = categories.map((item: any)=> item.name);
+
+  useEffect(() => {
+    if (categories.length > 0) {
+      setActiveTab(categories[0]?.codename);
+    }
+    if (params.state !== null || undefined) {
+      categories.map((item: any) => {
+        if (item.name === params.state) {
+          setActiveTab(item.codename);
+        }
+        return item;
+      });
+    }
+  }, [categories, params.state]);
+
+  const openGrid = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    categoryName: string
+  ) => {
+    setActiveTab(categoryName);
+  };
 
   return (
     <>
       <main id="main">
         <div className="container">
           <div className="row">
-            <section id="services" className="services hero-padding">
+            <section
+              id="services"
+              className="services hero-padding services-list"
+            >
               <div className="container">
-                <div className="row gy-4">
-                  <div className="col-lg-8 services-title d-none d-md-block">
+                <div className="row gy-4 services-main">
+                  <div className={`col-lg-8 services-title d-none d-md-block`}>
                     <h1>
                       {pageData?.elements?.title?.value?.replace(
                         /(<([^>]+)>)/gi,
@@ -45,631 +69,130 @@ const Services: FC<Props> = ({ pageData, services }) => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-lg-12 services-title d-block d-md-none">
-                    <h1>
-                      {pageData?.elements?.title?.value?.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
-                    </h1>
+                  <div className="col-lg-12 md:hidden lg:hidden">
+                    <div className="relative d-flex align-items-center justify-between my-4">
+                      <h1 className="absolute text-left">
+                        {pageData?.elements?.title?.value?.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </h1>
+                      <div className="ps-0 ps-lg-5">
+                        <img
+                          src={pageData?.elements?.top_right_img?.value[0]?.url}
+                          className="img-fluid w-[55%] float-end"
+                          alt=""
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className="col-lg-12 tabs">
                   <div className="box" id="boxid">
                     <div className="navlist">
-                      <a
-                        href={"/"}
-                        onMouseOver={(event) => openGrid(event, "Product")}
-                        className={`btn btn-plain tablinks ${
-                          activeTab === "Product" ? "active_tab" : ""
-                        }`}
-                      >
-                        {services?.elements?.product_development?.value?.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}
-                      </a>
-                    </div>
-                    <div className="navlist">
-                      <a
-                        href={"/"}
-                        onMouseOver={(event) => openGrid(event, "Data")}
-                        className={`btn btn-plain tablinks ${
-                          activeTab === "Data" ? "active_tab" : ""
-                        }`}
-                      >
-                        {services?.elements?.data_visualization?.value?.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}
-                      </a>
-                    </div>
-                    <div className="navlist">
-                      <a
-                        href={"/"}
-                        onMouseOver={(event) => openGrid(event, "Enterprise")}
-                        className={`btn btn-plain tablinks ${
-                          activeTab === "Enterprise" ? "active_tab" : ""
-                        }`}
-                      >
-                        {services?.elements?.enterprise_systems?.value?.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}
-                      </a>
-                    </div>
-                    <div className="navlist">
-                      <a
-                        href={"/"}
-                        onMouseOver={(event) => openGrid(event, "Digital")}
-                        className={`btn btn-plain tablinks ${
-                          activeTab === "Digital" ? "active_tab" : ""
-                        }`}
-                      >
-                        {services?.elements?.digital_experience?.value?.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}
-                      </a>
+                      {categories.map((category: any) => (
+                        <button
+                          onMouseOver={(event) =>
+                            openGrid(event, category?.codename)
+                          }
+                          className={`btn btn-plain tablinks ${
+                            activeTab === category?.codename ? "active_tab" : ""
+                          }`}
+                          key={category?.codename}
+                        >
+                          {category?.name}
+                        </button>
+                      ))}
                     </div>
                   </div>
                 </div>
-                <div className="tabcontents mt-5">
+                <div className="tabcontents mt-5 mt-sd-1 mt-med-1">
                   <div className="textbox">
-                    {activeTab === "Product" && (
-                      <div id="Product" className="tabcontent active_content">
-                        <div className="row">
-                          <div className="col-lg-4 services-cards border_right">
-                            <img
-                              src={
-                                services?.elements?.product_strategy_img
-                                  ?.value[0]?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.product_strategy?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
+                    {categories.map(
+                      (category: any) =>
+                        activeTab === category?.codename && (
+                          <div
+                            id="Product"
+                            className="tabcontent active_content"
+                            key={category?.codename}
+                          >
+                            <div className="row">
+                              {services?.map((service: any, index: any) =>
+                                service?.elements?.service_category?.value[0]
+                                  ?.codename === category?.codename ? (
+                                  <div
+                                    className="col-lg-4 col-md-6"
+                                    key={index}
+                                  >
+                                    <div className="services-cards border-[0.6px] border-[#D1D5DB] rounded-lg mb-4 border-opacity-20">
+                                      <Link
+                                        to={`${PATHS.serviceInfo}?id=${btoa(
+                                          service.system.codename
+                                        )}`}
+                                      >
+                                        <img
+                                          src={
+                                            service?.elements?.image?.value[0]
+                                              ?.url
+                                          }
+                                          className="img-fluid rounded-tl-lg rounded-tr-lg w-full"
+                                          alt=""
+                                          key={index}
+                                        />
+                                      </Link>
+                                      <div className="p-3">
+                                        <div className="service-content">
+                                          <Link
+                                            to={`${PATHS.serviceInfo}?id=${btoa(
+                                              service.system.codename
+                                            )}`}
+                                          >
+                                            <h4>
+                                              {service?.elements?.title?.value?.replace(
+                                                /(<([^>]+)>)/gi,
+                                                ""
+                                              )}
+                                            </h4>
+                                          </Link>
+                                          <p>
+                                            {service?.elements?.short_description?.value?.replace(
+                                              /(<([^>]+)>)/gi,
+                                              ""
+                                            )}
+                                          </p>
+                                        </div>
+                                        <Link
+                                          to={`${PATHS.serviceInfo}?id=${btoa(
+                                            service.system.codename
+                                          )}`}
+                                        >
+                                          <img
+                                            src={
+                                              service?.elements?.button_icon
+                                                ?.value[0]?.url
+                                            }
+                                            className="figure-img img-fluid rounded"
+                                            alt="..."
+                                          />
+                                        </Link>
+                                      </div>
+                                    </div>
+                                  </div>
+                                ) : (
+                                  ""
+                                )
                               )}
-                            </h4>
-                            <p>
-                              {services?.elements?.crafting_strategic?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.strategy_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
+                            </div>
                           </div>
-                          <div className="col-lg-4 services-cards border_right">
-                            <img
-                              src={
-                                services?.elements?.product_management_img
-                                  ?.value[0]?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.product_management?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.strategic_guidance?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.strategy_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                          <div className="col-lg-4 services-cards">
-                            <img
-                              src={
-                                services?.elements?.experience_design_img
-                                  ?.value[0]?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.experience_design?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.crafting_seamless?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.design_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                          <div className="border_bottom"></div>
-                          <div className="col-lg-4 services-cards border_right">
-                            <img
-                              src={
-                                services?.elements?.mvp_implementation_img
-                                  ?.value[0]?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.mvp_implementation?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.efficiently_build?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.mvp_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                          <div className="col-lg-4 services-cards border_right">
-                            <img
-                              src={
-                                services?.elements?.operations_support_img
-                                  ?.value[0]?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.operations_support?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.operations_support_streamlines?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.operations_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                    {activeTab === "Data" && (
-                      <div id="Data" className="tabcontent active_content">
-                        <div className="row">
-                          <div className="col-lg-4 services-cards border_right">
-                            <img
-                              src={
-                                services?.elements?.artificial_intelligence_img
-                                  ?.value[0]?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.artificial_intelligence?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.ai_services_leverage?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.artificial_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                          <div className="col-lg-4 services-cards border_right">
-                            <img
-                              src={
-                                services?.elements?.business_img?.value[0]?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.business_intelligence?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.data_driven_insights?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.business_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                          <div className="col-lg-4 services-cards">
-                            <img
-                              src={services?.elements?.data_img?.value[0]?.url}
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.data_visualization?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.transforms_complex_data?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.data_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                          <div className="border_bottom"></div>
-                          <div className="col-lg-4 services-cards border_right">
-                            <img
-                              src={
-                                services?.elements?.platform_img?.value[0]?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.platform_modernization?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.modernize_platforms?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.platform_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                    {activeTab === "Enterprise" && (
-                      <div
-                        id="Enterprise"
-                        className="tabcontent active_content"
-                      >
-                        <div className="row">
-                          <div className="col-lg-4 services-cards border_right">
-                            <img
-                              src={
-                                services?.elements?.modern_workplace_img
-                                  ?.value[0]?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.modern_workplace?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.innovate_collaboration?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.modern_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                          <div className="col-lg-4 services-cards border_right">
-                            <img
-                              src={
-                                services?.elements?.service_desk_img?.value[0]
-                                  ?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.service_desk?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.service_desk_offers?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.service_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                          <div className="col-lg-4 services-cards">
-                            <img
-                              src={
-                                services?.elements?.managed_services_img
-                                  ?.value[0]?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.managed_services?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.it_support?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.managed_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                          <div className="border_bottom"></div>
-                          <div className="col-lg-4 services-cards border_right">
-                            <img
-                              src={services?.elements?.bpm_img?.value[0]?.url}
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.bpm?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.bpm_services_optimize?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.bpm_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                          <div className="col-lg-4 services-cards border_right">
-                            <img
-                              src={services?.elements?.crm_img?.value[0]?.url}
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.crm?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.streamlines_customer_interactions?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.crm_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                    {activeTab === "Digital" && (
-                      <div id="Digital" className="tabcontent active_content">
-                        <div className="row">
-                          <div className="col-lg-4 services-cards border_right">
-                            <img
-                              src={
-                                services?.elements?.ux_research_img?.value[0]
-                                  ?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.ux_research?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.unlock_user_insights?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.ux_research_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                          <div className="col-lg-4 services-cards border_right">
-                            <img
-                              src={
-                                services?.elements?.ux_design_img?.value[0]?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.ui_ux_design?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.ui_ux_design_creates?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.ux_design_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                          <div className="col-lg-4 services-cards">
-                            <img
-                              src={
-                                services?.elements?.branding_img?.value[0]?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.branding?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.branding_services_craft?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.branding_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                          <div className="border_bottom"></div>
-                          <div className="col-lg-4 services-cards border_right">
-                            <img
-                              src={
-                                services?.elements?.usability_img?.value[0]?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.usability_testing?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.usability_testing_observes?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.usability_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                          <div className="col-lg-4 services-cards border_right">
-                            <img
-                              src={
-                                services?.elements?.design_audit_img?.value[0]
-                                  ?.url
-                              }
-                              className="img-fluid"
-                              alt=""
-                            />
-                            <h4>
-                              {services?.elements?.design_audit?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </h4>
-                            <p>
-                              {services?.elements?.design_audit_ensures?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </p>
-                            <a href={"/"}>
-                              {services?.elements?.design_learn_more?.value?.replace(
-                                /(<([^>]+)>)/gi,
-                                ""
-                              )}
-                            </a>
-                          </div>
-                        </div>
-                      </div>
+                        )
                     )}
                   </div>
                 </div>
               </div>
             </section>
-            <CompanyStandards />
+            <div>
+              <CompanyStandards />
+            </div>
           </div>
         </div>
       </main>

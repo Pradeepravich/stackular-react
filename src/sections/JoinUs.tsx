@@ -1,31 +1,37 @@
 import React, { FC } from "react";
-import { ArrowDownCircleFill } from "react-bootstrap-icons";
+// import { ArrowDownCircleFill } from "react-bootstrap-icons";
 import play from "../assets/images/general/8180-4a2b-a6e4-784e016a00b3.mp4";
 import TribeSection from "./TribeSection";
+import ArrowDownBtn from "../assets/images/general/down_arrow_btn.png";
+import { Link } from "react-router-dom";
+import CurrentOpenings from "./CurrentOpenings";
 
 interface Props {
   data: any;
+  openings?: any;
+  openingsType?: any;
 }
 
-const JoinUs: FC<Props> = ({ data }) => {
+const JoinUs: FC<Props> = ({ data, openings, openingsType }) => {
   const scrollToSection = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
     event.preventDefault();
-    const targetDiv = document.getElementById("projects");
+    const targetDiv = document.getElementById("scroll-to-projects-section");
     if (targetDiv) {
       targetDiv.scrollIntoView({ behavior: "smooth" });
     }
   };
+
   return (
     <>
       <main id="main">
         <div className="container">
           <div className="row">
-            <section id="join" className="join-us-sec hero-padding">
+            <section id="join" className="join-us-sec page-top-padding">
               <div className="container">
                 <div className="row gy-4">
-                  <div className="col-lg-7 join-us-header">
+                  <div className="col-lg-7 col-md-7 join-us-header">
                     <div className="section-header mt-5">
                       <h1>
                         {data?.elements?.title?.value.replace(
@@ -40,8 +46,8 @@ const JoinUs: FC<Props> = ({ data }) => {
                         )}
                       </p>
                       <div className="form-group">
-                        <a
-                          href={"#projects"}
+                        <Link
+                          to={"#scroll-to-projects-section"}
                           onClick={scrollToSection}
                           className="btn btn-primary !text-left !py-2 !pl-4 group"
                         >
@@ -50,21 +56,17 @@ const JoinUs: FC<Props> = ({ data }) => {
                             ""
                           )}
                           <span className="float-end ml-4 ">
-                            <ArrowDownCircleFill
-                              color="#87FCFE"
-                              size="1.7em"
-                              className="arrow-right-circle-fill"
-                            />
+                            <img src={ArrowDownBtn} alt="" />
                           </span>
                           <span className="clear-both"></span>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
-                  <div className="col-lg-5">
+                  <div className="col-lg-5 col-md-5">
                     <img
                       src={data?.elements?.joinus_img?.value[0]?.url}
-                      className="figure-img img-fluid rounded"
+                      className="figure-img img-fluid rounded w-100"
                       alt="..."
                     />
                   </div>
@@ -72,18 +74,18 @@ const JoinUs: FC<Props> = ({ data }) => {
               </div>
             </section>
 
-            <section id="join_us" className="join-inner-sec mt-5">
+            <section id="join_us" className="join-inner-sec mt-5 mt-med-3">
               <div className="container">
-                <div className="row gy-lg-4">
-                  <div className="section-header">
-                    <h3>
-                      {data?.elements?.treasure_section?.value.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
-                    </h3>
-                  </div>
-                  <div className="col-lg-4 mt-lg-5 mt-sm-3 inner-page">
+                <div className="section-header">
+                  <h3>
+                    {data?.elements?.treasure_section?.value.replace(
+                      /(<([^>]+)>)/gi,
+                      ""
+                    )}
+                  </h3>
+                </div>
+                <div className="row gy-lg-4 gy-md-4">
+                  <div className="col-lg-4 col-md-4 mt-lg-5 mt-sd-0 inner-page">
                     <div className="join-card flex items-center">
                       <img
                         src={data?.elements?.work_life_img?.value[0]?.url}
@@ -140,7 +142,7 @@ const JoinUs: FC<Props> = ({ data }) => {
                       </span>
                     </div>
                   </div>
-                  <div className="col-lg-4 mt-lg-5 inner-page">
+                  <div className="col-lg-4 col-md-4 mt-lg-5 inner-page">
                     <div className="join-card flex items-center">
                       <img
                         src={data?.elements?.competitive_pay_img?.value[0]?.url}
@@ -194,7 +196,7 @@ const JoinUs: FC<Props> = ({ data }) => {
                       </span>
                     </div>
                   </div>
-                  <div className="col-lg-4 mt-lg-5 inner-page">
+                  <div className="col-lg-4 col-md-4 mt-lg-5 inner-page">
                     <div className="join-card flex items-center">
                       <img
                         src={
@@ -253,32 +255,32 @@ const JoinUs: FC<Props> = ({ data }) => {
                     </div>
                   </div>
                 </div>
-                <div className="row mt-lg-5 gy-lg-4">
-                  <div className="col-lg-6 mt-3">
+                <div className="row mt-lg-5 mt-med-2 gy-lg-4 gy-md-4">
+                  <div className="col-lg-6 col-md-6 mt-3 mt-sd-0 mt-med-0">
                     <img
                       src={data?.elements?.image1?.value[0]?.url}
                       className="figure-img img-fluid rounded"
                       alt="..."
                     />
                   </div>
-                  <div className="col-lg-6 mt-lg-3">
-                    <div className="col-lg-12">
+                  <div className="col-lg-6 col-md-6 mt-lg-0 mt-med-0">
+                    <div className="col-lg-12 col-md-12">
                       <video autoPlay muted loop id="join_us_video">
                         <source src={play} type="video/mp4" />
                       </video>
                     </div>
-                    <div className="row mt-lg-3">
-                      <div className="col-lg-6">
+                    <div className="row mt-lg-3 mt-sd-0 mt-med-0">
+                      <div className="col-lg-6 col-md-6">
                         <img
                           src={data?.elements?.image2?.value[0]?.url}
-                          className="figure-img img-fluid rounded"
+                          className="figure-img img-fluid rounded mt-sd-1 mb-sd-1"
                           alt="..."
                         />
                       </div>
-                      <div className="col-lg-6">
+                      <div className="col-lg-6 col-md-6">
                         <img
                           src={data?.elements?.image3?.value[0]?.url}
-                          className="figure-img img-fluid rounded"
+                          className="figure-img img-fluid rounded mt-sd-1 mb-sd-1"
                           alt="..."
                         />
                       </div>
@@ -287,141 +289,12 @@ const JoinUs: FC<Props> = ({ data }) => {
                 </div>
               </div>
             </section>
-
-            <section id="projects" className="projects our-jobs smt-8">
-              <div className="container">
-                <div className="section-header">
-                  <p>Unlock Your Potential</p>
-                  <h2>OUR CURRENT OPENINGS</h2>
-                </div>
-                <div className="row mt-5 g-0">
-                  <div className="col-lg-5 job-titles">
-                    <h4 className="small">Software Development</h4>
-                    <p>02 positions</p>
-                  </div>
-                  <div className="col-lg-7 align-items-center job-cards mb-3">
-                    <div className="job-card">
-                      <div className="d-lg-flex justify-content-between">
-                        <h4 className="small">Frontend Developer</h4>
-                        <div className="justify-content-end">
-                          <span>
-                            <i className="bi bi-clock"></i>Full-time
-                          </span>
-                          <span>
-                            <i className="bi bi-geo-alt"></i>Hyderabad, India
-                          </span>
-                        </div>
-                      </div>
-                      <p>
-                        We are looking for experienced frontend developer to
-                        collaborate with our team
-                      </p>
-                      <a href="#arrow" className="btn btn-linkedin">
-                        <i className="bi bi-linkedin"></i> Apply with LinkedIn
-                      </a>
-                    </div>
-                    <div className="job-card">
-                      <div className="d-lg-flex justify-content-between">
-                        <h4 className="small">Senior Backend Developer</h4>
-                        <div className="justify-content-end">
-                          <span>
-                            <i className="bi bi-clock"></i>Full-time
-                          </span>
-                          <span>
-                            <i className="bi bi-geo-alt"></i>Hyderabad, India
-                          </span>
-                        </div>
-                      </div>
-                      <p>
-                        We are looking for experienced frontend developer to
-                        collaborate with our team
-                      </p>
-                      <a href="#arrow" className="btn btn-linkedin">
-                        <i className="bi bi-linkedin"></i> Apply with LinkedIn
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-12 mt-3 border-middle"></div>
-                <div className="row mt-5 g-0">
-                  <div className="col-lg-5 job-titles">
-                    <h4 className="small">Designer</h4>
-                    <p>02 positions</p>
-                  </div>
-                  <div className="col-lg-7 align-items-center job-cards mb-3">
-                    <div className="job-card">
-                      <div className="d-lg-flex justify-content-between">
-                        <h4 className="small">Graphic Designer</h4>
-                        <div className="justify-content-end">
-                          <span>
-                            <i className="bi bi-clock"></i>Full-time
-                          </span>
-                          <span>
-                            <i className="bi bi-geo-alt"></i>Hyderabad, India
-                          </span>
-                        </div>
-                      </div>
-                      <p>
-                        We are looking for experienced frontend developer to
-                        collaborate with our team
-                      </p>
-                      <a href="#arrow" className="btn btn-linkedin">
-                        <i className="bi bi-linkedin"></i> Apply with LinkedIn
-                      </a>
-                    </div>
-                    <div className="job-card">
-                      <div className="d-lg-flex justify-content-between">
-                        <h4 className="small">UX Researcher</h4>
-                        <div className="justify-content-end">
-                          <span>
-                            <i className="bi bi-clock"></i>Full-time
-                          </span>
-                          <span>
-                            <i className="bi bi-geo-alt"></i>Hyderabad, India
-                          </span>
-                        </div>
-                      </div>
-                      <p>
-                        We are looking for experienced frontend developer to
-                        collaborate with our team
-                      </p>
-                      <a href="#arrow" className="btn btn-linkedin">
-                        <i className="bi bi-linkedin"></i> Apply with LinkedIn
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-12 mt-3 border-middle"></div>
-                <div className="row mt-5 g-0">
-                  <div className="col-lg-5 job-titles">
-                    <h4 className="small">Customer Management</h4>
-                    <p>01 positions</p>
-                  </div>
-                  <div className="col-lg-7 align-items-center job-cards">
-                    <div className="job-card">
-                      <div className="d-lg-flex justify-content-between">
-                        <h4 className="small">Customer Services</h4>
-                        <div className="justify-content-end">
-                          <span>
-                            <i className="bi bi-clock"></i>Full-time
-                          </span>
-                          <span>
-                            <i className="bi bi-geo-alt"></i>Hyderabad, India
-                          </span>
-                        </div>
-                      </div>
-                      <p>
-                        We are looking for experienced frontend developer to
-                        collaborate with our team
-                      </p>
-                      <a href="#arrow" className="btn btn-linkedin">
-                        <i className="bi bi-linkedin"></i> Apply with LinkedIn
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
+            <div id="scroll-to-projects-section"></div>
+            <CurrentOpenings
+              data={data}
+              openings={openings}
+              openingsType={openingsType}
+            />
             <TribeSection />
           </div>
         </div>

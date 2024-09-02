@@ -1,15 +1,17 @@
 import React, { FC } from "react";
-import { ArrowRightCircleFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import useKontentServiceApi from "../services/useKontentServiceApi";
+import ArrowRightBtn from "../assets/images/general/right_arrow_btn.png";
+import { kontentVariables } from "../utils";
+
 
 interface Props {}
 const TribeSection: FC<Props> = () => {
 
-  const { data } = useKontentServiceApi("join_our_tribe");
+  const { data } = useKontentServiceApi(kontentVariables.joinUsTribeContentType);
 
   return (
-    <section id="join_us" className="join-us-sec mt-5">
+    <section id="join_us" className="join-us-sec mt-5 mt-sd-1 mt-med-1 tribe-sec">
       <div className="container">
         <div className="row gy-4">
           <div className="col-lg-6 join-us-haed">
@@ -20,8 +22,8 @@ const TribeSection: FC<Props> = () => {
                   ""
                 )}
               </h2>
-              <div className="mt-5"></div>
-              <div className="join-card flex items-center">
+              {/* <div className="mt-5 mt-sd-1 mt-md-2 md-hidden"></div> */}
+              <div className="join-card flex items-center learning-skills">
                 <img
                   src={data?.elements?.img1?.value[0]?.url}
                   className="img-fluid"
@@ -34,7 +36,7 @@ const TribeSection: FC<Props> = () => {
                   )}
                 </span>
               </div>
-              <div className="join-card flex items-center">
+              <div className="join-card flex items-center learning-skills">
                 <img
                   src={data?.elements?.img2?.value[0]?.url}
                   className="img-fluid"
@@ -47,7 +49,7 @@ const TribeSection: FC<Props> = () => {
                   )}
                 </span>
               </div>
-              <div className="join-card flex items-center">
+              <div className="join-card flex items-center learning-skills">
                 <img
                   src={data?.elements?.img3?.value[0]?.url}
                   className="img-fluid"
@@ -60,7 +62,7 @@ const TribeSection: FC<Props> = () => {
                   )}
                 </span>
               </div>
-              <div className="join-card flex items-center">
+              <div className="join-card flex items-center learning-skills">
                 <img
                   src={data?.elements?.img4?.value[0]?.url}
                   className="img-fluid"
@@ -73,7 +75,7 @@ const TribeSection: FC<Props> = () => {
                   )}
                 </span>
               </div>
-              <div className="join-card flex items-center">
+              <div className="join-card flex items-center learning-skills">
                 <img
                   src={data?.elements?.img5?.value[0]?.url}
                   className="img-fluid"
@@ -86,20 +88,30 @@ const TribeSection: FC<Props> = () => {
                   )}
                 </span>
               </div>
+              <div className="join-card flex items-center learning-skills">
+                <img
+                  src={data?.elements?.img6?.value[0]?.url}
+                  className="img-fluid"
+                  alt=""
+                />
+                <span className="ml-1">
+                  {data?.elements?.growth?.value.replace(
+                    /(<([^>]+)>)/gi,
+                    ""
+                  )}
+                </span>
+              </div>
               <Link
                 to={data?.elements?.join_learn_more_url?.value}
-                className="btn btn-primary !text-left py-2 group"
+                className="btn btn-primary !text-left py-2 group tribe-btn"
+                onClick={()=>window.scrollTo(0,0)}
               >
                 {data?.elements?.join_learn_more?.value.replace(
                   /(<([^>]+)>)/gi,
                   ""
                 )}
                 <span className="float-end ml-4 ">
-                  <ArrowRightCircleFill
-                    color="#87FCFE"
-                    size="1.7em"
-                    className="arrow-right-circle-fill"
-                  />
+                <img src={ArrowRightBtn} alt="" />
                 </span>
                 <span className="clear-both"></span>
               </Link>

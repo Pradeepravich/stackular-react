@@ -1,148 +1,211 @@
 import React, { FC } from "react";
-import { ArrowRightCircleFill } from "react-bootstrap-icons";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { kontentVariables, PATHS } from "../utils";
 import useKontentServiceApi from "../services/useKontentServiceApi";
 import useContentTypes from "../services/useContentTypes";
 
-interface Props {}
-const SuccessStoriesSection: FC<Props> = () => {
+interface Props {
+  limit?: number;
+}
+const SuccessStoriesSection: FC<Props> = ({ limit }) => {
+  const { data } = useKontentServiceApi(kontentVariables.successStoriesPage);
+  const { contentItems } = useContentTypes(
+    kontentVariables.portfolioInfoContentType
+  );
 
-  const { data } = useKontentServiceApi("success_stories_section");
-  const { contentTypes } = useContentTypes(kontentVariables.projects);
+  const displayedContentItems = limit
+    ? contentItems?.slice(0, limit)
+    : contentItems;
 
   return (
-    <section id="projects" className="projects smt-8">
+    <section id="projects" className="projects smt-8 mt-sd-2  mt-med-2 mt-ld-4">
       <div className="container">
         <div className="section-header">
           <p>
-            {data?.elements?.title?.value.replace(
-              /(<([^>]+)>)/gi,
-              ""
-            )}
+            {displayedContentItems?.length
+              ? data?.elements?.title?.value.replace(/(<([^>]+)>)/gi, "")
+              : ""}
           </p>
           <h2>
-            {data?.elements?.description?.value.replace(
-              /(<([^>]+)>)/gi,
-              ""
-            )}
+            {displayedContentItems?.length
+              ? data?.elements?.description?.value.replace(/(<([^>]+)>)/gi, "")
+              : ""}
           </h2>
         </div>
-
-        {contentTypes && contentTypes.map((item: any,i: any)=>(
-        <div className="row mt-5 g-0" key={i}>
-          <div className={`col-lg-6 ${i % 2 === 1 ? 'align-items-center project-card' : ''}`}>
-          {i % 2 === 0 ? (
-          <Link to={`${PATHS.portfolioInfo}?id=${btoa(item.system.codename)}`}>
-          <img src={
-                item?.elements?.image?.value[0]
-                  ?.url
-              }
-              className="img-fluid"
-              alt=""
-            /></Link>
-          ) : (
-            <>           
-            <h4>
-              {item?.elements?.title?.value.replace(
-                /(<([^>]+)>)/gi,
-                ""
-              )}
-            </h4>
-            <p>
-              {item?.elements?.description?.value.replace(
-                /(<([^>]+)>)/gi,
-                ""
-              )}
-            </p>
-            <span>
-              {item?.elements?.technologies_3752ab0__label1?.value.replace(
-                /(<([^>]+)>)/gi,
-                ""
-              )}
-            </span>
-            <span>
-              {item?.elements?.technologies_3752ab0__label2?.value.replace(
-                /(<([^>]+)>)/gi,
-                ""
-              )}
-            </span>
-            <span>
-              {item?.elements?.technologies_3752ab0__label3?.value.replace(
-                /(<([^>]+)>)/gi,
-                ""
-              )}
-            </span>
-            </>
-            )}
-          </div>
-          <div className={`col-lg-6  ${i % 2 === 0 ? 'align-items-center project-card' : ''}`}>
-          {i % 2 === 0 ? (
-            <>           
-            <h4>
-              {item?.elements?.title?.value.replace(
-                /(<([^>]+)>)/gi,
-                ""
-              )}
-            </h4>
-            <p>
-              {item?.elements?.description?.value.replace(
-                /(<([^>]+)>)/gi,
-                ""
-              )}
-            </p>
-            <span>
-              {item?.elements?.technologies_3752ab0__label1?.value.replace(
-                /(<([^>]+)>)/gi,
-                ""
-              )}
-            </span>
-            <span>
-              {item?.elements?.technologies_3752ab0__label2?.value.replace(
-                /(<([^>]+)>)/gi,
-                ""
-              )}
-            </span>
-            <span>
-              {item?.elements?.technologies_3752ab0__label3?.value.replace(
-                /(<([^>]+)>)/gi,
-                ""
-              )}
-            </span>
-            </>
-            ) : (
-              <Link to={`${PATHS.portfolioInfo}?id=${btoa(item.system.codename)}`}>
-              <img src={
-                    item?.elements?.image?.value[0]
-                      ?.url
-                  }
-                  className="img-fluid"
-                  alt=""
-                /></Link>
-              )}
-          </div>
-        </div>
-        ))}
-
-        <div className="form-group">
-          <Link
-            to={PATHS.portfolio}
-            className="btn btn-primary !text-left py-2 group"
-          >
-            {data?.elements?.view_btn?.value.replace(
-              /(<([^>]+)>)/gi,
-              ""
-            )}
-            <span className="float-end ml-4 ">
-              <ArrowRightCircleFill
-                color="#87FCFE"
-                size="1.7em"
-                className="arrow-right-circle-fill"
-              />
-            </span>
-            <span className="clear-both"></span>
-          </Link>
-        </div>
+        {displayedContentItems &&
+          displayedContentItems.map((item: any, i: any) => (
+            <div className="row mt-5 mt-sd-1 mt-med-2 g-0" key={i}>
+              <div className={`col-lg-6 col-md-6 align-items-center pr-med-1`}>
+                {i % 2 === 0 ? (
+                  <>
+                    <Link
+                      to={`${PATHS.portfolioInfo}?id=${btoa(
+                        item.system.codename
+                      )}`}
+                      className="no-underline text-inherit"
+                    >
+                      <img
+                        src={item?.elements?.image?.value[0]?.url}
+                        className="img-fluid sm-block   !hidden"
+                        alt=""
+                      />
+                    </Link>
+                    <div className="project-card sm-hidden   !block">
+                      <Link
+                        to={`${PATHS.portfolioInfo}?id=${btoa(
+                          item.system.codename
+                        )}`}
+                        className="no-underline text-inherit"
+                      >
+                        <h4>
+                          {item?.elements?.title?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </h4>
+                      </Link>
+                      <p>
+                        {item?.elements?.short_description?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </p>
+                      <span>
+                        {item?.elements?.technologies_3752ab0__label1?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
+                      <span>
+                        {item?.elements?.technologies_3752ab0__label2?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
+                      <span>
+                        {item?.elements?.technologies_3752ab0__label3?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
+                    </div>
+                  </>
+                ) : (
+                  <Link
+                    to={`${PATHS.portfolioInfo}?id=${btoa(
+                      item.system.codename
+                    )}`}
+                    className="no-underline"
+                  >
+                    <img
+                      src={item?.elements?.image?.value[0]?.url}
+                      className="img-fluid"
+                      alt=""
+                    />
+                  </Link>
+                )}
+              </div>
+              <div className={`col-lg-6 col-md-6 align-items-center`}>
+                {i % 2 === 0 ? (
+                  <>
+                    <Link
+                      to={`${PATHS.portfolioInfo}?id=${btoa(
+                        item.system.codename
+                      )}`}
+                      className="no-underline text-inherit"
+                    >
+                      <img
+                        src={item?.elements?.image?.value[0]?.url}
+                        className="img-fluid sm-hidden  !block"
+                        alt=""
+                      />
+                    </Link>
+                    <div className="project-card sm-block  !hidden">
+                      <Link
+                        to={`${PATHS.portfolioInfo}?id=${btoa(
+                          item.system.codename
+                        )}`}
+                        className="no-underline text-inherit"
+                      >
+                        <h4>
+                          {item?.elements?.title?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </h4>
+                      </Link>
+                      <p>
+                        {item?.elements?.description?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </p>
+                      <span>
+                        {item?.elements?.technologies_3752ab0__label1?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
+                      <span>
+                        {item?.elements?.technologies_3752ab0__label2?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
+                      <span>
+                        {item?.elements?.technologies_3752ab0__label3?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="project-card">
+                      <Link
+                        to={`${PATHS.portfolioInfo}?id=${btoa(
+                          item.system.codename
+                        )}`}
+                        className="no-underline text-inherit"
+                      >
+                        <h4>
+                          {item?.elements?.title?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </h4>
+                      </Link>
+                      <p>
+                        {item?.elements?.description?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </p>
+                      <span>
+                        {item?.elements?.technologies_3752ab0__label1?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
+                      <span>
+                        {item?.elements?.technologies_3752ab0__label2?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
+                      <span>
+                        {item?.elements?.technologies_3752ab0__label3?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          ))}
       </div>
     </section>
   );

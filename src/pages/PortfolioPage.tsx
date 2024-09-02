@@ -4,12 +4,13 @@ import Footer from "../sections/Footer";
 import "../style/style.css";
 import Portfolio from "../sections/Portfolio";
 import useKontentServiceApi from "../services/useKontentServiceApi";
+import { kontentVariables } from "../utils";
 
 const PortfolioPage = () => {
-  const { data } = useKontentServiceApi("portfolio_page");
+  const { data, loading } = useKontentServiceApi(kontentVariables.portfolioPage);
   return (
     <>
-      <Header />
+      <Header loading={loading}/>
       <Portfolio data={data} />
       <Footer />
     </>

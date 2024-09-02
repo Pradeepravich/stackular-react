@@ -7,21 +7,26 @@ export const client = createDeliveryClient({
 });
 
 const useContentTypes = (contentTypeName: string) => {
-  const [contentTypes, setContentTypes] = useState<any>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [contentItems, setContentItems] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
   const [errorCode, setErrorCode] = useState<number>(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         // const response = await client.items<any>().type('sample').toPromise();        
-        const response = await client.items<any>().type(contentTypeName).toPromise();       
-        setContentTypes(response?.data?.items);        
+        const response = await client.items<any>()
+        .type(contentTypeName)
+        .orderByDescending('system.last_modified')
+        .toPromise();       
+        setContentItems(response?.data?.items);        
       } catch (err: any) {
         console.error('Error fetching content items:', err);        
         setError(err as Error);
         setErrorCode(err.errorCode);
+        setLoading(true);
       } finally {
         setLoading(false);
       }
@@ -30,7 +35,7 @@ const useContentTypes = (contentTypeName: string) => {
     fetchData();
   }, [contentTypeName]);
 
-  return { contentTypes, loading, error, errorCode };
+  return { contentItems, loading, error, errorCode };
 };
 
 export default useContentTypes;

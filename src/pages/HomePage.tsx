@@ -4,14 +4,15 @@ import Home from "../sections/Home";
 import Footer from "../sections/Footer";
 import "../style/style.css";
 import useKontentServiceApi from "../services/useKontentServiceApi";
+import { kontentVariables } from "../utils";
 
 const HomePage = () => {
 
-  const { data } = useKontentServiceApi("home_page");
+  const { data, loading } = useKontentServiceApi(kontentVariables.homePage);
 
   return (
     <>
-      <Header />
+      <Header loading={loading} />
       <Home
         data={data}        
       />

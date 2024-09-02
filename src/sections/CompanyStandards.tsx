@@ -1,15 +1,16 @@
 import React, { FC } from "react";
 import useKontentServiceApi from "../services/useKontentServiceApi";
+import { kontentVariables } from "../utils";
 
 interface Props {}
 const CompanyStandards: FC<Props> = () => {
 
-  const { data } = useKontentServiceApi("what_makes_us");
+  const { data } = useKontentServiceApi(kontentVariables.whatMakesusContentType);
   return (
-    <section id="make_us" className="make-us-sec smt-8">
+    <section id="make_us" className="make-us-sec smt-8 company-standards mt-sd-1 mt-med-1 mt-ld-4">
       <div className="container">
         <div className="row gy-4">
-          <div className="col-lg-4 make-us-haed">
+          <div className="col-lg-6 make-us-haed">
             <div className="section-header">
               <h3>
                 {data?.elements?.what_makes_us_different?.value.replace(
@@ -19,8 +20,8 @@ const CompanyStandards: FC<Props> = () => {
               </h3>
             </div>
           </div>
-          <div className="col-lg-2 make-us-haed"></div>
-          <div className="col-lg-6 mt-lg-5">
+          <div className="col-lg-1 md-hidden make-us-haed"></div>
+          <div className="col-lg-5 mt-lg-4 mt-med-0">
             <div className="make-us-content">
               <p>
                 {data?.elements?.we_succeed?.value.replace(
@@ -31,8 +32,8 @@ const CompanyStandards: FC<Props> = () => {
             </div>
           </div>
         </div>
-        <div className="row mt-5 gy-4">
-          <div className="col-lg-4 make-us-card">
+        <div className="row mt-3 mt-med-0 gy-4">
+          <div className="col-lg-4 col-md-6 make-us-card">
             <img
               src={data?.elements?.block_img1?.value[0]?.url}
               className="img-fluid"
@@ -51,7 +52,7 @@ const CompanyStandards: FC<Props> = () => {
               )}
             </p>
           </div>
-          <div className="col-lg-4 make-us-card">
+          <div className="col-lg-4 col-md-6 make-us-card">
             <img
               src={data?.elements?.block_img2?.value[0]?.url}
               className="img-fluid"
@@ -70,7 +71,7 @@ const CompanyStandards: FC<Props> = () => {
               )}
             </p>
           </div>
-          <div className="col-lg-4 make-us-card">
+          <div className="col-lg-4 col-md-6 make-us-card">
             <img
               src={data?.elements?.block_img3?.value[0]?.url}
               className="img-fluid"
@@ -89,7 +90,7 @@ const CompanyStandards: FC<Props> = () => {
               )}
             </p>
           </div>
-          <div className="col-lg-4 make-us-card">
+          <div className="col-lg-4 col-md-6 make-us-card">
             <img
               src={data?.elements?.block_img4?.value[0]?.url}
               className="img-fluid"
@@ -108,7 +109,7 @@ const CompanyStandards: FC<Props> = () => {
               )}
             </p>
           </div>
-          <div className="col-lg-4 make-us-card">
+          <div className="col-lg-4 col-md-6 make-us-card">
             <img
               src={data?.elements?.block_img5?.value[0]?.url}
               className="img-fluid"
@@ -127,7 +128,7 @@ const CompanyStandards: FC<Props> = () => {
               )}
             </p>
           </div>
-          <div className="col-lg-4 make-us-card">
+          <div className="col-lg-4 col-md-6 make-us-card">
             <img
               src={data?.elements?.block_img6?.value[0]?.url}
               className="img-fluid"

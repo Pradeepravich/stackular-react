@@ -34,7 +34,7 @@ const PortfolioInfoPage = () => {
       ?.trim()      
       .replace(/\s+/g, "_") 
 
-  const { data, errorCode } = useKontentServiceApi(slug);
+  const { data, errorCode, loading } = useKontentServiceApi(slug);
 
   useEffect(() => {
     if(decodedStr && errorCode === 100){
@@ -44,7 +44,7 @@ const PortfolioInfoPage = () => {
 
   return (
     <>
-      <Header />
+      <Header loading={loading}/>
       <PortfolioInfo data={data} />
       <Footer />
     </>

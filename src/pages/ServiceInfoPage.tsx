@@ -34,7 +34,7 @@ const ServiceInfoPage = () => {
       ?.trim()      
       .replace(/\s+/g, "_") 
 
-  const { data, errorCode } = useKontentServiceApi(slug);
+  const { data, errorCode, loading } = useKontentServiceApi(slug);
 
   useEffect(() => {
     if(decodedStr && errorCode === 100){
@@ -44,7 +44,7 @@ const ServiceInfoPage = () => {
 
   return (
     <>
-      <Header />
+      <Header loading={loading}/>
       <ServiceInfo data={data} />
       <Footer />
     </>

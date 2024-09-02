@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import CountUp from "react-countup";
-import videoTop from "../assets/images/general/6d43-4a9e-93e5-6a8769c08851-comp.mp4";
-import { ArrowRightCircleFill } from "react-bootstrap-icons";
+import videoTop from "../assets/images/general/portfolio.mp4";
 import { Link } from "react-router-dom";
 import { PATHS } from "../utils";
 import SuccessStoriesSection from "./SuccessStoriesSection";
+import ArrowRightBtn from "../assets/images/general/right_arrow_btn.png";
 
 interface Props {
   data: any;
@@ -18,6 +18,7 @@ const Portfolio: FC<Props> = ({ data }) => {
           <video autoPlay muted loop id="myVideo">
             <source src={videoTop} type="video/mp4" />
           </video>
+          <div className="overlay"></div>
           <div className="container">
             <div className="row gy-4">
               <div className="col-lg-2"></div>
@@ -45,11 +46,7 @@ const Portfolio: FC<Props> = ({ data }) => {
                         ""
                       )}
                       <span className="float-end ml-4 ">
-                        <ArrowRightCircleFill
-                          color="#87FCFE"
-                          size="1.7em"
-                          className="arrow-right-circle-fill"
-                        />
+                        <img src={ArrowRightBtn} alt="" />
                       </span>
                       <span className="clear-both"></span>
                     </Link>
@@ -60,63 +57,65 @@ const Portfolio: FC<Props> = ({ data }) => {
             </div>
           </div>
         </section>
-        <div className="container">
-          <div className="row">
-            <section id="map" className="map-sec portfolio-info">
-              <div className="container">
-                <div className="row gy-4">
-                  <div className="col-lg-2 portfolio-projects">
-                    <h2>
-                      <CountUp
-                        start={0}
-                        end={data?.elements?.count_clients?.value}
-                        duration={2}
-                        suffix="+"
-                      />
-                    </h2>
-                    <p>
-                      {data?.elements?.count_clients_title?.value.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
-                    </p>
-                  </div>
-                  <div className="col-lg-2 portfolio-projects">
-                    <h2>
-                      <CountUp
-                        start={0}
-                        end={data?.elements?.count_projects?.value}
-                        duration={2}
-                        suffix="+"
-                      />
-                    </h2>
-                    <p>
-                      {data?.elements?.count_projects_title?.value.replace(
-                        /(<([^>]+)>)/gi,
-                        ""
-                      )}
-                    </p>
-                  </div>
-                  <div className="col-lg-2 portfolio-projects d-none d-md-block"></div>
-                  <div className="col-lg-6">
-                    <div className="map-content portfolio-content">
+        <section className="portfolio-count-sec">
+          <div className="container">
+            <div className="">
+              <section id="map" className="map-sec portfolio-info">
+                <div className="container">
+                  <div className="row gy-4">
+                    <div className="col-lg-2 col-md-2 portfolio-projects">
+                      <h2>
+                        <CountUp
+                          start={0}
+                          end={data?.elements?.count_clients?.value}
+                          duration={2}
+                          suffix="+"
+                        />
+                      </h2>
                       <p>
-                        {data?.elements?.count_portfolio_content?.value.replace(
+                        {data?.elements?.count_clients_title?.value.replace(
                           /(<([^>]+)>)/gi,
                           ""
                         )}
                       </p>
                     </div>
+                    <div className="col-lg-2 col-md-2 portfolio-projects">
+                      <h2>
+                        <CountUp
+                          start={0}
+                          end={data?.elements?.count_projects?.value}
+                          duration={2}
+                          suffix="+"
+                        />
+                      </h2>
+                      <p>
+                        {data?.elements?.count_projects_title?.value.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </p>
+                    </div>
+                    {/* <div className="col-lg-1 portfolio-projects d-none d-md-block"></div> */}
+                    <div className="col-lg-8 col-md-8">
+                      <div className="map-content portfolio-content">
+                        <p>
+                          {data?.elements?.count_portfolio_content?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </p>
+                      </div>
+                      <div className="clear-both"></div>
+                    </div>
                   </div>
                 </div>
+              </section>
+              <div className="mb-32 mb-sd-1 mb-med-1 mb-ld-2">                
+                <SuccessStoriesSection />
               </div>
-            </section>
-            <div className="mb-32">
-              {/* <SuccessStories successStories={storiesData} /> */}
-              <SuccessStoriesSection />
             </div>
           </div>
-        </div>
+        </section>
       </main>
     </>
   );

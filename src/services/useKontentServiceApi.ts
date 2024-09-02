@@ -8,19 +8,21 @@ const client = createDeliveryClient({
 
 const useKontentServiceApi = (contentTypeName: string) => {
   const [data, setData] = useState<IContentItem<IContentItemElements> | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
   const [errorCode, setErrorCode] = useState<number>(0);
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
-      try {        
+      try {                
         const response = await client.item(contentTypeName).toPromise();        
         setData(response.data.item);        
       } catch (err: any) {
         console.error('Error fetching content items:', err);        
         setError(err as Error);
         setErrorCode(err.errorCode);
+        setLoading(true);
       } finally {
         setLoading(false);
       }

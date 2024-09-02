@@ -1,29 +1,69 @@
-import React, { FC } from "react";
+import React, { FC, useCallback } from "react";
 import CountUp from "react-countup";
+import { Link } from "react-router-dom";
 
 interface Props {
   data: any;
 }
 
 const About: FC<Props> = ({ data }) => {
+  const handleMouseMove = useCallback(
+    (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      const container = event.currentTarget;
+      const containerWidth = container.offsetWidth;
+      const containerHeight = container.offsetHeight;
+      const centerX = containerWidth / 2;
+      const centerY = containerHeight / 2;
+      const mouseX = event.clientX - container.getBoundingClientRect().left;
+      const mouseY = event.clientY - container.getBoundingClientRect().top;
+
+      let gradientDirection = "";
+      if (mouseX < centerX && mouseY < centerY) {
+        gradientDirection = "top left";
+      } else if (mouseX < centerX && mouseY > centerY) {
+        gradientDirection = "bottom left";
+      } else if (mouseX > centerX && mouseY < centerY) {
+        gradientDirection = "top right";
+      } else {
+        gradientDirection = "bottom right";
+      }
+
+      const gradient = `linear-gradient(to ${gradientDirection}, #293240, rgba(224, 233, 224, 0.3))`;
+      (
+        container.querySelector(".commitment_card") as HTMLDivElement
+      ).style.background = gradient;
+    },
+    []
+  );
+
+  const handleMouseOut = useCallback(
+    (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      const container = event.currentTarget;
+      (
+        container.querySelector(".commitment_card") as HTMLDivElement
+      ).style.background = "";
+    },
+    []
+  );
+
   return (
     <>
       <main id="main">
         <div className="container">
-          <div className="row">
-            <section id="about" className="about-sec hero-padding">
+          <div className="">
+            <section id="about" className="about-sec page-top-padding">
               <div className="container">
                 <div className="row gy-4">
                   <div className="col-lg-1"></div>
                   <div className="col-lg-10">
-                    <div className="section-header">
+                    <div className="section-header mx-auto mb-[24px] mb-sd-0">
                       <h1>
                         {data?.elements?.we_take_pride?.value.replace(
                           /(<([^>]+)>)/gi,
                           ""
                         )}
                       </h1>
-                      <p>
+                      <p className="!mb-0 mx-auto">
                         {data?.elements?.we_specialize_in_custom?.value.replace(
                           /(<([^>]+)>)/gi,
                           ""
@@ -33,46 +73,28 @@ const About: FC<Props> = ({ data }) => {
                   </div>
                   <div className="col-lg-1"></div>
                 </div>
-                <div className="col-lg-12 d-none mt-lg-5 d-md-block">
+                <div className=" mt-lg-5 mt-med-0">
                   <div className="row gy-4">
-                    <div className="col-lg-4">
+                    <div className="col-5">
                       <img
                         src={data?.elements?.top_left_img?.value[0]?.url}
-                        className="img-fluid mx-auto"
+                        className="img-fluid w-100 top_left_img"
                         alt=""
                       />
                     </div>
-                    <div className="col-lg-8">
+                    <div className="col-7">
                       <img
                         src={data?.elements?.top_right_img?.value[0]?.url}
-                        className="img-fluid mx-auto"
+                        className="img-fluid top_right_img"
                         alt=""
                       />
                     </div>
                   </div>
-                </div>
-                <div className="col-lg-12 d-block d-md-none">
-                  <div className="row gy-4">
-                    <div className="about-left-img">
-                      <img
-                        src={data?.elements?.top_left_img?.value[0]?.url}
-                        className="img-fluid mx-auto"
-                        alt=""
-                      />
-                    </div>
-                    <div className="about-right-img">
-                      <img
-                        src={data?.elements?.top_right_img?.value[0]?.url}
-                        className="img-fluid mx-auto"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
+                </div>                
               </div>
             </section>
 
-            <section id="projects" className="projects sm-8">
+            <section id="projects" className="projects aboutus-first-content sm-8 mt-sd-2 mb-sd-0 my-ld-4">
               <div className="container">
                 <div className="row g-0">
                   <div className="col-lg-6 project-issues-info">
@@ -97,7 +119,7 @@ const About: FC<Props> = ({ data }) => {
               </div>
             </section>
 
-            <section id="projects" className="projects smb-8">
+            <section id="projects" className="projects aboutus-second-content smb-8 mb-sd-1 mb-ld-4">
               <div className="container">
                 <div className="row g-0">
                   <div className="col-lg-6 project-issues-info">
@@ -122,10 +144,10 @@ const About: FC<Props> = ({ data }) => {
               </div>
             </section>
 
-            <section id="our_list" className="our-list section-padding">
+            <section id="our_list" className="our-list section-padding my-sd-1">
               <div className="container">
                 <div className="row gy-4">
-                  <div className="col-lg-3 our-list-info">
+                  <div className="col-lg-3 col-md-6 our-list-info">
                     <h2 className="small">
                       <CountUp
                         start={0}
@@ -141,7 +163,7 @@ const About: FC<Props> = ({ data }) => {
                       )}
                     </p>
                   </div>
-                  <div className="col-lg-3 our-list-info">
+                  <div className="col-lg-3 col-md-6 our-list-info">
                     <h2 className="small">
                       <CountUp
                         start={0}
@@ -157,7 +179,7 @@ const About: FC<Props> = ({ data }) => {
                       )}
                     </p>
                   </div>
-                  <div className="col-lg-3 our-list-info">
+                  <div className="col-lg-3 col-md-6 our-list-info">
                     <h2 className="small">
                       <CountUp
                         start={0}
@@ -173,7 +195,7 @@ const About: FC<Props> = ({ data }) => {
                       )}
                     </p>
                   </div>
-                  <div className="col-lg-3 our-list-info text-center">
+                  <div className="col-lg-3 col-md-6 our-list-info text-center">
                     <img
                       src={data?.elements?.happiness_index_img?.value[0]?.url}
                       className="smile_gif img-fluid mx-auto"
@@ -189,7 +211,7 @@ const About: FC<Props> = ({ data }) => {
                 </div>
               </div>
             </section>
-            <section id="founding" className="founding-team sm-8">
+            <section id="founding" className="founding-team sm-8 mb-sd-1 my-ld-4">
               <div className="container">
                 <div className="row gy-4">
                   <div className="col-lg-4 founding-header">
@@ -210,7 +232,7 @@ const About: FC<Props> = ({ data }) => {
                   </div>
                   <div className="col-lg-8 all-founders">
                     <div className="row">
-                      <div className="col-lg-6 founder-card mt-5">
+                      <div className="col-lg-6 col-md-6 founder-card mt-5 mt-med-0 mt-sd-0">
                         <div className="founders_img">
                           <img
                             src={
@@ -240,13 +262,18 @@ const About: FC<Props> = ({ data }) => {
                             ""
                           )}
                         </p>
-                        <img
-                          src={data?.elements?.linkedin_img?.value[0]?.url}
-                          className="img-fluid mx-auto"
-                          alt=""
-                        />
+                        <Link
+                          to={data?.elements?.founder2_linkedin_url?.value.trim()}
+                          target="_blank"
+                        >
+                          <img
+                            src={data?.elements?.linkedin_img?.value[0]?.url}
+                            className="img-fluid mx-auto"
+                            alt=""
+                          />
+                        </Link>
                       </div>
-                      <div className="col-lg-6 founder-card mt-5">
+                      <div className="col-lg-6 col-md-6 founder-card mt-5 mt-med-0 mt-sd-0">
                         <div className="founders_img">
                           <img
                             src={
@@ -276,11 +303,16 @@ const About: FC<Props> = ({ data }) => {
                             ""
                           )}
                         </p>
-                        <img
-                          src={data?.elements?.linkedin_img?.value[0]?.url}
-                          className="img-fluid mx-auto"
-                          alt=""
-                        />
+                        <Link
+                          to={data?.elements?.founder1_linkedin_url?.value.trim()}
+                          target="_blank"
+                        >
+                          <img
+                            src={data?.elements?.linkedin_img?.value[0]?.url}
+                            className="img-fluid mx-auto"
+                            alt=""
+                          />
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -288,7 +320,7 @@ const About: FC<Props> = ({ data }) => {
               </div>
             </section>
 
-            <section id="make_us" className="make-us-sec">
+            <section id="make_us" className="make-us-sec commitment-sec">
               <div className="container">
                 <div className="row gy-4">
                   <div className="col-lg-12 commitment-head">
@@ -308,8 +340,12 @@ const About: FC<Props> = ({ data }) => {
                     </div>
                   </div>
                 </div>
-                <div className="row mt-5 gy-4">
-                  <div className="col-lg-6 commitment-cards">
+                <div className="row mt-5 mt-med-1 mt-sd-0 gy-4">
+                  <div
+                    className="col-lg-6  commitment-cards"
+                    onMouseMove={handleMouseMove}
+                    onMouseOut={handleMouseOut}
+                  >
                     <div className="commitment_card commitment-card">
                       <h4>
                         {data?.elements?.agile_process?.value.replace(
@@ -325,7 +361,11 @@ const About: FC<Props> = ({ data }) => {
                       </p>
                     </div>
                   </div>
-                  <div className="col-lg-6 commitment-cards">
+                  <div
+                    className="col-lg-6  commitment-cards"
+                    onMouseMove={handleMouseMove}
+                    onMouseOut={handleMouseOut}
+                  >
                     <div className="commitment_card commitment-card">
                       <h4>
                         {data?.elements?.global_delivery?.value.replace(
@@ -341,7 +381,11 @@ const About: FC<Props> = ({ data }) => {
                       </p>
                     </div>
                   </div>
-                  <div className="col-lg-6 commitment-cards">
+                  <div
+                    className="col-lg-6  commitment-cards"
+                    onMouseMove={handleMouseMove}
+                    onMouseOut={handleMouseOut}
+                  >
                     <div className="commitment_card commitment-card">
                       <h4>
                         {data?.elements?.on_time?.value.replace(
@@ -357,7 +401,11 @@ const About: FC<Props> = ({ data }) => {
                       </p>
                     </div>
                   </div>
-                  <div className="col-lg-6 commitment-cards">
+                  <div
+                    className="col-lg-6  commitment-cards"
+                    onMouseMove={handleMouseMove}
+                    onMouseOut={handleMouseOut}
+                  >
                     <div className="commitment_card commitment-card">
                       <h4>
                         {data?.elements?.under_promise?.value.replace(
@@ -382,5 +430,4 @@ const About: FC<Props> = ({ data }) => {
     </>
   );
 };
-
 export default About;
