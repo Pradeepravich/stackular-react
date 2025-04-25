@@ -15,7 +15,7 @@ const Portfolio: FC<Props> = ({ data }) => {
     <>
       <main id="main">
         <section id="portfolio" className="portfolio-sec hero-padding">
-          <video autoPlay muted loop id="myVideo">
+          <video autoPlay muted loop id="myVideo" playsInline webkit-playsInline>
             <source src={videoTop} type="video/mp4" />
           </video>
           <div className="overlay"></div>

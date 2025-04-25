@@ -230,7 +230,7 @@ p {
   font-size: 16px;
   font-weight: 500;
   line-height: 21px;
-  padding: 9px 28px 8px 28px;
+  padding: 10px 20px;
   text-decoration: none;
   transition: .3s;
 }
@@ -261,7 +261,7 @@ p {
 
   .navbar>ul>li {
     white-space: nowrap;
-    padding: 10px 30px 10px 30px;
+    padding: 10px 20px 10px 20px;
   }
 
   .navbar a,
@@ -391,10 +391,25 @@ p {
     left: 100%;
     visibility: visible;
   }
-  nav#navbar ul li:last-child {
+  /* nav#navbar ul li:last-child {
     display: none;
+  } */
+}
+@media (min-width: 1920px) {
+  .hero-sec,
+  .portfolio-sec {
+    height: auto !important;
+  }
+  .navbar>ul>li {
+    white-space: nowrap;
+    padding: 10px 25px 10px 25px;
   }
 }
+/* @media (min-width: 1280px) {
+  div#boxid {
+    width: 72%;
+  }
+} */
 
 @media (min-width: 1280px) and (max-width: 1366px) {
   .navbar .dropdown .dropdown ul {
@@ -575,6 +590,7 @@ p {
 .global-section{    
   margin: 0px;
   padding: 0px;
+  padding-top: 125px;
 }
 .global-section img{  
   position: absolute;
@@ -733,6 +749,27 @@ section#make_us {
   padding: 0px 30px;
 }
 
+.badge-tags {
+  text-align: left;
+  color: #fff;
+  display: block;  
+}
+.badge-tags span {
+  background-color: #1F2937;
+  padding: 10px 16px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 13px;
+  line-height: 20px;
+  margin-right: 11px;
+  display: inline-block;
+  margin-bottom: 15px;
+  color: #D1D5DB;
+}
+.fixed-txt{
+  min-height: 6rem;
+}
+
 .project-info-header .project-card {  
   padding: 0px 30px 0 0;
 }
@@ -886,6 +923,9 @@ section#portfolio a.btn.btn-primary {
 /*--------------------------------------------------------------
 # Join Us Page
 --------------------------------------------------------------*/
+#scroll-to-projects-section{
+  scroll-margin-top: 50px;
+}
 .join-us-header .section-header p {
   width: 80%;
 }
@@ -931,7 +971,7 @@ section#portfolio a.btn.btn-primary {
   padding: 10px 24px;
   border-radius: 8px;
   margin-right: 20px;
-  font-size: 16px;
+  font-size: 18px;
   text-align: center !important;
   color: #fff;
 }
@@ -1056,6 +1096,7 @@ a.btn.btn-linkedin {
 
 #about img {
   height: 100%;
+  max-width: 100%;
 }
 
 .founding-header .section-header h2 {
@@ -1133,7 +1174,7 @@ img.smile_gif {
 
 .navlist {
   display: inline-block;
-  padding: 10px;
+  padding: 6px;
 }
 
 .active_tab {
@@ -1680,7 +1721,7 @@ i.bi.bi-arrow-right-circle-fill {
 }
 
 .footer .footer-links ul li {
-  padding: 8px 15px;
+  padding: 8px 4px;
 }
 
 .footer-menu {
@@ -1944,6 +1985,9 @@ i.bi.bi-twitter-x:hover {
   /*--------------------------------------------------------------
   #  Navbar 
   --------------------------------------------------------------*/
+  .navbar{
+    max-width: 100% !important;
+  }
   .navbar a,
   .navbar a:focus {
     display: block;
@@ -2270,6 +2314,11 @@ i.bi.bi-twitter-x:hover {
   .about-left-img {
     margin-bottom: 2rem;
   }
+  #about img {
+    /* height: auto !important; */
+    width: 100%;
+    object-fit: cover;
+  }
 
   /*--------------------------------------------------------------
   #  Services Page 
@@ -2379,6 +2428,7 @@ i.bi.bi-twitter-x:hover {
   /*--------------------------------------------------------------
   #  Join Us Page 
   --------------------------------------------------------------*/
+  
   .join-us-header .section-header{
     margin-top: 0px !important; 
   }
@@ -2467,6 +2517,10 @@ i.bi.bi-twitter-x:hover {
   }
   .current-openings-area .work-location{
     margin: 0.75rem 0 0;
+  }
+  video#join_us_video {    
+    margin-top: 3rem;
+    margin-bottom: 0.5rem;
   }
   /*--------------------------------------------------------------
   #  Contact Us Page 
@@ -2797,7 +2851,9 @@ i.bi.bi-twitter-x:hover {
   .info-top-padding{
     padding-top: 9rem;
   }
-
+  .global-section {    
+    padding-top: 30px;
+  }
   .hero-sec,
   .portfolio-sec {
     height: 100vh;
@@ -2832,6 +2888,9 @@ i.bi.bi-twitter-x:hover {
 --------------------------------------------*/
   .join-card img {
     margin-right: 15px;
+  }
+  .fixed-txt{
+    min-height: auto;
   }
 }
 
@@ -3667,8 +3726,9 @@ i.bi.bi-twitter-x:hover {
 }
 
 div#boxid {
-  width: 87%;
   background: #111827;
+  width:fit-content;
+  border-radius: 8px;
 }
 
 .loader-container {
@@ -3692,17 +3752,17 @@ div#boxid {
 }
 
 
-@media only screen and (min-width: 1024px) {
+/* @media only screen and (width: 1280px){
   div#boxid {
     width: 85%;
   }
-}
+} */
 
-@media only screen and (min-width: 1536px) {
+/* @media only screen and (min-width: 1536px) {
   div#boxid {
     width: 72%;
   }
-}
+} */
 
 /*--------------------------------------------------------------
 # Multi Client Logo Slider

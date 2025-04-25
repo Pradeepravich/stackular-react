@@ -4,6 +4,7 @@ import Logo from "../assets/images/general/Logo.png";
 import { Link, useLocation } from "react-router-dom";
 import { PATHS } from "../utils";
 import { ClipLoader } from "react-spinners";
+import useCategories from "../services/useCategories";
 
 interface Props {
   loading?: boolean;
@@ -14,6 +15,10 @@ const Header: FC<Props> = ({ loading = false }) => {
   const [isMobileNavActive, setIsMobileNavActive] = useState(false);
   const [activeLink, setActiveLink] = useState<string>("");
   const location = useLocation();
+
+  const { categories } = useCategories("menu_category");
+
+  // console.log("categories", categories);
 
   const handleMobileNavToggle = () => {
     setIsMobileNavActive(!isMobileNavActive);
@@ -43,7 +48,6 @@ const Header: FC<Props> = ({ loading = false }) => {
     };
   }, []);
 
-
   /**
    * Making only current nav link active upon click
    */
@@ -66,7 +70,7 @@ const Header: FC<Props> = ({ loading = false }) => {
           <ClipLoader color="#36d7b7" size={50} />
         </div>
       ) : (
-        <>         
+        <>
           <header
             id="header"
             className={`header fixed-top d-flex align-items-center ${
@@ -76,56 +80,27 @@ const Header: FC<Props> = ({ loading = false }) => {
             <div className="container d-flex align-items-center justify-content-between px-4">
               <Link
                 to={PATHS.home}
-                className="logo d-flex align-items-center me-auto me-lg-0"                
+                className="logo d-flex align-items-center me-auto me-lg-0"
               >
                 <img src={Logo} alt="" />
               </Link>
               <nav id="navbar" className="navbar">
                 <ul>
-                  <li>
-                    <Link 
-                    to={PATHS.home}
-                    className={activeLink === PATHS.home ? "active" : ""}
-                    onClick={() => handleNavLinkClick(PATHS.home)}
-                    >Home</Link>
-                  </li>
-                  <li>
-                    <Link 
-                    to={PATHS.about}
-                    className={activeLink === PATHS.about ? "active" : ""}
-                    onClick={() => handleNavLinkClick(PATHS.about)}
-                    >About</Link>
-                  </li>
-                  <li>
-                    <Link 
-                    to={PATHS.services}
-                    className={activeLink === PATHS.services ? "active" : ""}
-                      onClick={() => handleNavLinkClick(PATHS.services)}
-                    >Services</Link>
-                  </li>
-                  <li>
-                    <Link 
-                    to={PATHS.portfolio}
-                    className={activeLink === PATHS.portfolio ? "active" : ""}
-                    onClick={() => handleNavLinkClick(PATHS.portfolio)}
-                    >Portfolio</Link>
-                  </li>
-                  <li>
-                    <Link 
-                    to={PATHS.joinUs}
-                    className={activeLink === PATHS.joinUs ? "active" : ""}
-                    onClick={() => handleNavLinkClick(PATHS.joinUs)}
-                    >Join Us</Link>
-                  </li>
-                  <li>
-                    <Link                     
-                    to={PATHS.contactUs}
-                    className={`d-lg-none ${activeLink === PATHS.contactUs ? "active" : ""}`}
-                    onClick={() => handleNavLinkClick(PATHS.contactUs)}
-                    >
-                      Contact Us
-                    </Link>
-                  </li>
+                  {categories?.map((category: any, i: number) => (
+                    <li>
+                      <Link
+                        to={`/${category?.codename}`}
+                        className={
+                          activeLink === `/${category?.codename}`
+                            ? "active"
+                            : ""
+                        }
+                        onClick={() => handleNavLinkClick(category?.codename)}
+                      >
+                        {category?.name}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </nav>
               <Link

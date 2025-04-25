@@ -70,24 +70,46 @@ const SuccessStoriesSection: FC<Props> = ({ limit }) => {
                           ""
                         )}
                       </p>
-                      <span>
-                        {item?.elements?.technologies_3752ab0__label1?.value.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}
-                      </span>
-                      <span>
-                        {item?.elements?.technologies_3752ab0__label2?.value.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}
-                      </span>
-                      <span>
-                        {item?.elements?.technologies_3752ab0__label3?.value.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}
-                      </span>
+                      {item?.elements?.technologies_3752ab0__label1?.value && (
+                        <span>
+                          {item?.elements?.technologies_3752ab0__label1?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </span>
+                      )}
+                      {item?.elements?.technologies_3752ab0__label2?.value && (
+                        <span>
+                          {item?.elements?.technologies_3752ab0__label2?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </span>
+                      )}
+                      {item?.elements?.technologies_3752ab0__label3?.value && (
+                        <span>
+                          {item?.elements?.technologies_3752ab0__label3?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </span>
+                      )}
+                      {item?.elements?.technologies_3752ab0__label4?.value && (
+                        <span>
+                          {item?.elements?.technologies_3752ab0__label4?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </span>
+                      )}
+                      {item?.elements?.technologies_3752ab0__label5?.value && (
+                        <span>
+                          {item?.elements?.technologies_3752ab0__label5?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </span>
+                      )}
                     </div>
                   </>
                 ) : (
@@ -140,24 +162,46 @@ const SuccessStoriesSection: FC<Props> = ({ limit }) => {
                           ""
                         )}
                       </p>
-                      <span>
-                        {item?.elements?.technologies_3752ab0__label1?.value.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}
-                      </span>
-                      <span>
-                        {item?.elements?.technologies_3752ab0__label2?.value.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}
-                      </span>
-                      <span>
-                        {item?.elements?.technologies_3752ab0__label3?.value.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}
-                      </span>
+                      {item?.elements?.technologies_3752ab0__label1?.value && (
+                        <span>
+                          {item?.elements?.technologies_3752ab0__label1?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </span>
+                      )}
+                      {item?.elements?.technologies_3752ab0__label2?.value && (
+                        <span>
+                          {item?.elements?.technologies_3752ab0__label2?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </span>
+                      )}
+                      {item?.elements?.technologies_3752ab0__label3?.value && (
+                        <span>
+                          {item?.elements?.technologies_3752ab0__label3?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </span>
+                      )}
+                      {item?.elements?.technologies_3752ab0__label4?.value && (
+                        <span>
+                          {item?.elements?.technologies_3752ab0__label4?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </span>
+                      )}
+                      {item?.elements?.technologies_3752ab0__label5?.value && (
+                        <span>
+                          {item?.elements?.technologies_3752ab0__label5?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </span>
+                      )}
                     </div>
                   </>
                 ) : (
@@ -182,24 +226,46 @@ const SuccessStoriesSection: FC<Props> = ({ limit }) => {
                           ""
                         )}
                       </p>
-                      <span>
-                        {item?.elements?.technologies_3752ab0__label1?.value.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}
-                      </span>
-                      <span>
-                        {item?.elements?.technologies_3752ab0__label2?.value.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}
-                      </span>
-                      <span>
-                        {item?.elements?.technologies_3752ab0__label3?.value.replace(
-                          /(<([^>]+)>)/gi,
-                          ""
-                        )}
-                      </span>
+                      {item?.elements?.technologies_3752ab0__label1?.value && (
+                        <span>
+                          {item?.elements?.technologies_3752ab0__label1?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </span>
+                      )}
+                      {item?.elements?.technologies_3752ab0__label2?.value && (
+                        <span>
+                          {item?.elements?.technologies_3752ab0__label2?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </span>
+                      )}
+                      {item?.elements?.technologies_3752ab0__label3?.value && (
+                        <span>
+                          {item?.elements?.technologies_3752ab0__label3?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </span>
+                      )}
+                      {item?.elements?.technologies_3752ab0__label4?.value && (
+                        <span>
+                          {item?.elements?.technologies_3752ab0__label4?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </span>
+                      )}
+                      {item?.elements?.technologies_3752ab0__label5?.value && (
+                        <span>
+                          {item?.elements?.technologies_3752ab0__label5?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                        </span>
+                      )}
                     </div>
                   </>
                 )}

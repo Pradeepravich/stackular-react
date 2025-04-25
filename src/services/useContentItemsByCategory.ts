@@ -21,7 +21,7 @@ const useContentItemsByCategory = (contentTypeName: string,  categoryField: stri
         .type(contentTypeName)
         .equalsFilter(categoryField, taxonomyCodename)
         // .containsFilter('service_category', [categoryCodename]) // Dynamic filtering by category
-        // .orderByDescending('system.last_modified')
+        .orderByDescending('system.last_modified')
         .toPromise();       
         setContentItemsByCategory(response?.data?.items || []);        
       } catch (err: any) {

@@ -6,14 +6,15 @@ import useContentTypes from "../services/useContentTypes";
 
 interface Props {
   data: any;
+  categories: any[];
 }
 
-const PortfolioInfo: FC<Props> = ({ data }) => {
+const PortfolioInfo: FC<Props> = ({ data, categories }) => {
   const navigate = useNavigate();
   const { contentItems } = useContentTypes(
     kontentVariables.portfolioInfoContentType
   );
-
+  console.log("data", data);
   return (
     <>
       <main id="main">
@@ -71,6 +72,18 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
                           ""
                         )}
                       </span>
+                      <span className="badge">
+                        {data?.elements?.technologies_3752ab0__label4?.value?.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
+                      <span className="badge">
+                        {data?.elements?.technologies_3752ab0__label5?.value?.replace(
+                          /(<([^>]+)>)/gi,
+                          ""
+                        )}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -85,7 +98,10 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
             </div>
           </section>
 
-          <section id="projects" className="projects sm-8 mt-sd-2 mb-sd-1 mt-ld-4 mb-ld-2">
+          <section
+            id="projects"
+            className="projects sm-8 mt-sd-2 mb-sd-1 mt-ld-4 mb-ld-2"
+          >
             <div className="container">
               <div className="row mt-lg-5 mt-med-0 mt-sd-0 g-0">
                 <div className="col-lg-3  project-issues-info">
@@ -169,6 +185,31 @@ const PortfolioInfo: FC<Props> = ({ data }) => {
                           </span>
                         )
                       )}
+                  </div>
+                </div>
+              </div>
+              <div className="row mt-lg-5 mt-med-1 mt-sd-1 g-0">
+                <div className="col-lg-3  project-issues-info">
+                  <h4 className="d-none d-md-block project-issues-info-width">
+                    {data?.elements?.portfolio_second_block_info__industries?.value?.replace(
+                      /(<([^>]+)>)/gi,
+                      ""
+                    )}
+                  </h4>
+                  <h4 className="d-block d-md-none project-issues-info-width">
+                    {data?.elements?.portfolio_second_block_info__industries?.value?.replace(
+                      /(<([^>]+)>)/gi,
+                      ""
+                    )}
+                  </h4>
+                </div>
+                <div className="col-lg-9  job-cards mb-med-0 mb-sd-0">
+                  <div className="badge-tags">
+                    {categories?.map((item: any) => (
+                      <span className="badge">
+                        {item?.name}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>

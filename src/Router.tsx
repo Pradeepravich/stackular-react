@@ -11,6 +11,8 @@ import PortfolioInfoPage from "./pages/PortfolioInfoPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ServiceInfoPage from "./pages/ServiceInfoPage";
 import NoDataPage from "./pages/NoDataPage";
+import IndustriesPage from "./pages/IndustriesPage";
+import IndustryInfoPage from "./pages/IndustryInfoPage";
 
 const Router = () => {
   const routes = [
@@ -35,6 +37,10 @@ const Router = () => {
       element: <PortfolioPage />,
     },
     {
+      path: PATHS.industries,
+      element: <IndustriesPage />,
+    },
+    {
       path: PATHS.joinUs,
       element: <JoinUsPage />,
     },
@@ -57,6 +63,10 @@ const Router = () => {
     {
       path: PATHS.serviceInfo,
       element: <ServiceInfoPage />,
+    },
+    {
+      path: PATHS.industryInfo,
+      element: <IndustryInfoPage />,
     },
   ];
 

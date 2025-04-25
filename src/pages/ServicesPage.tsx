@@ -31,7 +31,7 @@ const ServicesPage = () => {
     loadContentElements();
   }, []);
 
-  // console.log("contentItemsByCategory", contentItemsByCategory)
+  // console.log("SErvices contentItemsByCategory", contentItemsByCategory)
 
   return (
     <>

@@ -1,9 +1,9 @@
-import React, { FC } from "react";
+import React, { FC, useRef } from "react";
 // import { ArrowDownCircleFill } from "react-bootstrap-icons";
 import play from "../assets/images/general/8180-4a2b-a6e4-784e016a00b3.mp4";
 import TribeSection from "./TribeSection";
 import ArrowDownBtn from "../assets/images/general/down_arrow_btn.png";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import CurrentOpenings from "./CurrentOpenings";
 
 interface Props {
@@ -13,14 +13,19 @@ interface Props {
 }
 
 const JoinUs: FC<Props> = ({ data, openings, openingsType }) => {
-  const scrollToSection = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
-    event.preventDefault();
-    const targetDiv = document.getElementById("scroll-to-projects-section");
-    if (targetDiv) {
-      targetDiv.scrollIntoView({ behavior: "smooth" });
-    }
+  // const scrollToSection = (
+  //   event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  // ) => {
+  //   event.preventDefault();
+  //   const targetDiv = document.getElementById("scroll-to-projects-section");
+  //   if (targetDiv) {
+  //     targetDiv.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
+
+  const targetRef = useRef<HTMLDivElement>(null);
+  const scrollToSection = () => {
+    targetRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -46,7 +51,7 @@ const JoinUs: FC<Props> = ({ data, openings, openingsType }) => {
                         )}
                       </p>
                       <div className="form-group">
-                        <Link
+                        {/* <Link
                           to={"#scroll-to-projects-section"}
                           onClick={scrollToSection}
                           className="btn btn-primary !text-left !py-2 !pl-4 group"
@@ -59,7 +64,20 @@ const JoinUs: FC<Props> = ({ data, openings, openingsType }) => {
                             <img src={ArrowDownBtn} alt="" />
                           </span>
                           <span className="clear-both"></span>
-                        </Link>
+                        </Link> */}
+                        <button
+                          onClick={scrollToSection}
+                          className="btn btn-primary !text-left !py-2 !pl-4 group"
+                        >
+                          {data?.elements?.btn_title?.value.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}
+                          <span className="float-end ml-4 ">
+                            <img src={ArrowDownBtn} alt="" />
+                          </span>
+                          <span className="clear-both"></span>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -256,16 +274,16 @@ const JoinUs: FC<Props> = ({ data, openings, openingsType }) => {
                   </div>
                 </div>
                 <div className="row mt-lg-5 mt-med-2 gy-lg-4 gy-md-4">
-                  <div className="col-lg-6 col-md-6 mt-3 mt-sd-0 mt-med-0">
+                  <div className="col-lg-6 col-md-6 mt-0 mt-sd-0 mt-med-0">
                     <img
                       src={data?.elements?.image1?.value[0]?.url}
-                      className="figure-img img-fluid rounded"
+                      className="figure-img img-fluid rounded h-100"
                       alt="..."
                     />
                   </div>
                   <div className="col-lg-6 col-md-6 mt-lg-0 mt-med-0">
                     <div className="col-lg-12 col-md-12">
-                      <video autoPlay muted loop id="join_us_video">
+                      <video autoPlay muted loop id="join_us_video" playsInline webkit-playsInline>
                         <source src={play} type="video/mp4" />
                       </video>
                     </div>
@@ -289,7 +307,8 @@ const JoinUs: FC<Props> = ({ data, openings, openingsType }) => {
                 </div>
               </div>
             </section>
-            <div id="scroll-to-projects-section"></div>
+            {/* <div id="scroll-to-projects-section"></div> */}
+            <div id="scroll-to-projects-section" ref={targetRef}></div>
             <CurrentOpenings
               data={data}
               openings={openings}

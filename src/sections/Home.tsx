@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 // import globeFile from "../assets/images/home/videos/globe-comp.mp4";
-import globeFile from "../assets/images/home/globe-20mb.gif";
+// import globeFile from "../assets/images/home/globe-20mb.gif";
 // import ClientSlider from "../components/ClientSlider";
 import { Link, useNavigate } from "react-router-dom";
 import CompanyStandards from "./CompanyStandards";
@@ -65,7 +65,7 @@ const Home: FC<Props> = ({ data }) => {
                   </div>
                   <div className="global-section ">
                     <img
-                      src={globeFile}
+                      src={data?.elements?.top_right_image?.value[0]?.url}
                       className="img-fluid img-globe"
                       alt=""
                     />

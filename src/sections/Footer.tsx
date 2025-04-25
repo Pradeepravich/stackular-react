@@ -10,15 +10,18 @@ import {
   TwitterX,
 } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import { kontentVariables, PATHS } from "../utils";
+import { kontentVariables } from "../utils";
 import useKontentServiceApi from "../services/useKontentServiceApi";
 import { ReactComponent as InstagramColoredIcon } from "../assets/images/general/Instagram.svg";
+import useCategories from "../services/useCategories";
 // import TwitterIcon from "@mui/icons-material/Twitter";
 // import styled from "styled-components";
 
 const Footer = () => {
   const { data } = useKontentServiceApi(kontentVariables.footerPage);
   const [isActive, setIsActive] = useState(false);
+
+  const { categories } = useCategories("menu_category");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,21 +113,13 @@ const Footer = () => {
               <div className="footer-menu">
                 <nav>
                   <ul className="footer-nav-list">
-                    <li>
-                      <Link to={PATHS.home}>Home</Link>
-                    </li>
-                    <li>
-                      <Link to={PATHS.about}>About</Link>
-                    </li>
-                    <li>
-                      <Link to={PATHS.services}>Services</Link>
-                    </li>
-                    <li>
-                      <Link to={PATHS.portfolio}>Portfolio</Link>
-                    </li>
-                    <li>
-                      <Link to={PATHS.joinUs}>Join Us</Link>
-                    </li>
+                    {categories?.map((category: any, i: number) => (                      
+                      <li>
+                        <Link to={`/${category?.codename}`} className="active">
+                          {category?.name}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </nav>
               </div>

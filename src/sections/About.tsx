@@ -78,7 +78,7 @@ const About: FC<Props> = ({ data }) => {
                     <div className="col-5">
                       <img
                         src={data?.elements?.top_left_img?.value[0]?.url}
-                        className="img-fluid w-100 top_left_img"
+                        className="img-fluid top_left_img"
                         alt=""
                       />
                     </div>
